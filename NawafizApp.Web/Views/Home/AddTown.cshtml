@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "AddTown";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@model NawafizApp.Services.Dtos.InputTownDto
+
+@using (Html.BeginForm("AddTown", "Home", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="page-content">
+        @*col-md-12*@
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            <div class="portlet-title">
+                <div class="caption font-green">
+                    <i class="icon-pin font-green"></i>
+                    <span class="caption-subject bold uppercase"> إضافة منطقة</span>
+                </div>
+
+            </div>
+
+            <div class="portlet-body form">
+                <form role="form">
+                    <div class="form-body">
+                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                            @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                            @Html.TextBoxFor(m => m.ArabicTownName, new { @class = "form-control" })
+
+                            <label for="form_control_1">الاسم العربي</label>
+                            @*<span class="help-block">ادخال الاسم العربي ...</span>*@
+                            @Html.ValidationMessageFor(m => m.ArabicTownName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                            @*<input type="text" class="form-control" id="form_control_1">*@
+                            @*@Html.TextBoxFor(m => m.Description,new { @class="form-control"})*@
+                            @Html.TextBoxFor(m => m.EnglishTownName, new { @class = "form-control" })
+
+                            <label for="form_control_1">الاسم الانكليزي</label>
+                            @*<span class="help-block">ادخال الاسم الانكليزي ...</span>*@
+                            @Html.ValidationMessageFor(m => m.EnglishTownName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                            @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                            @Html.TextBoxFor(m => m.CityId, new { @style = "display:none;", @Value = ViewBag.city })
+                            @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-actions noborder">
+                            <input type="submit" value="ادخال" class="btn blue" style="" />
+                            @*<button type="button" class="btn blue">Submit</button>*@
+                            <input type="reset" value="تفريغ الخانات" class="btn default" />
+                            @Html.ActionLink("العودة الى المحافظات", "Cities", "Home", new { @class = "btn default" })
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+    @*<div style="margin-right:20px;">
+
+            <blockquote style="border:1px ridge white;text-align:center;" title="إضافة منطقة">
+
+                <h4 style="color:black;display:inline">الاسم العربي</h4>
+                @Html.TextBoxFor(m => m.ArabicTownName)
+                <h4 style="color:black;display:inline;margin-right:20px;">الاسم الانكليزي</h4>
+                @Html.TextBoxFor(m => m.EnglishTownName)
+                @Html.TextBoxFor(m => m.CityId, new { @style = "display:none;", @Value = ViewBag.city })
+                <button type="submit" class="dropbtn">إضافة</button>
+
+            </blockquote>
+        </div>*@
+}
+                        </div>
+

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.FixOrderDto>
+
+@{
+    ViewBag.Title = "Getallformosh";
+    Layout = "~/Views/Shared/_Layout_supervices.cshtml";
+}
+
+<h2>Getallformosh</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            الحجز
+        </th>
+
+        <th>
+            المشرف
+        </th>
+
+        <th>
+            الصيانة
+        </th>
+
+        <th>
+            وقت الأنشاء
+        </th>
+        <th>
+            وصف
+        </th>
+
+        <th>
+            الغرفة
+        </th>
+        <th>
+            تم أستلامها 
+        </th>
+        <th>
+            تم الأنتهاء
+        </th>
+        <th>
+            وقت الأنتهاء
+        </th>
+        <th>
+           وقت البدء
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.HosterName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.moshrefname)
+            </td>
+
+            <td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Creation_At)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Roomnu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Istaked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isFinished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enddate)
+            </td>
+            <td>
+                @Html.ActionLink("أرسال الى  عامل الصيانة ", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("تفاصيل", "getequpment", new { id = item.Id }) |
+
+            </td>
+        </tr>
+    }
+
+</table>

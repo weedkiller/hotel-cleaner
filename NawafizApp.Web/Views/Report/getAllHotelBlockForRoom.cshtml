@@ -1,0 +1,252 @@
+﻿
+@model IEnumerable<NawafizApp.Services.Dtos.HotelBlockDto>
+@using NawafizApp.Web.Models
+@using NawafizApp.Common;
+@{
+    Layout = null;
+}
+<link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
+<style>
+    .a {
+    }
+
+    .btn.green:not(.btn-outline):hover {
+        background-color: #9c6d16;
+        border-color: #d8d45c;
+    }
+
+    .btn.green:not(.btn-outline) {
+        color: #FFF;
+        background-color: #9c6d16;
+        border-color: #d8d45c;
+    }
+
+    td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .tttt {
+        text-align: center !important;
+        background-color: #f5f3a7;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 3px;
+        line-height: 1.42857;
+        vertical-align: top;
+        border-top: 1px solid #e7ecf1;
+    }
+
+    .table td, .table th {
+        font-size: 12px;
+    }
+
+    .title2 {
+        font-size: 14px !important;
+        color: #707127;
+    }
+
+    .searchForm {
+        margin-bottom: 4% !important;
+    }
+
+    .exel {
+        display: none;
+    }
+
+    .payed {
+        background-color: rgba(53, 190, 37, 0.61);
+    }
+
+    .notpayed {
+        background-color: rgba(224, 47, 47, 0.74);
+    }
+</style>
+@{
+    int i = 1;
+    string id = "";
+    string href = "";
+}
+
+@foreach (var s in Model)
+{
+    id = "p" + i;
+    <div id="@id" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">تفاصيل حول @s.BlockName</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                        <div class="mayClass">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in s.userInRoleLists)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(item.RoleName) && !string.IsNullOrWhiteSpace(item.userName))
+                                            {
+                                                <tr>
+                                                    <td class="title2"> @item.userName</td>
+                                                    <td>@item.RoleName</td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn dark btn-outline">إغلاق</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    i++;
+    id = "";
+}
+
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>الكتل المسجلة
+        </div>
+
+    </div>
+    <div class="portlet-body">
+        @*<div class="searchForm">
+                <form action="#" class="form-horizontal">
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">اختصاص الفعالية</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("main", Selects.MainCategoriesDl(null), new { id = "list1", @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">من تاريخ</label>
+                                    <div class="col-md-9">
+                                        <div class="input-icon right">
+                                            <i class="icon-calendar"></i>
+                                            <input name="from" id="ddd" class="form-control date-picker" data-date-format="dd/mm/yyyy" type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">نوع الفعالية</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("sub", new List<SelectListItem> { }, new { id = "list2", @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3"> إلى تاريخ</label>
+                                    <div class="col-md-9">
+                                        <div class="input-icon right">
+                                            <i class="icon-calendar"></i>
+                                            <input name="to" id="ddd" class="form-control date-picker" data-date-format="dd/mm/yyyy" type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">المستخدم</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("user", Selects.Users(null), new { id = "list3", @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn green">بحث</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>*@
+        <div class="table-responsive">
+            <table class="table table-bordered" id="mytab">
+                <thead class="t">
+                    <tr>
+                        <th class="tttt"> # </th>
+                        <th class="tttt"> رقم الكتلة الفندقية </th>
+                        <th class="tttt"> اسم الكتلة الفندقية </th>
+
+
+                        <th class="tttt" style="width: 8% !important;vertical-align:middle">تقرير الغرف</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        i = 1;
+                    }
+                    @foreach (var x in Model)
+                    {
+
+                        href = "#p" + i;
+                        <tr>
+                            <td>@i</td>
+                            <td>@x.BlockNum</td>
+                            <td>@x.BlockName</td>
+                            <td>
+                                <a href="@Url.Action("searchForRoom","Report",new {id=x.Id })"><img src="~/Images/info3.png" height="25" width="25" /></a>
+                            </td>
+
+                        </tr>
+                        i++;
+                        href = "";
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        @*<button class="btn btn-warning" type="button" onclick="fnExcelReport();">تصدير <i class="fa fa-download"></i></button>*@
+    </div>
+</div>
+<iframe id="txtArea1" style="display:none"></iframe>
+

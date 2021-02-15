@@ -1,0 +1,165 @@
+﻿<error errorId="457cc964-7bd4-4a3c-8ebc-8f3ac6fb2817" application="/LM/W3SVC/2/ROOT" host="DESKTOP-T4IQH61" type="System.InvalidOperationException" message="Nullable object must have a value." source="mscorlib" detail="System.InvalidOperationException: Nullable object must have a value.&#xD;&#xA;   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)&#xD;&#xA;   at System.Nullable`1.get_Value()&#xD;&#xA;   at NawafizApp.Web.Controllers.CleanOrderController.GetallforCleanEmp() in D:\Sales\NawafizApp.Web\Controllers\CleanOrderController.cs:line 166&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="cleaner" time="2021-02-10T23:54:59.5340163Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=MlU1quoB4pNKNxYbActWw5v4Wq6heZhOK1FYLs6EWpnvop3vbITx9kq-fDdvUrdkvCXqt9rlXvGPXgwFsocwzy09k7sqdALENMhSN1xzMPA1; .AspNet.ApplicationCookie=Y52fi7S9ajeLjSNXLpUPtNwCZQWR95A7b3LsVS5GDtmaIRusY_rpizzxyl8hY9ww82Q7XJzUjkIO08cWQLuzG5I1ISFwCdzwtgc6Oujcl5U5Y3yz3Zt2_avGjlKB3fjqvb0DZYoBAi7weD0sI6PTfp9Vic_5MHqkU7NpaNaspfIbrvb61okzFEn0XfOnkNZ_tXUcFWM2Gy-LI2xGH34PAXU6l2mBRc4oP1-lJPzWu0jyoPKeU6nD8Ay3kj4uzxDE_RGkx8TVMLR7ojoB3O2CiCR3jzSTEEPO3qTEEY09RKxeOMBBntll9hmYBePCztRzWpsiX-xOwxz_9pf9_SV_ImE_p_6plta6tc7E0pUb3jmk76CamTfc1bjPyPk0caApT4551x-oJudmzB6E1VKoDApJAidW1IEJ06Uc9J6Rf4y8X5--ql-QHCKtkW-s4t12vnp1n8SDFoStA51gNXVM8t5rfh8FQegZe1YsApGWxelXmmfj7ng4en8iC4_IOsBRII6rdENtrg76LS2Guc10RA; sidebar_closed=1&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3&#xD;&#xA;Cookie: __RequestVerificationToken=MlU1quoB4pNKNxYbActWw5v4Wq6heZhOK1FYLs6EWpnvop3vbITx9kq-fDdvUrdkvCXqt9rlXvGPXgwFsocwzy09k7sqdALENMhSN1xzMPA1; .AspNet.ApplicationCookie=Y52fi7S9ajeLjSNXLpUPtNwCZQWR95A7b3LsVS5GDtmaIRusY_rpizzxyl8hY9ww82Q7XJzUjkIO08cWQLuzG5I1ISFwCdzwtgc6Oujcl5U5Y3yz3Zt2_avGjlKB3fjqvb0DZYoBAi7weD0sI6PTfp9Vic_5MHqkU7NpaNaspfIbrvb61okzFEn0XfOnkNZ_tXUcFWM2Gy-LI2xGH34PAXU6l2mBRc4oP1-lJPzWu0jyoPKeU6nD8Ay3kj4uzxDE_RGkx8TVMLR7ojoB3O2CiCR3jzSTEEPO3qTEEY09RKxeOMBBntll9hmYBePCztRzWpsiX-xOwxz_9pf9_SV_ImE_p_6plta6tc7E0pUb3jmk76CamTfc1bjPyPk0caApT4551x-oJudmzB6E1VKoDApJAidW1IEJ06Uc9J6Rf4y8X5--ql-QHCKtkW-s4t12vnp1n8SDFoStA51gNXVM8t5rfh8FQegZe1YsApGWxelXmmfj7ng4en8iC4_IOsBRII6rdENtrg76LS2Guc10RA; sidebar_closed=1&#xD;&#xA;Host: localhost:50000&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="cleaner" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="cleaner" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/CleanOrder/GetallforCleanEmp" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Sales\NawafizApp.Web\CleanOrder\GetallforCleanEmp" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50423" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/CleanOrder/GetallforCleanEmp" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/CleanOrder/GetallforCleanEmp" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, image/jxr, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=MlU1quoB4pNKNxYbActWw5v4Wq6heZhOK1FYLs6EWpnvop3vbITx9kq-fDdvUrdkvCXqt9rlXvGPXgwFsocwzy09k7sqdALENMhSN1xzMPA1; .AspNet.ApplicationCookie=Y52fi7S9ajeLjSNXLpUPtNwCZQWR95A7b3LsVS5GDtmaIRusY_rpizzxyl8hY9ww82Q7XJzUjkIO08cWQLuzG5I1ISFwCdzwtgc6Oujcl5U5Y3yz3Zt2_avGjlKB3fjqvb0DZYoBAi7weD0sI6PTfp9Vic_5MHqkU7NpaNaspfIbrvb61okzFEn0XfOnkNZ_tXUcFWM2Gy-LI2xGH34PAXU6l2mBRc4oP1-lJPzWu0jyoPKeU6nD8Ay3kj4uzxDE_RGkx8TVMLR7ojoB3O2CiCR3jzSTEEPO3qTEEY09RKxeOMBBntll9hmYBePCztRzWpsiX-xOwxz_9pf9_SV_ImE_p_6plta6tc7E0pUb3jmk76CamTfc1bjPyPk0caApT4551x-oJudmzB6E1VKoDApJAidW1IEJ06Uc9J6Rf4y8X5--ql-QHCKtkW-s4t12vnp1n8SDFoStA51gNXVM8t5rfh8FQegZe1YsApGWxelXmmfj7ng4en8iC4_IOsBRII6rdENtrg76LS2Guc10RA; sidebar_closed=1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="MlU1quoB4pNKNxYbActWw5v4Wq6heZhOK1FYLs6EWpnvop3vbITx9kq-fDdvUrdkvCXqt9rlXvGPXgwFsocwzy09k7sqdALENMhSN1xzMPA1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="Y52fi7S9ajeLjSNXLpUPtNwCZQWR95A7b3LsVS5GDtmaIRusY_rpizzxyl8hY9ww82Q7XJzUjkIO08cWQLuzG5I1ISFwCdzwtgc6Oujcl5U5Y3yz3Zt2_avGjlKB3fjqvb0DZYoBAi7weD0sI6PTfp9Vic_5MHqkU7NpaNaspfIbrvb61okzFEn0XfOnkNZ_tXUcFWM2Gy-LI2xGH34PAXU6l2mBRc4oP1-lJPzWu0jyoPKeU6nD8Ay3kj4uzxDE_RGkx8TVMLR7ojoB3O2CiCR3jzSTEEPO3qTEEY09RKxeOMBBntll9hmYBePCztRzWpsiX-xOwxz_9pf9_SV_ImE_p_6plta6tc7E0pUb3jmk76CamTfc1bjPyPk0caApT4551x-oJudmzB6E1VKoDApJAidW1IEJ06Uc9J6Rf4y8X5--ql-QHCKtkW-s4t12vnp1n8SDFoStA51gNXVM8t5rfh8FQegZe1YsApGWxelXmmfj7ng4en8iC4_IOsBRII6rdENtrg76LS2Guc10RA" />
+    </item>
+    <item name="sidebar_closed">
+      <value string="1" />
+    </item>
+  </cookies>
+</error>

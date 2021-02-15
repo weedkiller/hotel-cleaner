@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "GuideNotDeleteGuide";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/category_view/Css/AdminCities.css" rel="stylesheet" />
+<div class="page-content">
+    @*style="margin-right:235px;"*@
+    <div class="" style="overflow-x:hidden;">
+        @*page-content-wrapper*@
+        <div class="portlet light " style="min-height:575px;margin-bottom:0px;">
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase" style="font-size: large;"> تعديل منطقة</span>
+                </div>
+
+            </div>
+            <div class="portlet-body form">
+                <form role="form">
+                    <div class="form-body" style="padding-left: 4%;padding-right: 4%;">
+                        <div class="form-group form-md-line-input has-success">
+
+
+                            <label for="form_control_1"><h2>لا يمكن حذف الفئة لوجود فئات فرعية مرتبطة بها</h2></label>
+
+                        </div>
+
+                        <div class="form-actions noborder" style="padding-right:4%;">
+                            @Html.ActionLink("العودة الى الفئات", "Guide", "Home", new { @class = "btn default", @style = "text-decoration:none;" })
+                            @Html.ActionLink("تفاصيل الفئة", "EditGuide", "Home", new { @guideName = ViewBag.CityName, @لعهيثID = ViewBag.Id }, new { @class = "btn default", @style = "text-decoration: none;" })
+
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>

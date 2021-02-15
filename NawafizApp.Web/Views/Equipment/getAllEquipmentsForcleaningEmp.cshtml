@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.EquipmentDto>
+
+@{
+    ViewBag.Title = "getAllEquipmentsForcleaningEmp";
+    Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
+}
+
+<h2>getAllEquipmentsForcleaningEmp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stauts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.needfix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ishere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stauts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.needfix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ishere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room_id)
+        </td>
+        <td>
+            @Html.ActionLink("Check", "Check", new { id=item.Id }) |
+
+        </td>
+    </tr>
+}
+
+</table>

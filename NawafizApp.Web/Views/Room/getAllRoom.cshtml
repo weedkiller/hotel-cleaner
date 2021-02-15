@@ -1,0 +1,187 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.RoomDto>
+
+@{
+    ViewBag.Title = "إظهار كافة الغرف";
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
+}
+
+<h2>الغرف </h2>
+
+<p>
+    @Html.ActionLink("إنشاء غرفة جديدة ", "AddRoom")
+</p>
+<table class="table" id="uu">
+
+    <tr>
+        <th>
+            رقم الغرفة
+        </th>
+        <th>
+            أتجاه الغرفة
+        </th>
+        <th>
+            الكتلة الفندقية
+        </th>
+        <th>
+            نمط الغرفة
+        </th>
+        <th>
+            مشغولة
+        </th>
+        <th>
+            بحاجة صيانة
+        </th>
+        <th>
+            بحاجة تنظيف
+        </th>
+        <th>
+            في الخدمة ؟
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomDirection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.blockName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isbusy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsNeedfix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isneedclean)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsInService)
+            </td>
+            <td>
+                |
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
+                @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
+
+                @if (item.IsInService == true)
+                {
+                    if (item.Isrequisted == false)
+                    {
+
+
+                        if (item.isneedclean == true)
+                        {
+
+                            @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })
+
+                        }
+                    }
+
+                    if (item.Isrequistedfix == false)
+                    {
+                        if (item.IsNeedfix)
+                        {
+
+                            @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })
+
+                        }
+                    }
+                }
+                @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Ajax.ActionLink("jjj", "getAllRoom", "Room", new AjaxOptions
+{
+UpdateTargetId = "uu",
+HttpMethod = "get",
+InsertionMode = InsertionMode.Replace
+}, new { id = "uu" })
+
+
+
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-confirm.min.js"></script>
+<script>
+    $('.linkDel').confirm({
+        title: 'تأكيد الحذف !',
+
+        content: 'هل تريد بالتأكيد حذف هذا الحي  ؟',
+
+
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            },
+            إلغاء: function () {
+
+            }
+
+
+        }
+    });
+    $('a.twitter').confirm({
+        content: "...",
+    });
+    $('a.twitter').confirm({
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            }
+        }
+    });
+    $(".jconfirm-content-pane").removeClass("no-scroll");
+</script>
+
+<script>
+    $('.linkOrd').confirm({
+        title: ' confirm',
+
+        content: 'Are you sure that you want to add new requist',
+
+
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            },
+            إلغاء: function () {
+
+            }
+
+
+        }
+    });
+    $('a.twitter').confirm({
+        content: "...",
+    });
+    $('a.twitter').confirm({
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            }
+        }
+    });
+    $(".jconfirm-content-pane").removeClass("no-scroll");
+</script>
+<script type="text/javascript">
+
+
+    setInterval(function () {
+        document.getElementById('uu').after();
+    }, 2000);
+
+</script>

@@ -1,0 +1,404 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(function () {
+        function GetCategories() {
+            $.ajax({
+                url: "http://localhost:45000/Home",
+                Type: "GET",
+                dataType: "Json",
+                success: function (data) {
+                    $.each(data, function (i, category) {
+                        $("#tt").append("<option value=" + category.categoryName + ">")
+                    });
+
+                }, error: function (e) {
+
+                }
+            });
+        }
+    })
+
+
+
+</script>
+
+
+
+<style>
+    /* Dropdown Button */
+.dropbtn {
+    background-color: #3d4957;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #36c6d3;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    margin-right:20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+</style>
+<script>
+    /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    
+</script>
+
+
+
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/category_view/dropdown.css" rel="stylesheet" />
+<link href="~/Content/category_view/demo.css" rel="stylesheet" />
+<link href="~/Content/category_view/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/category_view/noJS.css" rel="stylesheet" />
+
+
+<div style="margin-right:235px;color: #b4bcc8;">
+    <div>
+        <h3 style="text-align:center;">بحث</h3><br />
+
+        
+        <div style="margin-bottom:10px;margin-right:20px;">
+            <input type="text" style="color:black;" placeholder="الاسم" />
+
+           
+
+            <ul style="display:inline;color:white;">
+                <li class="dropdown dropbtn" style="padding-right:0px;">
+                    <a class="dropdown-toggle" style="color:white;text-decoration:none;padding-right: 50px;
+    padding-bottom: 18px;
+    padding-left: 30px;
+    padding-top: 15px;" data-toggle="dropdown" href="#">الفئة الأب<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+
+                        @{
+                            foreach (var category in ViewBag.Base)
+                            {
+                                int a = 0;
+                                foreach (var level in ViewBag.ss)
+                                {
+                                    if (level.Id == category.Id)
+                                    {
+                                        a++;
+                                    }
+
+
+                                }
+                                if (a == 0)
+                                {
+                        <li><a href="#" download="">@category.CategoryName</a></li>
+                                }
+                            }
+
+                        }
+
+
+
+
+                        @*<li><a href="/Folder for PDF/KIWI_always4.pdf" download="">السعر (من الاسفل الى الأعلى)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always5.pdf" download="">التاريخ (من الأحدث الى الأقدم)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always6.pdf" download="">التاريخ (من الأقدم الى الأحدث)</a></li>*@
+                        @*<li><a href="/Folder for PDF/KIWI_always7.pdf" download="">ط·آ§ط¸â€‍ط·آ­ط·آ§ط·آ³ط·آ¨ط·آ§ط·ع¾</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always8.pdf" download="">ط·آ§ط¸â€‍ط·آ·ط·آ§ط¸â€ڑط·آ©</a></li>*@
+
+
+                    </ul>
+                </li>
+            </ul>
+         
+        </div>
+        <div>
+            @*<div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">عرض في الصفحة</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">10 اعلانات</a>
+                    <a href="#">20 اعلان</a>
+                    <a href="#">30 اعلان</a>
+                </div>
+            </div>*@
+
+
+
+            <ul style="display:inline;color:white;">
+                <li class="dropdown dropbtn" style="padding-right:0px;">
+                    <a class="dropdown-toggle" style="color:white;text-decoration:none;padding-right: 50px;
+    padding-bottom: 18px;
+    padding-left: 0px;
+    padding-top: 15px;" data-toggle="dropdown" href="#">عرض في الصفحة<span class="caret"></span></a>
+                    <ul class="dropdown-menu" >
+
+                        @*<li><a href="/Downloads/expoteam.com" download="">@ViewBag.bss</a></li>*@
+
+                        <li><a href="/Folder for PDF/KIWI_always2.pdf" download="">20 إعلان</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always3.pdf" download="">30 إعلان</a></li>
+                        @*<li><a href="/Folder for PDF/KIWI_always4.pdf" download="">السعر (من الاسفل الى الأعلى)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always5.pdf" download="">التاريخ (من الأحدث الى الأقدم)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always6.pdf" download="">التاريخ (من الأقدم الى الأحدث)</a></li>*@
+                        @*<li><a href="/Folder for PDF/KIWI_always7.pdf" download="">ط·آ§ط¸â€‍ط·آ­ط·آ§ط·آ³ط·آ¨ط·آ§ط·ع¾</a></li>
+                    <li><a href="/Folder for PDF/KIWI_always8.pdf" download="">ط·آ§ط¸â€‍ط·آ·ط·آ§ط¸â€ڑط·آ©</a></li>*@
+
+
+                    </ul>
+                </li>
+            </ul>
+
+           
+
+            @*<div class="dropdown">
+                <button onclick="myFunction2()" class="dropbtn">ترتيب النتائج حسب</button>
+                <div id="myDropdown2" class="dropdown-content">
+                    <a href="#">الاسم</a>
+                    <a href="#">التاريخ</a>
+                    <a href="#">السعر</a>
+                </div>
+            </div>*@
+            
+
+            <ul style="display:inline;color:white;">
+                <li class="dropdown dropbtn" style="padding-right:0px;">
+                    <a class="dropdown-toggle" style="color:white;text-decoration:none;padding-right: 50px;
+    padding-bottom: 18px;
+    padding-left: 0px;
+    padding-top: 15px;"  data-toggle="dropdown" href="#">ترتيب النتائج حسب <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="/Downloads/expoteam.com" download="">الاسم (من الأعلى للأسفل)</a></li>
+                       
+                        <li><a href="/Folder for PDF/KIWI_always2.pdf" download="">الاسم (من الأسفل الى الأعلى)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always3.pdf" download="">السعر (من الاعلى الى الاسفل)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always4.pdf" download="">السعر (من الاسفل الى الأعلى)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always5.pdf" download="">التاريخ (من الأحدث الى الأقدم)</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always6.pdf" download="">التاريخ (من الأقدم الى الأحدث)</a></li>
+                        @*<li><a href="/Folder for PDF/KIWI_always7.pdf" download="">ط·آ§ط¸â€‍ط·آ­ط·آ§ط·آ³ط·آ¨ط·آ§ط·ع¾</a></li>
+                        <li><a href="/Folder for PDF/KIWI_always8.pdf" download="">ط·آ§ط¸â€‍ط·آ·ط·آ§ط¸â€ڑط·آ©</a></li>*@
+
+
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="dropdown" style="margin-right:30px;">
+                <button class="dropbtn" type="submit">بـحـث</button>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn" type="submit">إلغاء البحث</button>
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+        @*<table style="border:dashed;border-color:red; border-width:3px;padding:50px;margin:50px;">
+            <tr>
+                <td style="margin-right:20px;padding:20px;border:dotted red">
+                   ID Category
+                </td>
+                <td style="margin-right:20px;padding:20px;border:dotted red">
+                   Name Category
+                </td>
+                <td style="margin-right:20px;padding:20px;border:dotted red">
+                    ParentID
+                </td>
+                <td style="margin-right:20px;padding:20px;border:dotted red">
+                   Path
+                </td>
+            </tr>*@
+            @*@{ 
+                foreach(var cat in ViewBag.ass )
+                {
+                    <tr >
+                        <td style="margin-right:20px;padding:20px;text-align:center;border:dotted red">
+                            @cat.Id
+                        </td>
+                        <td style="margin-right:20px;padding:20px;text-align:center;border:dotted red">
+                            @cat.CategoryName
+                        </td>
+                        <td style="margin-right:20px;padding:20px;text-align:center;border:dotted red">
+                            @cat.ParentID
+                        </td>
+                        <td style="margin-right:20px;padding:20px;text-align:center;border:dotted red">
+                            @cat.Path
+                        </td>
+                    </tr>
+                }
+
+            }*@
+
+
+
+            <table style="margin:10px 10px;">
+                <tr class="tr">
+                    <td class="td">التسلسل</td>
+                    <td class="td">اسم الفئة</td>
+                    <td class="td">الفئة الأب</td>
+                    <td class="td">ترتيب الفئة</td>
+                    <td class="td">لديها أولاد أم لا</td>
+                    <td class="td">مسار الفئة</td>
+                    <td class="td">خيارات الفئة</td>
+                </tr>
+
+                @{
+
+
+                    foreach (var c in ViewBag.Base)
+                    {
+
+
+                        <tr class="tr">
+
+                            <td class="td">@c.Id</td>
+                            <td class="td">@c.CategoryName</td>
+                            <td class="td">@c.ParentID</td>
+                            <td class="td">@c.Sort</td>
+                            <td class="td">@c.HasChildren</td>
+                            <td class="td">@c.Path</td>
+                            
+                            <td class="td">@Html.ActionLink("Delelte", "ff", "Home", new { @city = @c.Id }, new { @class = "dropbtn" })</td>
+                           
+                           
+                           
+
+                                
+                            
+
+                        </tr>
+
+
+                    }
+
+                }
+            </table>
+        @*<form  method="post">
+            <ul  class="tr">
+                <li name="city" class="td"> @ViewBag.Base[15].Id</li>
+                <li class="td"> @ViewBag.Base[15].CategoryName </li>
+                <li class="td">@ViewBag.Base[15].ParentID</li>
+                <li class="td"> @ViewBag.Base[15].Sort</li>
+                <li class="td"> @ViewBag.Base[15].HasChildren</li>
+                <li class="td"> @ViewBag.Base[15].Path </li>
+            </ul>
+
+
+            <input type="submit" id="button2" onclick="ff" class="dropbtn" placeholder="تعديل">
+            @Html.ActionLink("Delelte", "ff","Home", new { @city = @ViewBag.Base[15].Id },new { @class="dropbtn"}))
+
+            <input type="submit" class="dropbtn" value="delete" placeholder="حذف" />
+
+        </form>*@
+        
+
+
+            @*@model PagedList.IPagedList<ViewModel.QuestionViewModel>
+    @using PagedList.Mvc;
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+    <table>
+
+        @foreach (var item in ViewBag.Base)
+        {
+            <tr>
+                <td>
+                    @item.CategoryName
+                </td>
+                <td>
+                    @item.Sort
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(ViewBag.Base, page => Url.Action("Index", new { page }))*@
+
+        
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    
+
+    </div>
+<script src="~/Content/category_view/js/jquery.min.js"></script>

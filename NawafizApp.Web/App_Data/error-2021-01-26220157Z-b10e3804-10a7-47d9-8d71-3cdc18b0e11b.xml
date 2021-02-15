@@ -1,0 +1,174 @@
+﻿<error errorId="b10e3804-10a7-47d9-8d71-3cdc18b0e11b" application="/LM/W3SVC/2/ROOT" host="DESKTOP-5QQ7N34" type="System.Web.HttpException" message="The controller for path '/Uploads/163e725d6-ce6d-4d21-9698-cf132de2bf6c' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Uploads/163e725d6-ce6d-4d21-9698-cf132de2bf6c' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2021-01-26T22:01:57.7562612Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=5e7n5COw9-WoNmco8javb39UVz8-28sOjIylS-3vPhn0qfw17MC5wf3GCyl4mQx_GdSItfgSii7MyuyzVlDpa10CDwx2VMoN7dNqtzd3XOE1; .AspNet.ApplicationCookie=9c_kRcFhxgq4hv19aJa27BQAgUdpxBU64Fhd7hQZnCtRMHPWNnDyt5DHGAL6--LpsDZ76lAbOt_7-huRHMpuowlwsDVE3jnCrYo8PMXFOAE2PoLFcjEdMb0T8-dIFysSis_e1Pr3KylEAiyMGLbNmsMUygVg1CRmgwWSvT96PBJNLDrL3KnIpeXozkCjvtUNRS--GYM0-TG9Eah95D7uOXMUvYJxJobBYgjpky_s-EnuERYVOFT6-cCi3zHFyabcximgt0iOHQQsyF14BQQ_VrIzge2X6_hnWxo5H5Iv-42hab6wZUUxuIeefg0u6u0vyXEY3xIJoj7mlUwsasEY0UOQk7I5QX9yGA1hKhhdpvhp1qF-73yfIRg2Aa-Nu3KuBeHnf5l1Ni866EyfVbqBW5a8DqJ1xYdiWifOx4YFVhzcX-PCOjRb8wPGU8ezbgpYlLwpmH_pP9JlYLhuUGnHdA5zyGoJP_4IdtQ8gxhCUOI4lNEhWrOU54nM1IfiFZN-&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_SEC_FETCH_SITE:none&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken=5e7n5COw9-WoNmco8javb39UVz8-28sOjIylS-3vPhn0qfw17MC5wf3GCyl4mQx_GdSItfgSii7MyuyzVlDpa10CDwx2VMoN7dNqtzd3XOE1; .AspNet.ApplicationCookie=9c_kRcFhxgq4hv19aJa27BQAgUdpxBU64Fhd7hQZnCtRMHPWNnDyt5DHGAL6--LpsDZ76lAbOt_7-huRHMpuowlwsDVE3jnCrYo8PMXFOAE2PoLFcjEdMb0T8-dIFysSis_e1Pr3KylEAiyMGLbNmsMUygVg1CRmgwWSvT96PBJNLDrL3KnIpeXozkCjvtUNRS--GYM0-TG9Eah95D7uOXMUvYJxJobBYgjpky_s-EnuERYVOFT6-cCi3zHFyabcximgt0iOHQQsyF14BQQ_VrIzge2X6_hnWxo5H5Iv-42hab6wZUUxuIeefg0u6u0vyXEY3xIJoj7mlUwsasEY0UOQk7I5QX9yGA1hKhhdpvhp1qF-73yfIRg2Aa-Nu3KuBeHnf5l1Ni866EyfVbqBW5a8DqJ1xYdiWifOx4YFVhzcX-PCOjRb8wPGU8ezbgpYlLwpmH_pP9JlYLhuUGnHdA5zyGoJP_4IdtQ8gxhCUOI4lNEhWrOU54nM1IfiFZN-&#xD;&#xA;Host: localhost:50000&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;Sec-Fetch-Site: none&#xD;&#xA;Sec-Fetch-Mode: navigate&#xD;&#xA;Sec-Fetch-Dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Uploads/163e725d6-ce6d-4d21-9698-cf132de2bf6c" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\Uploads\163e725d6-ce6d-4d21-9698-cf132de2bf6c" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="65209" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Uploads/163e725d6-ce6d-4d21-9698-cf132de2bf6c" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Uploads/163e725d6-ce6d-4d21-9698-cf132de2bf6c" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=5e7n5COw9-WoNmco8javb39UVz8-28sOjIylS-3vPhn0qfw17MC5wf3GCyl4mQx_GdSItfgSii7MyuyzVlDpa10CDwx2VMoN7dNqtzd3XOE1; .AspNet.ApplicationCookie=9c_kRcFhxgq4hv19aJa27BQAgUdpxBU64Fhd7hQZnCtRMHPWNnDyt5DHGAL6--LpsDZ76lAbOt_7-huRHMpuowlwsDVE3jnCrYo8PMXFOAE2PoLFcjEdMb0T8-dIFysSis_e1Pr3KylEAiyMGLbNmsMUygVg1CRmgwWSvT96PBJNLDrL3KnIpeXozkCjvtUNRS--GYM0-TG9Eah95D7uOXMUvYJxJobBYgjpky_s-EnuERYVOFT6-cCi3zHFyabcximgt0iOHQQsyF14BQQ_VrIzge2X6_hnWxo5H5Iv-42hab6wZUUxuIeefg0u6u0vyXEY3xIJoj7mlUwsasEY0UOQk7I5QX9yGA1hKhhdpvhp1qF-73yfIRg2Aa-Nu3KuBeHnf5l1Ni866EyfVbqBW5a8DqJ1xYdiWifOx4YFVhzcX-PCOjRb8wPGU8ezbgpYlLwpmH_pP9JlYLhuUGnHdA5zyGoJP_4IdtQ8gxhCUOI4lNEhWrOU54nM1IfiFZN-" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="none" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="5e7n5COw9-WoNmco8javb39UVz8-28sOjIylS-3vPhn0qfw17MC5wf3GCyl4mQx_GdSItfgSii7MyuyzVlDpa10CDwx2VMoN7dNqtzd3XOE1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="9c_kRcFhxgq4hv19aJa27BQAgUdpxBU64Fhd7hQZnCtRMHPWNnDyt5DHGAL6--LpsDZ76lAbOt_7-huRHMpuowlwsDVE3jnCrYo8PMXFOAE2PoLFcjEdMb0T8-dIFysSis_e1Pr3KylEAiyMGLbNmsMUygVg1CRmgwWSvT96PBJNLDrL3KnIpeXozkCjvtUNRS--GYM0-TG9Eah95D7uOXMUvYJxJobBYgjpky_s-EnuERYVOFT6-cCi3zHFyabcximgt0iOHQQsyF14BQQ_VrIzge2X6_hnWxo5H5Iv-42hab6wZUUxuIeefg0u6u0vyXEY3xIJoj7mlUwsasEY0UOQk7I5QX9yGA1hKhhdpvhp1qF-73yfIRg2Aa-Nu3KuBeHnf5l1Ni866EyfVbqBW5a8DqJ1xYdiWifOx4YFVhzcX-PCOjRb8wPGU8ezbgpYlLwpmH_pP9JlYLhuUGnHdA5zyGoJP_4IdtQ8gxhCUOI4lNEhWrOU54nM1IfiFZN-" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "AddGuideCity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+<style>
+    select {
+        max-height: 50px;
+        overflow-y: scroll;
+        background-color: white;
+        direction: rtl;
+        padding-right: 30px;
+        text-indent: 5px;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url(../../Images/arrow.png) 4% / 20% no-repeat content-box;
+    }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #3d4957;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #36c6d3;
+        }
+</style>
+
+
+<div class="" style="">
+    <div style="">
+
+
+        @model NawafizApp.Services.Dtos.InputGuideCityDto
+                @using (Html.BeginForm("AddGuideCity", "Home", FormMethod.Post))
+            {
+                    @Html.AntiForgeryToken()
+                    <div class="page-content">
+                        @*col-md-12*@
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption font-green">
+                                    <i class="icon-pin font-green"></i>
+                                    <span class="caption-subject bold uppercase"> إضافة محافظة</span>
+                                </div>
+                               
+                            </div>
+                            <div class="portlet-body form">
+                                <form role="form">
+                                    <div class="form-body">
+                                        @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+                                        @*@Html.TextBox("guid", new { @guid = ViewBag.guid,@style="display:none" })*@
+                                        <input type="text" value="@ViewBag.guid" style="display:none;" name="guid" id="guid" />
+                                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                            @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                                            @Html.TextBoxFor(m => m.ArabicCityName, new { @class = "form-control" })
+                                            
+                                            
+                                            <label for="form_control_1">الاسم العربي</label>
+                                            @*<span class="help-block">ادخال الاسم العربي ...</span>*@
+                                           @Html.ValidationMessageFor(m => m.ArabicCityName, "", new { @class = "text-danger help-block help-block-error" })
+                                        </div>
+                                       
+                                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                            @*<input type="text" class="form-control" id="form_control_1">*@
+                                            @*@Html.TextBoxFor(m => m.Description,new { @class="form-control"})*@
+                                            @Html.TextBoxFor(m => m.EnglishCityName, new { @class = "form-control" })
+                                            
+                                            <label for="form_control_1">الاسم الانكليزي</label>
+                                            @*<span class="help-block">ادخال الاسم الانكليزي ...</span>*@
+                                            @Html.ValidationMessageFor(m => m.EnglishCityName, "", new { @class = "text-danger help-block help-block-error" })
+                                        </div>
+                                        <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                            @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                                            @Html.TextBoxFor(m => m.Sort, new { @class = "form-control" })
+                                            <label for="form_control_1">ترتيب المنطقة</label>
+                                            @*<span class="help-block">ادخال الترتيب ...</span>*@
+                                            @Html.ValidationMessageFor(m => m.Sort, "", new { @class = "text-danger help-block help-block-error" })
+                                        </div>
+
+
+                                       
+                                        <div class="form-actions noborder">
+                                            <input type="submit" value="ادخال" class="btn blue" style="" />
+                                            @*<button type="button" class="btn blue">Submit</button>*@
+                                            <input type="reset" value="تفريغ الخانات" class="btn default" />
+                                            @Html.ActionLink("العودة الى المحافظات", "GuideCities", "Home", new { @class = "btn default" })
+                                        </div>
+
+                                    </div>
+                            </div></div></div>
+                            }
+
+                        </div>
+                        </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,183 @@
+﻿<error errorId="dacf6a25-c716-4bd4-81b0-0d706961cc7b" application="/LM/W3SVC/2/ROOT" host="DESKTOP-5QQ7N34" type="System.Web.HttpException" message="The controller for path '/Oreder/AddOrder' was not found or does not implement IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): The controller for path '/Oreder/AddOrder' was not found or does not implement IController.&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2021-02-01T18:41:08.8167767Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9,ar;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=5_ktuo5VobtiGmGBX-RmFhhcFT1S8Ws-z2uOJqwdU53NBf_dUECALS9TlR0r-Pdu440nCBCXHfzo773ylfDHvIHjdaPMaoPRMjVgz41WAO81; .AspNet.ApplicationCookie=2RJ-BM1Sil7phe1PiokPZfyynP8z5z-LjdwuLB_5UIMZR0mVA177H0hOuQGI0KoJwXk7MPLRd8kw01-6Z7j01jnMjRw9HRMMuFyK8RPTDqTh9nDIdzNqeE8vKHP659XjQg3vlPLSsDyE6EEnpm8DgP5sDn9BnyWFrPSjgVcP0Z_915KOJshf6qp7XtlilA_zgYl9bI6Jd1odPCvuwMhxUOaZOGnlwhk_bdY8bKr-I2rF9GQI60zlKy4nvBK6_VlRH2S5afUWYwxk1wnW7MyoGgXoS-JaZMzByK4ngTWSJvA4zdUhPH5JTo27b3Ol74eCrkU-nxZD_AOWaP9-dVykVLsQ6lJYmp82k7eBwRsPnk2QewoUOr_--HdoW9j5I8uGucA6IJhv2gN1QcCbH8BvOKJX3uxmTIORmm0iwOhWivlD0CuaOmB9bhJ5pLpwDp7FpmfW1RKVm7JPaz_kyY3A-Uh6UbfieOm1ZU2jqVRNpzoa5oVjixaEntc129oHTnkr&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36&#xD;&#xA;HTTP_SEC_CH_UA:&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;HTTP_SEC_CH_UA_MOBILE:?0&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_SEC_FETCH_SITE:none&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_USER:?1&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9,ar;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=5_ktuo5VobtiGmGBX-RmFhhcFT1S8Ws-z2uOJqwdU53NBf_dUECALS9TlR0r-Pdu440nCBCXHfzo773ylfDHvIHjdaPMaoPRMjVgz41WAO81; .AspNet.ApplicationCookie=2RJ-BM1Sil7phe1PiokPZfyynP8z5z-LjdwuLB_5UIMZR0mVA177H0hOuQGI0KoJwXk7MPLRd8kw01-6Z7j01jnMjRw9HRMMuFyK8RPTDqTh9nDIdzNqeE8vKHP659XjQg3vlPLSsDyE6EEnpm8DgP5sDn9BnyWFrPSjgVcP0Z_915KOJshf6qp7XtlilA_zgYl9bI6Jd1odPCvuwMhxUOaZOGnlwhk_bdY8bKr-I2rF9GQI60zlKy4nvBK6_VlRH2S5afUWYwxk1wnW7MyoGgXoS-JaZMzByK4ngTWSJvA4zdUhPH5JTo27b3Ol74eCrkU-nxZD_AOWaP9-dVykVLsQ6lJYmp82k7eBwRsPnk2QewoUOr_--HdoW9j5I8uGucA6IJhv2gN1QcCbH8BvOKJX3uxmTIORmm0iwOhWivlD0CuaOmB9bhJ5pLpwDp7FpmfW1RKVm7JPaz_kyY3A-Uh6UbfieOm1ZU2jqVRNpzoa5oVjixaEntc129oHTnkr&#xD;&#xA;Host: localhost:50000&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36&#xD;&#xA;sec-ch-ua: &quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;sec-ch-ua-mobile: ?0&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;Sec-Fetch-Site: none&#xD;&#xA;Sec-Fetch-Mode: navigate&#xD;&#xA;Sec-Fetch-User: ?1&#xD;&#xA;Sec-Fetch-Dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Oreder/AddOrder" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\Oreder\AddOrder" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="62797" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Oreder/AddOrder" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Oreder/AddOrder" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9,ar;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=5_ktuo5VobtiGmGBX-RmFhhcFT1S8Ws-z2uOJqwdU53NBf_dUECALS9TlR0r-Pdu440nCBCXHfzo773ylfDHvIHjdaPMaoPRMjVgz41WAO81; .AspNet.ApplicationCookie=2RJ-BM1Sil7phe1PiokPZfyynP8z5z-LjdwuLB_5UIMZR0mVA177H0hOuQGI0KoJwXk7MPLRd8kw01-6Z7j01jnMjRw9HRMMuFyK8RPTDqTh9nDIdzNqeE8vKHP659XjQg3vlPLSsDyE6EEnpm8DgP5sDn9BnyWFrPSjgVcP0Z_915KOJshf6qp7XtlilA_zgYl9bI6Jd1odPCvuwMhxUOaZOGnlwhk_bdY8bKr-I2rF9GQI60zlKy4nvBK6_VlRH2S5afUWYwxk1wnW7MyoGgXoS-JaZMzByK4ngTWSJvA4zdUhPH5JTo27b3Ol74eCrkU-nxZD_AOWaP9-dVykVLsQ6lJYmp82k7eBwRsPnk2QewoUOr_--HdoW9j5I8uGucA6IJhv2gN1QcCbH8BvOKJX3uxmTIORmm0iwOhWivlD0CuaOmB9bhJ5pLpwDp7FpmfW1RKVm7JPaz_kyY3A-Uh6UbfieOm1ZU2jqVRNpzoa5oVjixaEntc129oHTnkr" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" />
+    </item>
+    <item name="HTTP_SEC_CH_UA">
+      <value string="&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;" />
+    </item>
+    <item name="HTTP_SEC_CH_UA_MOBILE">
+      <value string="?0" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="none" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_USER">
+      <value string="?1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="5_ktuo5VobtiGmGBX-RmFhhcFT1S8Ws-z2uOJqwdU53NBf_dUECALS9TlR0r-Pdu440nCBCXHfzo773ylfDHvIHjdaPMaoPRMjVgz41WAO81" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="2RJ-BM1Sil7phe1PiokPZfyynP8z5z-LjdwuLB_5UIMZR0mVA177H0hOuQGI0KoJwXk7MPLRd8kw01-6Z7j01jnMjRw9HRMMuFyK8RPTDqTh9nDIdzNqeE8vKHP659XjQg3vlPLSsDyE6EEnpm8DgP5sDn9BnyWFrPSjgVcP0Z_915KOJshf6qp7XtlilA_zgYl9bI6Jd1odPCvuwMhxUOaZOGnlwhk_bdY8bKr-I2rF9GQI60zlKy4nvBK6_VlRH2S5afUWYwxk1wnW7MyoGgXoS-JaZMzByK4ngTWSJvA4zdUhPH5JTo27b3Ol74eCrkU-nxZD_AOWaP9-dVykVLsQ6lJYmp82k7eBwRsPnk2QewoUOr_--HdoW9j5I8uGucA6IJhv2gN1QcCbH8BvOKJX3uxmTIORmm0iwOhWivlD0CuaOmB9bhJ5pLpwDp7FpmfW1RKVm7JPaz_kyY3A-Uh6UbfieOm1ZU2jqVRNpzoa5oVjixaEntc129oHTnkr" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3044310E-68CF-443D-9DBF-0E4727FF892E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NawafizApp.Data</RootNamespace>
+    <AssemblyName>NawafizApp.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.7.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.7.3\lib\net45\Unity.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Configuration\ClaimConfiguration.cs" />
+    <Compile Include="Configuration\EquipmentConfiguration.cs" />
+    <Compile Include="Configuration\ExternalLoginConfiguration.cs" />
+    <Compile Include="Configuration\FixOrderConfiguration.cs" />
+    <Compile Include="Configuration\LanguageConfiguration.cs" />
+    <Compile Include="Configuration\NotificationConfiguration.cs" />
+    <Compile Include="Configuration\CleanOrderConfiguration.cs" />
+    <Compile Include="Configuration\RoleConfiguration.cs" />
+    <Compile Include="Configuration\RoomConfiguration.cs" />
+    <Compile Include="Configuration\RoomStatusConfiguration.cs" />
+    <Compile Include="Configuration\RoomTypeConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
+    <Compile Include="Migrations\202102081827575_12125555.cs" />
+    <Compile Include="Migrations\202102081827575_12125555.Designer.cs">
+      <DependentUpon>202102081827575_12125555.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102082050029_1212555555.cs" />
+    <Compile Include="Migrations\202102082050029_1212555555.Designer.cs">
+      <DependentUpon>202102082050029_1212555555.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102082337525_12125555cc55.cs" />
+    <Compile Include="Migrations\202102082337525_12125555cc55.Designer.cs">
+      <DependentUpon>202102082337525_12125555cc55.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102101546543_1222.cs" />
+    <Compile Include="Migrations\202102101546543_1222.Designer.cs">
+      <DependentUpon>202102101546543_1222.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102101615017_12132465.cs" />
+    <Compile Include="Migrations\202102101615017_12132465.Designer.cs">
+      <DependentUpon>202102101615017_12132465.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102111423503_kok66.cs" />
+    <Compile Include="Migrations\202102111423503_kok66.Designer.cs">
+      <DependentUpon>202102111423503_kok66.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102111445588_kok661.cs" />
+    <Compile Include="Migrations\202102111445588_kok661.Designer.cs">
+      <DependentUpon>202102111445588_kok661.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102130050282_555km.cs" />
+    <Compile Include="Migrations\202102130050282_555km.Designer.cs">
+      <DependentUpon>202102130050282_555km.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102130231036_51.cs" />
+    <Compile Include="Migrations\202102130231036_51.Designer.cs">
+      <DependentUpon>202102130231036_51.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102131133392_61251.cs" />
+    <Compile Include="Migrations\202102131133392_61251.Designer.cs">
+      <DependentUpon>202102131133392_61251.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\ExternalLoginRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NawafizApp.Common\NawafizApp.Common.csproj">
+      <Project>{c6c51c98-1ef5-46b1-b922-eaf84f4185a5}</Project>
+      <Name>NawafizApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NawafizApp.Domain\NawafizApp.Domain.csproj">
+      <Project>{e7b5c31d-9f61-4ac4-a875-cd82a6bda445}</Project>
+      <Name>NawafizApp.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202102081827575_12125555.resx">
+      <DependentUpon>202102081827575_12125555.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102082050029_1212555555.resx">
+      <DependentUpon>202102082050029_1212555555.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102082337525_12125555cc55.resx">
+      <DependentUpon>202102082337525_12125555cc55.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102101546543_1222.resx">
+      <DependentUpon>202102101546543_1222.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102101615017_12132465.resx">
+      <DependentUpon>202102101615017_12132465.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102111423503_kok66.resx">
+      <DependentUpon>202102111423503_kok66.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102111445588_kok661.resx">
+      <DependentUpon>202102111445588_kok661.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102130050282_555km.resx">
+      <DependentUpon>202102130050282_555km.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102130231036_51.resx">
+      <DependentUpon>202102130231036_51.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102131133392_61251.resx">
+      <DependentUpon>202102131133392_61251.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

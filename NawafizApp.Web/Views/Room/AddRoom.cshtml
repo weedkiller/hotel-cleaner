@@ -1,0 +1,124 @@
+﻿@model NawafizApp.Services.Dtos.RoomDto
+@using NawafizApp.Web.Helper
+
+@{
+    ViewBag.Title = "AddRoom";
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
+}
+
+<h2>AddRoom</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>RoomDto</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="col-md-3 control-label">رقم الغرفة</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.RoomNum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoomNum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">إتجاه الغرفة </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.RoomDirection, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoomDirection, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">مشغولة ؟ </label>
+            <div class="col-md-4">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Isbusy)
+                    @Html.ValidationMessageFor(model => model.Isbusy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">بحاجة صيانة ؟ </label>
+            <div class="col-md-4">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsNeedfix)
+                    @Html.ValidationMessageFor(model => model.IsNeedfix, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-md-4">
+            <label class="col-md-3 control-label">بحاجة تنظيف  ؟ </label>
+            <div class="checkbox">
+                @Html.EditorFor(model => model.isneedclean)
+                @Html.ValidationMessageFor(model => model.isneedclean, "", new { @class = "text-danger" })
+            </div>
+        </div>
+   
+    
+    <div class="form-group">
+        <label class="col-md-3 control-label">في الخدمة  ؟ </label>
+        <div class="col-md-4">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsInService)
+                @Html.ValidationMessageFor(model => model.IsInService, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        @Html.Label("الكتلة الفندقية ", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            <div class="input-group select2-bootstrap-prepend" style="width:auto">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-select2-open="single-prepend-text">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+                <select id="single-prepend-text" name="hid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                    <option></option>
+                    @foreach (var item in SelectLists.getAllblock(null))
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="form-group col-md-4">
+            @Html.Label("Room Type ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="input-group select2-bootstrap-prepend" style="width:auto">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-select2-open="single-prepend-text">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+                <select id="single-prepend-text" name="tid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                    <option></option>
+                    @foreach (var item in SelectLists.getromeType(null))
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+        </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "getAllRoom")
+    </div>
+
+}
+

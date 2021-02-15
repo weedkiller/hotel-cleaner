@@ -1,0 +1,59 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.HotelBlockDto>
+
+@{
+    ViewBag.Title = "getHotelBlocks";
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
+}
+
+<h2>الكتل الفندقية </h2>
+
+<p>
+    @Html.ActionLink("إضافة كتلة جديدة ", "AddHotelBlock")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          رقم الكتلة 
+        </th>
+        <th>
+            اسم الكتلة 
+        </th>
+        <th>
+           وصف الكتلة 
+        </th>
+        <th>
+            عدد الطوابق
+        </th>
+        <th>
+           عدد الغرق
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlockNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlockName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlockDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NmberOfTheFloorsIntheBlock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NmberOfTheRoomsIntheBlock)
+        </td>
+        <td>
+            @Html.ActionLink("عمال الوحدة ", "getblockemp", new { id = item.Id })|
+            @Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
+            |
+            @Html.ActionLink("حذف ", "deleteHotelBlock", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

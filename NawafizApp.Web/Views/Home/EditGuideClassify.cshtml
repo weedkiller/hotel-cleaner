@@ -1,0 +1,399 @@
+﻿
+@{
+    ViewBag.Title = "EditGuideClassify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    select {
+        max-height: 50px;
+        overflow-y: scroll;
+        background-color: white;
+        direction: rtl;
+        padding-right: 30px;
+        text-indent: 5px;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /*background:url(../../Images/arrow.png)  4% / 20% no-repeat content-box;*/
+    }
+</style>
+
+<link href="~/Content/category_view/Css/AdminCities.css" rel="stylesheet" />
+<div class="" style="">
+    <div style="">
+        @*margin-right:235px;*@
+
+    @model NawafizApp.Services.Dtos.InputGuideClassifyDto
+
+    @using (Html.BeginForm("EditGuideClassify", "Home", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+    {
+
+@Html.AntiForgeryToken()
+
+        <div class="page-content">
+            @*col-md-12*@
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption font-green">
+                        <i class="icon-pin font-green"></i>
+                        <span class="caption-subject bold uppercase"> تعديل إعلان</span>
+                    </div>
+
+                </div>
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.ClassifyName, new { @Value = ViewBag.ClassifyName, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Id, new { @Value = ViewBag.Id, @style = "display:none;" })
+                                @Html.TextBox("guid", null, new { @Value = ViewBag.Guid, @style = "display:none;" })
+
+                                <label for="form_control_1">الاسم</label>
+                                @*<span class="help-block">ادخال عنوان الإعلان ...</span>*@
+                                @Html.ValidationMessageFor(m => m.ClassifyName, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Description, new { @Value = ViewBag.Description, @class = "form-control" })
+                                @*@Html.TextAreaFor(m => m.Description, new { @class = "form-control" })*@
+                                <label for="form_control_1">الوصف</label>
+                                @*<span class="help-block">ادخال وصف الإعلان ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                @Html.TextBoxFor(m => m.Email1, null, new { @Value = ViewBag.Email1, @class = "form-control" })
+                                <label for="form_control_1">ايميل للتواصل -1</label>
+                                @*<span class="help-block">ادخال ايميل للتواصل -1 ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Email1, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                @Html.TextBoxFor(m => m.Email2, null, new { @Value = ViewBag.Email2, @class = "form-control" })
+                                <label for="form_control_1">ايميل للتواصل -2</label>
+                                @*<span class="help-block">ادخال ايميل للتواصل -2 ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Email2, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                @Html.TextBoxFor(m => m.Email3, null, new { @Value = ViewBag.Email3, @class = "form-control" })
+                                <label for="form_control_1">ايميل للتواصل -3</label>
+                                @*<span class="help-block">ادخال ايميل للتواصل -3 ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Email3, "", new { @class = "text-danger " })
+                            </div>
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.FullName, new { @Value = ViewBag.FullName, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })*@
+                                <label for="form_control_1">اسم صاحب الإعلان</label>
+                                @*<span class="help-block">ادخال اسم صاحب الإعلان ...</span>*@
+                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Phone1, null, new { @Value = ViewBag.Phone1, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الهاتف الأول</label>
+                                @*<span class="help-block">ادخال رقم الهاتف الأول ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Phone1, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Phone2, null, new { @Value = ViewBag.Phone2, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الهاتف الثاني</label>
+                                @*<span class="help-block">ادخال رقم الهاتف الثاني ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Phone2, "", new { @class = "text-danger " })
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Phone3, null, new { @Value = ViewBag.Phone3, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الهاتف الثالث</label>
+                                @*<span class="help-block">ادخال رقم الهاتف الثالث ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Phone3, "", new { @class = "text-danger " })
+                            </div>
+
+
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Mobile1, null, new { @Value = ViewBag.Mobile1, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الهاتف المحمول الأول</label>
+                                @*<span class="help-block">ادخال رقم الهاتف المحمول الأول ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Mobile1, "", new { @class = "text-danger " })
+                            </div>
+                            
+                                <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                    @Html.TextBoxFor(m => m.Mobile2, null, new { @Value = ViewBag.Mobile2, @class = "form-control" })
+                                    @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                    <label for="form_control_1">رقم الهاتف المحمول الثاني</label>
+                                    @*<span class="help-block">ادخال رقم الهاتف المحمول الثاني ...</span>*@
+                                    @Html.ValidationMessageFor(m => m.Mobile2, "", new { @class = "text-danger " })
+                                </div>
+                            
+                           
+                            
+                                <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                    @Html.TextBoxFor(m => m.Mobile3, null, new { @Value = ViewBag.Mobile3, @class = "form-control" })
+                                    @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                    <label for="form_control_1">رقم الهاتف المحمول الثالث</label>
+                                    @*<span class="help-block">ادخال رقم الهاتف المحمول الثالث ...</span>*@
+                                    @Html.ValidationMessageFor(m => m.Mobile3, "", new { @class = "text-danger " })
+                                </div>
+                           
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Fax1, null, new { @Value = ViewBag.Fax1, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1"> رقم الفاكس الأول</label>
+                                @*<span class="help-block">ادخال رقم الفاكس الأول ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Fax1, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Fax2, null, new { @Value = ViewBag.Fax2, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الفاكس الثاني</label>
+                                @*<span class="help-block">ادخال رقم الفاكس الثاني ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Fax2, "", new { @class = "text-danger " })
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Fax3, null, new { @Value = ViewBag.Fax3, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">رقم الفاكس الثالث</label>
+                                @*<span class="help-block">ادخال رقم الفاكس الثالث ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Fax3, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Facebook, null, new { @Value = ViewBag.Facebook, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1"> حساب التواصل على فيسبوك</label>
+                                @*<span class="help-block">ادخال حساب التواصل ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Facebook, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Twitter, null, new { @Value = ViewBag.Twitter, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">حساب التواصل على تويتر</label>
+                                @*<span class="help-block">ادخال حساب التواصل ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Twitter, "", new { @class = "text-danger " })
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Instagram, null, new { @Value = ViewBag.Instagram, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">حساب التواصل على انستغرام</label>
+                                @*<span class="help-block">ادخال حساب التواصل ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Instagram, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+                                @Html.TextBoxFor(m => m.Website, null, new { @Value = ViewBag.Website, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })*@
+                                <label for="form_control_1">الموقع الالكتروني</label>
+                                @*<span class="help-block">ادخال الموقع الالكتروني ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Website, "", new { @class = "text-danger " })
+                            </div>
+
+
+                            
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                @Html.TextBoxFor(m => m.Price, null, new { @Value = ViewBag.Price, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.Price, new { @class = "form-control", @Value = ViewBag.ClassifyPrice })*@
+                                <label for="form_control_1">السعر</label>
+                                @*<span class="help-block">ادخال السعر ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+
+                                @*@Html.DropDownListFor(m => m.GuideId, (IEnumerable<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control edited", @style = "" })*@
+
+                                <select name="GuideId" id="GuideId" data-size="1" class="form-control edited" style="color:black;background-color:white;text-align:center;">
+                                    <option value="" selected="selected"></option>
+                                    @foreach (var k in ViewBag.Guides)
+                                    {
+                                        <optgroup label="فئة @k.GuideArabicName ">
+                                           
+                                            @foreach (var j in k.GuideChildren)
+                                            {
+                                                if (j.Id == ViewBag.CategoryId)
+                                                {
+                                                    <option id="GuideId" value="@j.Id" selected>@j.GuideArabicName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option id="GuideId" value="@j.Id">@j.GuideArabicName</option>
+                                                }
+
+                                            }
+                                        </optgroup>
+
+                                               
+
+                                    }
+
+                                </select>
+
+                                <label for="form_control_1"> الفئة</label>
+                                @Html.ValidationMessageFor(m => m.GuideId, "", new { @class = "text-danger " })
+                            </div>
+
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+
+                                @Html.DropDownListFor(m => m.State, (IEnumerable<SelectListItem>)ViewBag.StateList, new { @class = "form-control edited", @style = "" })
+
+                                <label for="form_control_1"> حالة الإعلان</label>
+                                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger " })
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+
+                                @Html.DropDownListFor(m => m.TownId, (IEnumerable<SelectListItem>)ViewBag.TownList, new { @class = "form-control edited", @style = "" })
+
+
+                                <label for="form_control_1"> المنطقة</label>
+                                @Html.ValidationMessageFor(m => m.TownId, "", new { @class = "text-danger " })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                <label for="form_control_1" style="">الصور الخاصة بالإعلان</label>
+                                <br />
+                                @for (int i = 0; i < ViewBag.ArrayCount - (ViewBag.ArrayCount - 1); i++)
+                                {
+                                    <div style="display:inline-block;text-align:center;border:solid 1px #cccccc;padding:2px 10px;">
+                                        <h4>الصورة الرئيسية</h4><br />
+                                        <img src="@ViewBag.ImagesPath[i]" width="100px" height="100px" />
+                                        <br />
+                                        @Html.ActionLink("delete", "deleteGuidePhoto", "Home", new { @id = ViewBag.Id, @url = ViewBag.ImagesPath[i], @guid = ViewBag.Guid }, new { @class = "btn default", @style = "margin-top:5px;" })
+                                    </div>
+                                }
+
+                                @for (int i = 1; i < ViewBag.ArrayCount; i++)
+                                {
+                                    <div style="display:inline-block;text-align:center;">
+                                        <img src="@ViewBag.ImagesPath[i]" width="100px" height="100px" />
+                                        <br />
+                                        @Html.ActionLink("delete", "deleteGuidePhoto", "Home", new { @id = ViewBag.Id, @url = ViewBag.ImagesPath[i], @guid = ViewBag.Guid }, new { @class = "btn default", @style = "margin-top:5px;" })
+                                        @Html.ActionLink("IsPrimary", "PrimaryGuidePhoto", "Home", new { @id = ViewBag.Id, @url = ViewBag.ImagesPath[i], @guid = ViewBag.Guid }, new { @class = "btn green", @style = "margin-top:5px;" })
+                                    </div>
+                                }
+
+
+                                <br /><label for="form_control_1" style="padding-top:5px;border-top:solid 1px #cecdcd;width:100%;margin-top: 10px;" max-uploads=2>ترفيع صور جديدة <br />  (حد أقصى 8 صور) - تنويه: الصور الأكثر من 8 سيتم تجاهلها</label><br />
+                                <input type="file" id="myFile" name="postedFiles" max="2" maxlength="2" multiple="multiple" style="margin-top:10px;"><br>
+
+                                @* @Html.TextBox("postedFiles",null, new { @type = "file", @multiple = "multiple" });*@
+                                <span class="help-block">ترفيع الصور الخاصة بالإعلان ...</span>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                <label for="form_control_1">@ViewBag.ErrorMessage</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                <label for="form_control_1">@ViewBag.Message</label>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="form-actions noborder">
+                            <input type="submit" value="ادخال" class="btn blue" style="" />
+
+                            <input type="reset" value="تفريغ الخانات" class="btn default" />
+                            @Html.ActionLink("العودة الى الإعلانات", "GuideClassified", "Home", new { @class = "btn default" })
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <!-- END SAMPLE FORM PORTLET-->
+
+        </div>
+
+            @*<div style="margin-right:20px;">
+
+                    <blockquote style="border:1px ridge white;text-align:center;" title="تعديل منطقة">
+                        <h2 style="color:white;text-align:center;">تعديل إعلان</h2>
+                        <h4 style="color:white;display:inline">الاسم</h4>
+                        @Html.TextBoxFor(m => m.ClassifyName, new { @Value = ViewBag.ClassifyName })
+
+                        @Html.TextBoxFor(m => m.Id, new { @Value = ViewBag.Id, @style = "display:none;" })
+                        @Html.TextBox("guid",null, new { @Value = ViewBag.Guid, @style = "" })
+                        <h4 style="color:white;display:inline">صاحب الإعلان</h4>
+                        @Html.TextBoxFor(m => m.FullName, new { @Value = ViewBag.FullName })
+
+                        <h4 style="color:white;display:inline">فئة الإعلان</h4>
+                        @Html.DropDownListFor(m => m.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryList, new { @class = "dropbtn", @style = "color:black;background-color:#364150;" })
+
+
+
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">المنطقة</h4>
+                        @Html.DropDownListFor(m => m.TownId, (IEnumerable<SelectListItem>)ViewBag.TownList, new { @class = "dropbtn", @style = "color:black;background-color:#364150;" })
+
+
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">السعر</h4>
+                        @Html.TextBoxFor(m => m.Price,null, new { @Value = ViewBag.Price })
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">الوصف</h4>
+                        @Html.TextBoxFor(m => m.Description, null, new { @Value = ViewBag.Description })
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">البريد الالكتروني</h4>
+                        @Html.TextBoxFor(m => m.Email, null, new { @Value = ViewBag.Email })
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">رقم الجوال</h4>
+                        @Html.TextBoxFor(m => m.Mobile, null, new { @Value = ViewBag.Mobile })
+
+                        <h4 style="color:white;display:inline;margin-right:20px;color:white;">الصور</h4>
+                        @for(int i = 0; i < ViewBag.ArrayCount; i++)
+                    {
+                    <img src="@ViewBag.ImagesPath[i]" width="100px" height="100px" />
+                    }
+
+
+                        <input type="file" id="myFile" name="postedFile" multiple style="color:white;"><br>
+                        <button type="submit" class="dropbtn">حفظ التعديل</button>
+                        @Html.ActionLink("الغاء", "Classified", "Home", new { @class = "dropbtn", @style = "text-decoration:none;" })
+
+                    </blockquote>
+                </div>*@
+
+    }
+</div>
+</div>
+
+
+

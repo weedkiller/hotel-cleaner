@@ -1,0 +1,331 @@
+﻿using Microsoft.AspNet.Identity;
+using NawafizApp.Common;
+using NawafizApp.Services.Dtos;
+using NawafizApp.Services.Identity;
+using NawafizApp.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace NawafizApp.Web.Controllers
+{
+    public class FixOrderController : BaseAuthorizeController
+    {
+        IUserService _userService;
+        IEquipmentService _equipmentService;
+
+        IRoomService _roomService;
+        IFixOrderServices _fixOrderServices;
+        IFixOrderEqupService _fixOrderEqupService;
+
+        public FixOrderController(ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IEquipmentService equipmentService, IRoomService roomService, IFixOrderServices fixOrderServices, IFixOrderEqupService fixOrderEqupService) : base(userManager, aps)
+        {
+            _roomService = roomService;
+            this._userService = IUS;
+            this._equipmentService = equipmentService;
+            _fixOrderServices = fixOrderServices;
+            _fixOrderEqupService = fixOrderEqupService;
+        }
+        // GET: FixOrder
+        [Authorize(Roles = "Admin,Hoster")]
+        public ActionResult AddFixOrder(int rid)
+        {
+            TempData["rid"] = rid;
+            return View();
+        }
+        [HttpPost]
+
+        [Authorize(Roles = "Admin,Hoster")]
+        public ActionResult AddFixOrder(FixOrderDto fixOrderDto)
+        {
+            fixOrderDto.Room_ID = Convert.ToInt32(TempData["rid"]);
+            fixOrderDto.Hoster = Guid.Parse(User.Identity.GetUserId());
+            fixOrderDto.moshId = _fixOrderServices.getmoshbyroomId((int)fixOrderDto.Room_ID);
+            fixOrderDto.Creation_Time = DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            fixOrderDto.Creation_At = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            var room = _roomService.GetById((int)fixOrderDto.Room_ID);
+            room.Isrequistedfix = true;
+            _roomService.Edit(room);
+            var fixorder_id = _fixOrderServices.addFixOrder(fixOrderDto);
+            var equ = _equipmentService.All(Convert.ToInt32(fixOrderDto.Room_ID));
+
+            foreach (var item in equ)
+            {
+                if (item.needfix == true)
+                {
+                    FixOrderEqupDto fixOrderEqupDto = new FixOrderEqupDto();
+                    fixOrderEqupDto.Name = item.Name;
+                    fixOrderEqupDto.FixOrder = fixorder_id;
+                    _fixOrderEqupService.add(fixOrderEqupDto, fixorder_id);
+                }
+
+            }
+
+            return RedirectToAction("getAllRoom", "Room");
+        }
+
+        [Authorize(Roles = "Admin,Hoster")]
+        public ActionResult GetAllFixOrder()
+        {
+            List<FixOrderDto> list1 = new List<FixOrderDto>();
+
+            var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id);
+            foreach (var item in dc)
+            {
+                item.moshrefname = _userService.GetById((Guid)item.moshId).FullName.ToString();
+                item.HosterName = _userService.GetById((Guid)item.Hoster).FullName.ToString();
+                if (item.maitremp == null)
+                {
+                    item.empName = "لم يتم أرسالها الى الموظف بعد ";
+                }
+                else
+                {
+                    item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
+                }
+                item.Roomnu = _roomService.GetById((int)item.Room_ID).RoomNum.ToString();
+                list1.Add(item);
+
+            }
+
+
+            return View(list1);
+
+        }
+        public ActionResult Getallformosh()
+        {
+
+
+            List<FixOrderDto> list1 = new List<FixOrderDto>();
+
+            List<FixOrderDto> list = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.moshId == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false).ToList();
+            foreach (var item in list)
+            {
+
+                if (item.moshId == null)
+                {
+                    item.moshrefname = "لم يتم أرسالها الى المشرف ";
+                }
+                else
+                {
+                    item.moshrefname = _userService.GetById((Guid)item.moshId).FullName.ToString();
+                }
+                if (item.Hoster == null)
+                {
+                    item.HosterName = "لم تنشأ من موظف الحجز....! ";
+
+                }
+                else
+                {
+                    item.HosterName = _userService.GetById((Guid)item.Hoster).FullName.ToString();
+                }
+                if (item.maitremp == null)
+                {
+                    item.empName = "لم يتم أرسالها الى موظف الصيانة ";
+                }
+                else
+                {
+                    item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
+                }
+
+                item.Roomnu = _roomService.GetById((int)item.Room_ID).RoomNum.ToString();
+                list1.Add(item);
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+
+
+
+
+            }
+            return View(list1);
+        }
+        public ActionResult sendOrderToemp(int id)
+        {
+
+            return View(_fixOrderServices.GetById(id));
+
+
+        }
+        [HttpPost]
+        public ActionResult sendOrderToemp(FixOrderDto dto, string eid)
+        {
+
+
+
+            if (ModelState.IsValid)
+            {
+
+                dto = _fixOrderServices.GetById(dto.Id);
+                dto.maitremp = _userService.GetById(new Guid(eid)).UserId;
+
+                _fixOrderServices.edit(dto);
+
+
+
+            }
+            return RedirectToAction("Getallformosh");
+
+
+
+        }
+
+
+        public ActionResult GetallforCleanEmp()
+        {
+            List<FixOrderDto> list1 = new List<FixOrderDto>();
+
+            var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.maitremp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false);
+            foreach (var item in dc)
+            {
+
+                if (item.moshId == null)
+                {
+                    item.moshrefname = "لم يتم أرسالها الى المشرف ";
+                }
+                else
+                {
+                    item.moshrefname = _userService.GetById((Guid)item.moshId).FullName.ToString();
+                }
+                if (item.Hoster == null)
+                {
+                    item.HosterName = "لم تنشأ من موظف الحجز....! ";
+
+                }
+                else
+                {
+                    item.HosterName = _userService.GetById((Guid)item.Hoster).FullName.ToString();
+                }
+                if (item.maitremp == null)
+                {
+                    item.empName = "لم يتم أرسالها الى موظف التنظيف";
+                }
+                else
+                {
+                    item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
+                }
+                list1.Add(item);
+
+            }
+
+
+            return View(list1);
+        }
+
+
+        public ActionResult takeCleanOrder(int id)
+        {
+            var dto = _fixOrderServices.GetById(id);
+            dto.moshrefname = _userService.GetById((Guid)dto.moshId).FullName.ToString();
+            dto.HosterName = _userService.GetById((Guid)dto.Hoster).FullName.ToString();
+            dto.empName = _userService.GetById((Guid)dto.maitremp).FullName.ToString();
+            dto.Roomnu = _roomService.GetById((int)dto.Room_ID).RoomNum.ToString();
+            return View(dto);
+
+        }
+        [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
+
+        [HttpPost]
+        public ActionResult takeCleanOrder(CleanOrderDto cleanOrderDto)
+        {
+            var dto = _fixOrderServices.GetById(cleanOrderDto.Id);
+            dto.startdate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            var id = User.Identity.GetUserId();
+            var guid = new Guid(id);
+            var userdto = _userService.GetById(guid);
+            dto.Istaked = true;
+            userdto.IsBusy = true;
+            dto.isFinished = false;
+            _userService.Edit(userdto, guid);
+            _fixOrderServices.edit(dto);
+            TempData["ord"] = dto.Id;
+            return RedirectToAction("EndCleanOrder");
+
+        }
+
+        public ActionResult notfinishedOrderforCurentUser()
+        {
+            List<FixOrderDto> list1 = new List<FixOrderDto>();
+            var dto = _fixOrderServices.GetAll().Where(x => x.Istaked == true).Where(x => x.isFinished == false).Where(x => x.maitremp == new Guid(User.Identity.GetUserId()));
+            foreach (var item in dto)
+            {
+                item.moshrefname = _userService.GetById((Guid)item.moshId).FullName.ToString();
+                item.HosterName = _userService.GetById((Guid)item.Hoster).FullName.ToString();
+                item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
+                item.Roomnu = _roomService.GetById((int)item.Room_ID).RoomNum.ToString();
+                list1.Add(item);
+
+            }
+
+
+            return View(dto);
+
+        }
+        public ActionResult EndCleanOrder()
+        {
+            var dto = _fixOrderServices.GetById(Convert.ToInt32(TempData["ord"]));
+            dto.empName = _userService.GetById((Guid)dto.maitremp).FullName.ToString();
+            return View(dto);
+
+        }
+
+        public ActionResult EndCleanOrder1()
+        {
+            var dto = _fixOrderServices.GetById(Convert.ToInt32(TempData["ord"]));
+            dto.empName = _userService.GetById((Guid)dto.moshId).FullName.ToString();
+            return View(dto);
+
+
+
+
+        }
+        [HttpPost]
+
+        public ActionResult EndCleanOrder1(int id)
+        {
+            var cleanOrderDto = _fixOrderServices.GetById(id);
+            var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
+            userdto.IsBusy = false;
+            _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
+            cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            cleanOrderDto.isFinished = true;
+            _fixOrderServices.edit(cleanOrderDto);
+
+            var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
+            rom.IsNeedfix = false;
+            rom.Isrequistedfix = false;
+            _roomService.Edit(rom);
+            return RedirectToAction("Check", "Equipment", rom.Id);
+
+        }
+        [HttpPost]
+        public ActionResult EndCleanOrder(FixOrderDto cleanOrderDto)
+        {
+            var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
+            userdto.IsBusy = false;
+            _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
+            cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            cleanOrderDto.isFinished = true;
+            _fixOrderServices.edit(cleanOrderDto);
+
+            var                          rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
+            //rom. = false;
+            rom.Isrequistedfix = false;
+            _roomService.Edit(rom);
+            return RedirectToAction("Check", "Equipment", rom.Id);
+
+        }
+
+        public ActionResult getequpment(int oid)
+        {
+            return View(_fixOrderEqupService.All(oid));
+        }
+
+
+
+
+
+    }
+}

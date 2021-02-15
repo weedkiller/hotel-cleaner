@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "EditGuide";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    select {
+        max-height: 50px;
+        overflow-y: scroll;
+        background-color: white;
+        direction: rtl;
+        padding-right: 30px;
+        text-indent: 5px;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /*background:url(../../Images/arrow.png)  4% / 20% no-repeat content-box;*/
+    }
+</style>
+
+
+
+<link href="~/Content/category_view/Css/AdminCities.css" rel="stylesheet" />
+<div class="page-content">
+    <script>
+        function dialog(ID_Value) {
+
+            var modal1 = document.getElementById('my-confirm-dialog');
+            var model2 = document.getElementById('DeleteConfirm');
+            modal1.style.display = "block";
+            model2.value = ID_Value;
+
+        }
+
+        function CloseDialog() {
+
+            var modal1 = document.getElementById('my-confirm-dialog');
+            modal1.style.display = "none";
+
+        }
+
+
+    </script>
+
+    @*@model NawafizApp.Services.Dtos.InputCityDto
+
+        @using (Html.BeginForm("EditCity", "Home", FormMethod.Post))
+        {
+            <div style="margin-right:20px;">
+
+                <blockquote style="border:1px ridge white;text-align:center;" title="تعديل منطقة">
+                    <h2 style="color:white;text-align:center;">تعديل محافظة</h2>
+                    <h4 style="color:white;display:inline">الاسم العربي</h4>
+                    @Html.TextBoxFor(m => m.ArabicCityName, new { @Value = ViewBag.name });
+
+                    @Html.TextBoxFor(m => m.Id, new { @Value = ViewBag.CityID, @style = "display:none;" });
+                    <h4 style="color:white;display:inline;margin-right:20px;">الاسم الانكليزي</h4>
+                    @Html.TextBoxFor(m => m.EnglishCityName, new { @Value = ViewBag.EnName });
+                    <button type="submit" class="dropbtn">حفظ التعديل</button>
+                    @Html.ActionLink("الغاء", "Cities", "Home", new { @class = "dropbtn", @style = "text-decoration:none;" });
+                    @Html.ActionLink("رؤية إعلانات المحافظة", "Classified", "Home", new { @CityId = ViewBag.CityId },new { @class = "dropbtn"})
+                </blockquote>
+            </div>
+        }
+
+        @foreach(var Town in ViewBag.Towns)
+        {
+
+             <div class="" style="margin:5px;padding:0 5px;display:inline-block;color:white;text-align:center;">
+
+                 @Town.TownName<br />
+                 @Html.ActionLink("  حذف  " , "DeleteTown", "Home", new { @id = Town.Id }, new { @class = "dropbtn fa fa-trash", @style = "text-decoration: none;display:inline-block;" })
+                 @Html.ActionLink("  تعديل  ", "EditTown", "Home", new { @townName = @Town.TownName, @id = Town.Id, @cityID = ViewBag.CityId}, new { @class = "dropbtn fa fa-gear", @style = "text-decoration: none;display:inline-block;color:white;" })
+
+             </div>
+
+        }*@
+
+
+
+
+    @model NawafizApp.Services.Dtos.InputGuideDto
+
+
+    <div class="" style="">
+        @*page-content-wrapper*@
+    <div class="portlet light " style="min-height:575px;margin-bottom:0px;">
+
+        @using (Html.BeginForm("EditGuide", "Home", FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+
+
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase"> تعديل فئة</span>
+                </div>
+
+            </div>
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input has-success">
+                                @Html.TextBoxFor(m => m.ArabicName, new { @Value = ViewBag.name, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Id, new { @Value = ViewBag.CityID, @style = "display:none;" })
+                                @*<input type="text" class="form-control" id="form_control_1" placeholder="Enter your name">*@
+                                <label for="form_control_1">الاسم العربي</label>
+                                @*<span class="help-block">تعديل الاسم العربي للفئة ...</span>*@
+                                @Html.ValidationMessageFor(m => m.ArabicName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                @Html.TextBoxFor(m => m.EnglishName, new { @Value = ViewBag.EnName, @class = "form-control" })
+                                @*<input type="text" class="form-control" id="form_control_1" placeholder="Success state">*@
+                                <label for="form_control_1">الاسم الانكليزي</label>
+                                @*<span class="help-block">تعديل الاسم الانكليزي للفئة ...</span>*@
+                                @Html.ValidationMessageFor(m => m.EnglishName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                @Html.TextBoxFor(m => m.Sort, new { @Value = ViewBag.Sort, @class = "form-control" })
+                                @*<input type="text" class="form-control" id="form_control_1" placeholder="Success state">*@
+                                <label for="form_control_1">الترتيب</label>
+                                @*<span class="help-block">تعديل ترتيب للفئة ...</span>*@
+                                @Html.ValidationMessageFor(m => m.Sort, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                <select name="IsActive" class = "form-control edited">
+                                    @if (ViewBag.IsActive == true)
+                                    {
+                                        <option value="true" selected>فعالة</option>
+                                        <option value="false">غير فعالة</option>
+                                    }
+                                    @if (ViewBag.IsActive == false)
+                                    {
+                                        <option value="true" >فعالة</option>
+                                        <option value="false" selected>غير فعالة</option>
+                                    }
+                                
+
+                                </select>
+                                @*@Html.DropDownListFor(m => m.IsActive, (IEnumerable<SelectListItem>)ViewBag.ActiveList, new { @class = "form-control edited", @style = "" })*@
+
+                                <label for="form_control_1"> حالة الفئة</label>
+                                @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger" })
+                            </div>
+
+                            @*<div class="form-group form-md-line-input has-success">
+                                    @Html.TextBoxFor(m => m.EnglishCityName, new { @Value = ViewBag.EnName, @class = "form-control" })
+
+                                    <label for="form_control_1">الاسم الانكليزي</label>
+                                </div>*@
+                            @*<div class="form-group form-md-line-input has-warning">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Warning state">
+                                    <label for="form_control_1">Warning input</label>
+                                </div>
+                                <div class="form-group form-md-line-input has-error">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Error state">
+                                    <label for="form_control_1">Error input</label>
+                                </div>
+                                <div class="form-group form-md-line-input has-info">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Info state">
+                                    <label for="form_control_1">Info input</label>
+                                </div>*@
+
+
+                        </div>
+                        <div class="form-actions noborder">
+                            <button type="submit" class="btn blue">حفظ التعديل</button>
+                            @Html.ActionLink("الغاء", "Guide", "Home", new { @class = "btn default", @style = "text-decoration:none;" })
+                            @Html.ActionLink("رؤية إعلانات الفئة", "GuideClassified", "Home", new { @Guideid = ViewBag.CityId }, new { @class = "btn default" })
+                            @*<button type="button" class="btn default">Cancel</button>*@
+                        </div>
+                    </form>
+                </div><br />
+
+        }
+        <div style="border-top:1px solid rgba(128, 128, 128, 0.4);">
+            @if(ViewBag.HasChildren == true)
+            {
+                
+            foreach (var Town in ViewBag.Towns)
+            {
+
+                <div class="" style="margin:5px;padding:0 5px;display:inline-block;text-align:center;">
+
+                    @Town.GuideArabicName<br />
+                    @Html.ActionLink("  حذف  ", "DeleteGuideSub", "Home", new { @id = Town.Id }, new { @class = "btn default fa fa-trash", @style = "text-decoration: none;display:inline-block;" })
+                    @Html.ActionLink("  تعديل  ", "EditGuideSub", "Home", new { @townName = @Town.GuideArabicName, @id = Town.Id, @guideID = ViewBag.CityId }, new { @class = "btn default fa fa-gear", @style = "text-decoration: none;display:inline-block;" })
+
+                </div>
+            }
+            }
+        </div>
+    </div>
+</div>
+</div>
+
+
+

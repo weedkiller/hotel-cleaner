@@ -1,0 +1,328 @@
+﻿
+@{
+    ViewBag.Title = "AddClassify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+     select{
+       max-height:50px;
+        overflow-y: scroll;
+        
+        background-color:white;
+        direction:rtl;
+        padding-right:30px;
+        text-indent: 5px;
+        text-align:center;
+        -webkit-appearance: none; 
+   -moz-appearance: none;
+   appearance: none; 
+   background:url(../../Images/arrow.png)  4% / 20% no-repeat content-box;
+    }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #3d4957;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #36c6d3;
+        }
+</style>
+
+<script>
+   
+    $(function () {
+        $('#TownList').change(function () {
+            var selectedValue = $(this).val();
+            $('#txtCompName').val(selectedValue);
+        });
+    });
+</script>
+
+
+
+<div class="" style="">
+    <div style="">@*margin-right:235px;*@
+        @*@Html.TextBox("AddClassify", new { @guid = ViewBag.guid });*@
+
+
+
+        @model NawafizApp.Services.Dtos.InputClassifyDto
+        @using (Html.BeginForm("AddClassify", "Home", FormMethod.Post,new { role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @*<div style="margin-right:20px;">
+                @Html.TextBox("guid", new { @guid = ViewBag.guid });
+                <blockquote style="border:1px ridge white;text-align:center;" title="إضافة إعلان">
+                    <h2 style="color:white;text-align:center;">إضافةإعلان </h2>
+                    <h4 style="color:white;display:inline">عنوان الاعلان</h4>
+                    @Html.TextBoxFor(m => m.ClassifyName);
+                    <h4 style="color:white;display:inline;margin-right:20px;">نص الإعلان</h4>
+                    @Html.TextBoxFor(m => m.Description);
+                    <h4 style="color:white;display:inline;margin-right:20px;">ايميل للتواصل</h4>
+                    @Html.TextBoxFor(m => m.Email);
+                    <h4 style="color:white;display:inline;margin-right:20px;">اسم صاحب الإعلان</h4>
+                    @Html.TextBoxFor(m => m.FullName);
+                    <h4 style="color:white;display:inline;margin-right:20px;">رقم الهاتف المحمول</h4>
+                    @Html.TextBoxFor(m => m.Mobile);
+                    <h4 style="color:white;display:inline;margin-right:20px;">السعر</h4>
+                    @Html.TextBoxFor(m => m.Price);
+                    @*<h4 style="color:white;display:inline;margin-right:20px;">الموقع الجغرافي (خط طول)</h4>
+                    @Html.TextBoxFor(m => m.Gps_Latitude);
+                    <h4 style="color:white;display:inline;margin-right:20px;">الموقع الجغرافي (خط عرض)</h4>
+                    @Html.TextBoxFor(m => m.Gps_Longitude);*@
+
+
+
+
+
+            @*@using (Html.BeginForm("AddClassify", "Home", FormMethod.Post))
+                {
+
+                 <fieldset style="color:white;">
+
+                     Town
+                     @Html.DropDownListFor(m=>m.TownId, (IEnumerable<SelectListItem>)ViewBag.TownList, new { @class = "dropbtn",@style= "color:black;background-color:#364150;" })*@
+            @*@Html.DropDownListFor(model => model.TownId, new SelectList(ViewBag.TownList, "StatusId", "StatusName"), "--Select--")*@
+            @*@Html.DropDownListFor(m => m.TownId, (IEnumerable<SelectListItem>)@ViewBag.allTowns);*@
+           
+            <p>
+
+                @*<input type="submit" value="Submit" />*@
+
+            </p>
+
+
+                   
+
+                    <p>
+
+
+
+                    </p>
+
+
+
+
+
+                    @*<div style="margin-right:-15px;">*@
+
+                        <div class="page-content">@*col-md-12*@
+                            <!-- BEGIN SAMPLE FORM PORTLET-->
+                            <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-green">
+                                        <i class="icon-pin font-green"></i>
+                                        <span class="caption-subject bold uppercase"> إضافة إعلان</span>
+                                    </div>
+                                   
+                                </div>
+                                <div class="portlet-body form">
+                                    <form role="form">
+                                        <div class="form-body">
+                                            @*@Html.TextBox("guid", new { @guid = ViewBag.guid,@style="display:none" })*@
+                                            <input type="text" value="@ViewBag.guid" style="display:none;" name="guid" id="guid" />
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                                                @Html.TextBoxFor(m => m.ClassifyName, new { @class = "form-control",@Value=@ViewBag.ClassifyName })
+                                                <label for="form_control_1">عنوان الاعلان</label>
+                                                @*<span class="help-block">ادخال عنوان الإعلان ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.ClassifyName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                @*@Html.TextBoxFor(m => m.Description,new { @class="form-control"})*@
+                                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control",@Value= ViewBag.Description })
+                                                <label for="form_control_1">نص الإعلان</label>
+                                                @*<span class="help-block">ادخال نص الإعلان ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control",@Value= ViewBag.Email })
+                                                <label for="form_control_1">ايميل للتواصل</label>
+                                                @*<span class="help-block">ادخال ايميل للتواصل ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control",@Value = ViewBag.FullName })
+                                                <label for="form_control_1">اسم صاحب الإعلان</label>
+                                                @*<span class="help-block">ادخال اسم صاحب الإعلان ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", @Value = ViewBag.ClassifyMobile })
+                                                <label for="form_control_1">رقم الهاتف المحمول</label>
+                                                @*<span class="help-block">ادخال رقم الهاتف المحمول ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @Value = ViewBag.ClassifyPrice })
+                                                <label for="form_control_1">السعر</label>
+                                                @*<span class="help-block">ادخال السعر ...</span>*@
+                                                @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+
+                                                <select name="TownId" id="TownId" data-size="1" class="form-control edited" style="color:black;background-color:white;text-align:center;">
+                                                    <option value="" selected="selected"></option>
+                                                    @foreach (var k in ViewBag.Citiesss)
+                                                    {
+
+                                                        <optgroup label="محافظة @k.CityName ">
+                                                            @*<option id="CityId" style="font-size:larger;font-style:bold;" value="@k.Id">@k.CityName</option>*@
+
+                                                            @foreach (var j in k.TownsDto)
+                                                            {
+                                                                <option id="TownId" value="@j.Id">@j.TownName</option>
+                                                            }
+                                                        </optgroup>
+                                                    }
+
+                                                </select>
+                                                @Html.ValidationMessageFor(m => m.TownId, "", new { @class = "text-danger" })
+
+                                                <label for="form_control_1">اختر المنطقة</label>
+                                            </div>
+
+                                            <div class="form-group form-md-line-input form-md-floating-label has-info">
+
+                                                <select name="CategoryId" id="CategoryId" data-size="1" class="form-control edited" style="color:black;background-color:white;text-align:center;">
+                                                    <option value="" selected="selected"></option>
+                                                    @foreach (var k in ViewBag.Categoriesss)
+                                                    {
+
+                                                        <option id="CategoryId" value="@k.Id">@k.CategoryName</option>
+                                                        @*<option id="CityId" style="font-size:larger;font-style:bold;" value="@k.Id">@k.CityName</option>*@
+
+                                                    }
+
+                                                </select>
+                                                <label for="form_control_1">اختر الفئة</label>
+                                                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                <label for="form_control_1">الصور الخاصة بالإعلان</label>
+                                                @*<input type="file" name="postedFiles" class="" multiple id="postedFiles" />*@
+                                                <input type="file" id="myFile" name="postedFiles" multiple="multiple"><br>
+                                               @* @Html.TextBox("postedFiles",null, new { @type = "file", @multiple = "multiple" });*@
+                                                <span class="help-block">ترفيع الصور الخاصة بالإعلان ...</span>
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                <label for="form_control_1">@ViewBag.ErrorMessage</label>
+                                            </div>
+                                            <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                                @*<input type="text" class="form-control" id="form_control_1">*@
+                                                <label for="form_control_1">@ViewBag.Message</label>
+                                            </div>
+
+
+                                            @*<div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" class="btn btn-default" value="حفظ" />
+                                                    <input id="Reset1" class="btn btn-default" type="reset" value="إفراغ الخانات" />
+
+                                                </div>
+
+                                            </div>*@
+
+
+                                            @*<div class="form-group form-md-line-input form-md-floating-label has-warning">
+                                                    <input type="text" class="form-control" id="form_control_1">
+                                                    <label for="form_control_1">Warning input</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-error">
+                                                    <input type="text" class="form-control" id="form_control_1">
+                                                    <label for="form_control_1">Error input</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                    <input type="text" class="form-control" id="form_control_1">
+                                                    <label for="form_control_1">Info input</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                    <select class="form-control edited" id="form_control_1">
+                                                        <option value=""></option>
+                                                        <option value="1" selected="">Option 1</option>
+                                                        <option value="2">Option 2</option>
+                                                        <option value="3">Option 3</option>
+                                                        <option value="4">Option 4</option>
+                                                    </select>
+                                                    <label for="form_control_1">Dropdown sample</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <textarea class="form-control" rows="3"></textarea>
+                                                    <label for="form_control_1">Textarea input</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-error">
+                                                    <input type="text" class="form-control" disabled="" id="form_control_1">
+                                                    <label for="form_control_1">Disabled</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-error">
+                                                    <input type="text" class="form-control edited" readonly="" value="You can't edit this" id="form_control_1">
+                                                    <label for="form_control_1">Readonly</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <div class="form-control form-control-static"> email@example.com </div>
+                                                    <label for="form_control_1">Static Control</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                    <input type="text" class="form-control input-sm" id="form_control_1">
+                                                    <label for="form_control_1">Small input</label>
+                                                </div>
+                                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                    <input type="text" class="form-control input-lg" id="form_control_1">
+                                                    <label for="form_control_1">Large input</label>
+                                                </div>*@
+                                        </div>
+                                       
+
+                                        <div class="form-actions noborder">
+                                            <input type="submit" value="ادخال" class="btn blue" style=""/>
+                                            @*<button type="button" class="btn blue">Submit</button>*@
+                                            <input type="reset" value="تفريغ الخانات" class="btn default"/>
+                                            @Html.ActionLink("العودة الى الإعلانات", "Classified", "Home", new { @class = "btn default" })
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- END SAMPLE FORM PORTLET-->
+
+                        </div>
+
+                    @*</div>*@
+
+
+        }
+
+    </div>
+    </div>
+    <script src="~/Content/JQuery/jquery.validate.min.js"></script>
+
+    <script src="~/Content/JQuery/form-validation.min.js"></script>
+
+    @*///classify.CategoryId
+        //    classify.ClassifyName
+        //    classify.Description
+        //    classify.Email
+        //    classify.FullName
+                      ///    classify.Gps_Latitude
+                     ///    classify.Gps_Longitude
+        //    classify.Mobile
+        //    classify.Price
+                      ///    classify.TownId*@

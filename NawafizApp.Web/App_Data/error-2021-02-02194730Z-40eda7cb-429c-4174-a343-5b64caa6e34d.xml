@@ -1,0 +1,200 @@
+﻿<error errorId="40eda7cb-429c-4174-a343-5b64caa6e34d" application="/LM/W3SVC/2/ROOT" host="DESKTOP-5QQ7N34" type="System.InvalidOperationException" message="The view 'getAllRoom' or its master was not found or no view engine supports the searched locations. The following locations were searched:&#xD;&#xA;~/Views/Report/getAllRoom.aspx&#xD;&#xA;~/Views/Report/getAllRoom.ascx&#xD;&#xA;~/Views/Shared/getAllRoom.aspx&#xD;&#xA;~/Views/Shared/getAllRoom.ascx&#xD;&#xA;~/Views/Report/getAllRoom.cshtml&#xD;&#xA;~/Views/Report/getAllRoom.vbhtml&#xD;&#xA;~/Views/Shared/getAllRoom.cshtml&#xD;&#xA;~/Views/Shared/getAllRoom.vbhtml" source="System.Web.Mvc" detail="System.InvalidOperationException: The view 'getAllRoom' or its master was not found or no view engine supports the searched locations. The following locations were searched:&#xD;&#xA;~/Views/Report/getAllRoom.aspx&#xD;&#xA;~/Views/Report/getAllRoom.ascx&#xD;&#xA;~/Views/Shared/getAllRoom.aspx&#xD;&#xA;~/Views/Shared/getAllRoom.ascx&#xD;&#xA;~/Views/Report/getAllRoom.cshtml&#xD;&#xA;~/Views/Report/getAllRoom.vbhtml&#xD;&#xA;~/Views/Shared/getAllRoom.cshtml&#xD;&#xA;~/Views/Shared/getAllRoom.vbhtml&#xD;&#xA;   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin" time="2021-02-02T19:47:30.2544978Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9,ar;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=0vZubn_Oz82lAIsG1NzBAlxlpsFSJxtCuQ1H0oXFW0Cr2uNxnV-iGYsjRpuv_arQLhTooRgh3iBWiWcoK1OpzlANTaLv2FSIyi5OLVYd2RM1; .AspNet.ApplicationCookie=3KDFD329vqBB4XPP7a0Kquyp39Le6yIZwza5I2TKhLSdrip5qapD1HZSg_trK4YDD3tAd_HRzDHPhgQWogTQ-uMku4tSUwLIyR2bFf93QYWXXRXj1TqdTuSK3Qd6sgArNPFx4czibDsg5WSUNVJoTUwX6nsVuKNULLYFNDpur7jKMFPBihVlhWccvuC-k_DbNBbFJhKXynQiElvfGz7TuC_6KN5GZDpDPjfRrcL4XRrN8I72irYfr9AvcdwXBZk7ppEAhkGpniU7bGoCpJM2BtbiNui6d0qeR4-R948UzQAz4IPCKgg7y136eivlxb02CCUUiTEItFw0UHHjbzm1ZDwx7JpT6VMg7zAIzLUpOIcgI6b7nEvclEwuLn9mal32paZyDlJKaY88fAe01fbqiwiu4BeFhchTT7_iQ7zAI0N_pNvEE79Heyc5kuRFdKQI_58_AwLGBaPsUPyMCb-vyizFTdFsoUu9LXF5Px1Y7byfxQV5jwi9fkWpWEiPqi57&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_REFERER:http://localhost:50000/Report/searchForRoom/8&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36&#xD;&#xA;HTTP_SEC_CH_UA:&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;HTTP_SEC_CH_UA_MOBILE:?0&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:cors&#xD;&#xA;HTTP_SEC_FETCH_DEST:empty&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9,ar;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=0vZubn_Oz82lAIsG1NzBAlxlpsFSJxtCuQ1H0oXFW0Cr2uNxnV-iGYsjRpuv_arQLhTooRgh3iBWiWcoK1OpzlANTaLv2FSIyi5OLVYd2RM1; .AspNet.ApplicationCookie=3KDFD329vqBB4XPP7a0Kquyp39Le6yIZwza5I2TKhLSdrip5qapD1HZSg_trK4YDD3tAd_HRzDHPhgQWogTQ-uMku4tSUwLIyR2bFf93QYWXXRXj1TqdTuSK3Qd6sgArNPFx4czibDsg5WSUNVJoTUwX6nsVuKNULLYFNDpur7jKMFPBihVlhWccvuC-k_DbNBbFJhKXynQiElvfGz7TuC_6KN5GZDpDPjfRrcL4XRrN8I72irYfr9AvcdwXBZk7ppEAhkGpniU7bGoCpJM2BtbiNui6d0qeR4-R948UzQAz4IPCKgg7y136eivlxb02CCUUiTEItFw0UHHjbzm1ZDwx7JpT6VMg7zAIzLUpOIcgI6b7nEvclEwuLn9mal32paZyDlJKaY88fAe01fbqiwiu4BeFhchTT7_iQ7zAI0N_pNvEE79Heyc5kuRFdKQI_58_AwLGBaPsUPyMCb-vyizFTdFsoUu9LXF5Px1Y7byfxQV5jwi9fkWpWEiPqi57&#xD;&#xA;Host: localhost:50000&#xD;&#xA;Referer: http://localhost:50000/Report/searchForRoom/8&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36&#xD;&#xA;sec-ch-ua: &quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;sec-ch-ua-mobile: ?0&#xD;&#xA;Sec-Fetch-Site: same-origin&#xD;&#xA;Sec-Fetch-Mode: cors&#xD;&#xA;Sec-Fetch-Dest: empty&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="admin" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Report/getAllRoom/8" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\azeez\Desktop\Sales\NawafizApp.Web\Report\getAllRoom\8" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="__RequestVerificationToken=ZsoWDd83AyK1iW9S7UWKkpmPtBUGdy3RC60wjJKtdZQzGYmUOU95quveAO4M-sbWdKTupEbRRJROYhiZpoH6EytHXeGveUkNtUDMpJatV2s1&amp;roomNum=&amp;roomDesc=&amp;Status=%D9%85%D8%B4%D8%BA%D9%88%D9%84%D8%A9%20%D9%88%20%D8%A8%D8%AD%D8%A7%D8%AC%D8%A9%20%D8%AA%D9%86%D8%B8%D9%8A%D9%81&amp;X-Requested-With=XMLHttpRequest" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="60989" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Report/getAllRoom/8" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Report/getAllRoom/8" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9,ar;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=0vZubn_Oz82lAIsG1NzBAlxlpsFSJxtCuQ1H0oXFW0Cr2uNxnV-iGYsjRpuv_arQLhTooRgh3iBWiWcoK1OpzlANTaLv2FSIyi5OLVYd2RM1; .AspNet.ApplicationCookie=3KDFD329vqBB4XPP7a0Kquyp39Le6yIZwza5I2TKhLSdrip5qapD1HZSg_trK4YDD3tAd_HRzDHPhgQWogTQ-uMku4tSUwLIyR2bFf93QYWXXRXj1TqdTuSK3Qd6sgArNPFx4czibDsg5WSUNVJoTUwX6nsVuKNULLYFNDpur7jKMFPBihVlhWccvuC-k_DbNBbFJhKXynQiElvfGz7TuC_6KN5GZDpDPjfRrcL4XRrN8I72irYfr9AvcdwXBZk7ppEAhkGpniU7bGoCpJM2BtbiNui6d0qeR4-R948UzQAz4IPCKgg7y136eivlxb02CCUUiTEItFw0UHHjbzm1ZDwx7JpT6VMg7zAIzLUpOIcgI6b7nEvclEwuLn9mal32paZyDlJKaY88fAe01fbqiwiu4BeFhchTT7_iQ7zAI0N_pNvEE79Heyc5kuRFdKQI_58_AwLGBaPsUPyMCb-vyizFTdFsoUu9LXF5Px1Y7byfxQV5jwi9fkWpWEiPqi57" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50000/Report/searchForRoom/8" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" />
+    </item>
+    <item name="HTTP_SEC_CH_UA">
+      <value string="&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+    <item name="HTTP_SEC_CH_UA_MOBILE">
+      <value string="?0" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="cors" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="empty" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="__RequestVerificationToken">
+      <value string="ZsoWDd83AyK1iW9S7UWKkpmPtBUGdy3RC60wjJKtdZQzGYmUOU95quveAO4M-sbWdKTupEbRRJROYhiZpoH6EytHXeGveUkNtUDMpJatV2s1" />
+    </item>
+    <item name="roomNum">
+      <value string="" />
+    </item>
+    <item name="roomDesc">
+      <value string="" />
+    </item>
+    <item name="Status">
+      <value string="مشغولة و بحاجة تنظيف" />
+    </item>
+    <item name="X-Requested-With">
+      <value string="XMLHttpRequest" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="0vZubn_Oz82lAIsG1NzBAlxlpsFSJxtCuQ1H0oXFW0Cr2uNxnV-iGYsjRpuv_arQLhTooRgh3iBWiWcoK1OpzlANTaLv2FSIyi5OLVYd2RM1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="3KDFD329vqBB4XPP7a0Kquyp39Le6yIZwza5I2TKhLSdrip5qapD1HZSg_trK4YDD3tAd_HRzDHPhgQWogTQ-uMku4tSUwLIyR2bFf93QYWXXRXj1TqdTuSK3Qd6sgArNPFx4czibDsg5WSUNVJoTUwX6nsVuKNULLYFNDpur7jKMFPBihVlhWccvuC-k_DbNBbFJhKXynQiElvfGz7TuC_6KN5GZDpDPjfRrcL4XRrN8I72irYfr9AvcdwXBZk7ppEAhkGpniU7bGoCpJM2BtbiNui6d0qeR4-R948UzQAz4IPCKgg7y136eivlxb02CCUUiTEItFw0UHHjbzm1ZDwx7JpT6VMg7zAIzLUpOIcgI6b7nEvclEwuLn9mal32paZyDlJKaY88fAe01fbqiwiu4BeFhchTT7_iQ7zAI0N_pNvEE79Heyc5kuRFdKQI_58_AwLGBaPsUPyMCb-vyizFTdFsoUu9LXF5Px1Y7byfxQV5jwi9fkWpWEiPqi57" />
+    </item>
+  </cookies>
+</error>

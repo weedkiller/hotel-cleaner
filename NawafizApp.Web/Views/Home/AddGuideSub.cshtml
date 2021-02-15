@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "AddGuideSub";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    select {
+        max-height: 50px;
+        overflow-y: scroll;
+        background-color: white;
+        direction: rtl;
+        padding-right: 30px;
+        text-indent: 5px;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url(../../Images/arrow.png) 4% / 20% no-repeat content-box;
+    }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #3d4957;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #36c6d3;
+        }
+</style>
+
+
+<div class="" style="">
+    <div style="">
+
+
+        @model NawafizApp.Services.Dtos.InputGuideDto
+        @using (Html.BeginForm("AddGuide", "Home", FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+            <div class="page-content">
+                @*col-md-12*@
+                <!-- BEGIN SAMPLE FORM PORTLET-->
+                <div class="portlet light ">
+                    <div class="portlet-title">
+                        <div class="caption font-green">
+                            <i class="icon-pin font-green"></i>
+                            <span class="caption-subject bold uppercase"> إضافة فئة فرعية</span>
+                        </div>
+                       
+                    </div>
+                    <div class="portlet-body form">
+                        <form role="form">
+                            <div class="form-body">
+                                @*@Html.TextBox("guid", new { @guid = ViewBag.guid,@style="display:none" })*@
+                                <input type="text" value="@ViewBag.guid" style="display:none;" name="guid" id="guid" />
+                                <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                    @*<input type="text" class="form-control" id="form_control_1" value="test">*@
+                                    @Html.TextBoxFor(m => m.ArabicName, new { @class = "form-control" })
+                                    <label for="form_control_1">الاسم العربي</label>
+                                    @*<span class="help-block">ادخال الاسم العربي ...</span>*@
+                                    @Html.ValidationMessageFor(m => m.ArabicName, "", new { @class = "text-danger help-block help-block-error" })
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                    @*<input type="text" class="form-control" id="form_control_1">*@
+                                    @*@Html.TextBoxFor(m => m.Description,new { @class="form-control"})*@
+                                    @Html.TextBoxFor(m => m.EnglishName, new { @class = "form-control" })
+
+                                    <label for="form_control_1">الاسم الانكليزي</label>
+                                    @*<span class="help-block">ادخال الاسم الانكليزي ...</span>*@
+                                    @Html.ValidationMessageFor(m => m.EnglishName, "", new { @class = "text-danger help-block help-block-error" })
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-success">
+                                    @*<input type="text" class="form-control" id="form_control_1">*@
+                                    @*@Html.TextBoxFor(m => m.Description,new { @class="form-control"})*@
+                                    @Html.TextBoxFor(m => m.Sort, new { @class = "form-control" })
+
+                                    <label for="form_control_1">الترتيب</label>
+                                    @*<span class="help-block">ادخال الترتيب ...</span>*@
+                                    @Html.ValidationMessageFor(m => m.Sort, "", new { @class = "text-danger help-block help-block-error" })
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <select name="IsActive" class="form-control edited">
+                                        
+                                            <option value="true" selected>فعالة</option>
+                                            <option value="false">غير فعالة</option>
+                                        
+                                        @*@if (ViewBag.IsActive == false)
+                                        {
+                                            <option value="true">فعالة</option>
+                                            <option value="false" selected>غير فعالة</option>
+                                        }*@
+
+
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger help-block help-block-error" })
+                                    @*@Html.DropDownListFor(m => m.IsActive, (IEnumerable<SelectListItem>)ViewBag.ActiveList, new { @class = "form-control edited", @style = "" })*@
+
+                                    <label for="form_control_1"> حالة الإعلان</label>
+                                </div>
+                                @Html.TextBoxFor(m => m.ParentID, new { @style = "display:none;", @Value = ViewBag.city })
+
+                                @Html.ValidationMessageFor(m => m.ParentID, "", new { @class = "text-danger help-block help-block-error" })
+                                @*<div style="margin-right:20px;">
+                                        <blockquote style="border:1px ridge white;text-align:center;" title="إضافة مدينة">
+                                            <h2 style="color:white;text-align:center;">إضافة مدينة</h2>
+                                            <h4 style="color:white;display:inline">الاسم العربي</h4>
+                                            @Html.TextBoxFor(m => m.ArabicCityName);
+                                            <h4 style="color:white;display:inline;margin-right:20px;">الاسم الانكليزي</h4>
+                                            @Html.TextBoxFor(m => m.EnglishCityName);
+
+                                            <h4 style="color:white;display:inline;margin-right:20px;">الترتيب</h4>
+                                            @Html.TextBoxFor(m => m.Sort);
+                                            <button type="submit" class="dropbtn">إضافة</button>
+                                        </blockquote>
+                                    </div>*@
+
+                                <div class="form-actions noborder">
+                                    <input type="submit" value="ادخال" class="btn blue" style="" />
+                                    @*<button type="button" class="btn blue">Submit</button>*@
+                                    <input type="reset" value="تفريغ الخانات" class="btn default" />
+                                    @Html.ActionLink("العودة الى الفئات", "Guide", "Home", new { @class = "btn default" })
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

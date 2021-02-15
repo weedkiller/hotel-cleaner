@@ -1,0 +1,252 @@
+﻿@model NawafizApp.Services.Dtos.RegisterUserDto
+    @using NawafizApp.Web.Models
+@{
+    ViewBag.Title = "Register";
+}
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}<style>
+    .form .form-actions, .portlet-form .form-actions {
+        padding: 20px;
+        margin: 0;
+        background-color: #ece7b2;
+        border-top: 1px solid #e7ecf1;
+    }
+
+    .input-group-addon {
+        background-color: #ece7b2;
+    }
+
+        .input-group-addon > i {
+            color: #c29d0b !important;
+        }
+</style>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>إضافة مستخدم
+        </div>
+        @*
+    <div class="tools">
+        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+        <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+    </div>
+        *@
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        <br />
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new
+        {
+            @enctype = "multipart/form-data",
+            @class = "form-horizontal custom-form"
+        }))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-body">
+        <div class="form-group">
+            <label class="col-md-3 control-label">الاسم الكامل</label>
+            <div class="col-md-4">
+
+                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">الرقم الوطني </label>
+            <div class="col-md-4">
+
+                @Html.EditorFor(model => model.NationalNum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NationalNum, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">صورة المستخدم</label>
+            <div class="col-md-8">
+                <div class="btn btn-default image-preview-input">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    <span class="image-preview-input-title">أدخل الصورة</span>
+                    <input type="file" accept="image/png, image/jpeg, image/gif" name="postedFile" /> <!-- rename it -->
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">عقد المستخدم</label>
+            <div class="col-md-8">
+                <div class="btn btn-default image-preview-input">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    <span class="image-preview-input-title">أدخل الصورة</span>
+                    <input type="file" accept="" name="postedFile1" /> <!-- rename it -->
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">رقم الموبايل</label>
+            <div class="col-md-4">
+
+
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">رقم التلفون</label>
+            <div class="col-md-4">
+
+
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">الايميل</label>
+            <div class="col-md-4">
+
+
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">اسم المستخدم</label>
+            <div class="col-md-4">
+                <div class="input-group">
+
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">كلمة المرور</label>
+            <div class="col-md-4">
+                <div class="input-group">
+
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                    <span class="input-group-addon">
+                        <i class="fa fa-user-secret"></i>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">تأكيد كلمة المرور</label>
+            <div class="col-md-4">
+                <div class="input-group">
+
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+
+                    <span class="input-group-addon">
+                        <i class="fa fa-user-secret"></i>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+       @*"HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner"*@
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">نوع المستخدم</label>
+            <div class="col-md-4">
+
+                @Html.DropDownList("role", new List<SelectListItem> { new SelectListItem {Text="عامل حجز",Value="Hoster",Selected=true }
+           ,new SelectListItem {Text= "عامل استقبال",Value="Reception"}
+            ,new SelectListItem {Text= "مشرف",Value="BlockSupervisor"}
+           ,new SelectListItem {Text= "عامل تنظيف",Value="Cleaner"}
+             ,new SelectListItem {Text= "عامل صيانة",Value="MaintenanceEmp"}
+                 ,new SelectListItem {Text= "عامل خدمة",Value="service"}
+             ,new SelectListItem {Text= "HouseKeepingEmp",Value="HouseKeepingEmp"}
+           }, new { @class = "form-control", id = "" })
+
+
+            </div>
+        </div>
+
+    </div>
+            if (ViewBag.t)
+            {
+                foreach (var item in ViewBag.err)
+                {
+                    <h4 class="col-md-offset-3 text text-danger" style="margin-bottom:10px">@item</h4>
+                }
+            }
+            <div class="form-actions fluid">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9 col-xs-12">
+                        <button type="submit" class="btn btn-warning" style="width:30%">إضافة</button>
+
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- END FORM-->
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script>
+  $("#list1").change(function () {
+
+
+                 $.ajax({
+                     type: 'post',
+                     url: '@Url.Action("getConvinientRegions", "Main")',
+                     data: { sid: $(this).val() },
+                     success: function (data) {
+
+                         // var ddldist2 = $('#listbox').parent().children().last();
+                         var ddldist = $('#list2');
+
+                         if (data.length == 1) {
+                             //ddldist.html("");// ddldist2.html("");
+                             ddldist.empty();
+
+
+
+                         }
+                         else {
+
+
+                             ddldist.empty();
+
+                             $.each(data, function (Val, Text) {
+
+
+
+                                 ddldist.append(
+                                     $('<option></option>').val(this.Value).html(this.Text)
+                                 );
+
+                             });
+
+
+
+
+
+
+
+                         }
+                         if ((this).val() == "-1") { ddldist.empty();}
+                     }
+                 });
+             });
+</script>

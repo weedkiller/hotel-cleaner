@@ -1,0 +1,90 @@
+﻿@model NawafizApp.Services.Dtos.FixOrderDto
+
+@{
+    ViewBag.Title = "مهمات";
+    Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
+}
+
+<h2>أستلام المهمة </h2>
+
+@using (Html.BeginForm())
+{
+
+
+    <div class="form-horizontal">
+        <h4>CleanOrderDto</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">الحجز </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.HosterName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.HosterName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label class="col-md-3 control-label">المشرف </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.moshrefname, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.moshrefname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">النظافة  </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.empName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.empName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">تاريخ الأنشاء </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Creation_Date, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Creation_Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">وقت الأنشاء </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Creation_Time, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Creation_Time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">ملاحظات  </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">وقت الأنشاء </label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Roomnu, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Roomnu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="استلام المهمة " class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("الرجوع الى قائمة المهمات ", "GetallforCleanEmp")
+</div>

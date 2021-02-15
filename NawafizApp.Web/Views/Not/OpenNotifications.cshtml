@@ -1,0 +1,156 @@
+﻿@model NawafizApp.Services.Dtos.NotifictationDto
+@using NawafizApp.Common
+
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>تفاصيل الاشعار
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+            <div class="mayClass">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>الاشعار : </td>
+                                <td class="title2"> @Model.NotText</td>
+
+                            </tr>
+                            <tr>
+                                <td> تاريخ الاشعار : </td>
+                                <td class="title2"> @Model.NotDateTime</td>
+
+                            </tr>
+                            <tr>
+                                <td>المرسل : </td>
+                                <td class="title2"> @Model.SenderName</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        @if (User.IsInRole("ReservationEmp"))
+        {
+
+            <div class="form-group ">
+
+                <div>
+                    @Html.ActionLink("ارسال الى المشرف", "SendNotifications", "Not", new { id = Model.Id, roomId = Model.Room_ID, stat = Model.NotText }, new { @class = "btn btn-warning" })
+                </div>
+            </div>
+        }
+        @if (User.IsInRole("MaintenanceEmp") || User.IsInRole("CleanEmp"))
+        {
+
+
+            <div class="portlet box yellow">
+
+                <div class="portlet-body">
+
+                    <div class="form-horizontal">
+
+
+                        <div class="form-group">
+                            @Html.Label("وقت البدء", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-3">
+                                @Html.Editor("start", new { htmlAttributes = new { @class = "form-control", id = "start" } })
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("وقت الانتهاء", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-3">
+                                @Html.Editor("end", new { htmlAttributes = new { @class = "form-control", id = "end" } })
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group ">
+                            <div>
+                                <input type="submit" value="البدء بتنفيذ الطلب" id="btn" class="btn btn-warning" style="width:50%" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+
+                            <div>
+                                <input type="submit" value="الانتهاء من تنفيذ الطلب" id="btn1" class="btn btn-warning" style="width:50%" />
+
+                            </div>
+                        </div>
+                     
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        }
+        @if (User.IsInRole("manager"))
+        {
+            <div class="form-group ">
+
+                <div>
+                    @Html.ActionLink("إضافة طلب", "AddOrder", "Order", new { roomId = Model.Room_ID, text = Model.NotText }, new { @class = "btn btn-warning" })
+                </div>
+            </div>
+        
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script>
+    @{TimeSpan r = @Utils.ServerNow.TimeOfDay; }
+    $("#end").prop('disabled', true);
+        $("#btn").click(function () {
+        var h =@r.Hours.ToString();
+        var m =@r.Minutes.ToString();
+        var s =@r.Seconds.ToString();
+        var t = h + ":" + m + ":" + s;
+            $("#start").val(t);
+            $("#start").prop('disabled', true);
+            $("#end").prop('disabled', false);
+        });
+
+    $("#btn1").click(function () {
+            @{TimeSpan e = @Utils.ServerNow.TimeOfDay; }
+
+        var h2 =@e.Hours.ToString();
+        var m2 =@e.Minutes.ToString();
+        var s2 =@e.Seconds.ToString();
+        var t2 = h2 + ":" + m2 + ":" + s2;
+        $("#end").val(t2);
+        $("#end").prop('disabled', true);
+        $("#start").prop('disabled', false);
+
+            //alert(endTime + 'عدد الثواني ');
+
+        });
+
+</script>

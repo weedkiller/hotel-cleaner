@@ -1,0 +1,108 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.UserDto>
+
+<link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <div class="portlet light portlet-fit bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-layers font-green"></i>
+                <span class="caption-subject  bold uppercase">عرض المستخدمين</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="mt-element-card mt-element-overlay">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+
+                       string uploadPath = System.Configuration.ConfigurationManager.AppSettings["uploadPath"]; 
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <div class="mt-card-item">
+                                <div class="mt-card-avatar mt-overlay-1">
+                                    @if (!string.IsNullOrWhiteSpace(item.Image))
+                                    {
+                                        <img src="@uploadPath@item.Image">
+                                    }
+                                    else { 
+                                <img src="~/Images/avat.jpg">
+                                    }
+                                    
+
+                                    <div class="mt-overlay">
+                                        <ul class="mt-info">
+                                            <li>
+                                                <a class="btn default btn-outline" href="@Url.Action("Edit",new {id = item.UserId })">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+
+                                                <a id="" class="btn default btn-outline linkDel" href="@Url.Action("Remove",new {id = item.UserId })">
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-card-content">
+                                    <h3 class="mt-card-name" style="font-family:jazeera">@item.FullName</h3>
+                                    
+                                        @if (!String.IsNullOrEmpty(item.Role))
+                                        {
+                                <p class="mt-card-desc font-grey-mint">
+                                    @item.Role
+                                </p>
+                                        }
+                                     
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+        overflow: hidden !important;
+    }
+</style>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-confirm.min.js"></script>
+<script>
+    $('.linkDel').confirm({
+        title: 'تأكيد الحذف !',
+
+        content: 'هل تريد بالتأكيد حذف هذا المستخدم ؟',
+
+
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            },
+            إلغاء: function () {
+
+            }
+
+
+        }
+    });
+    $('a.twitter').confirm({
+        content: "...",
+    });
+    $('a.twitter').confirm({
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            }
+        }
+    });
+    $(".jconfirm-content-pane").removeClass("no-scroll");
+</script>

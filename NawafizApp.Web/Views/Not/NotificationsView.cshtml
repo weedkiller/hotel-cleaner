@@ -1,0 +1,41 @@
+﻿
+@{
+   // Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>صفحة الإشعارات</title>
+
+</head>
+<body>
+    <div id="not">
+
+
+    </div>
+    <div hidden="hidden" >
+        @Ajax.ActionLink("jjj", "getNotification", "Not", new AjaxOptions
+        {
+       UpdateTargetId = "not",
+       HttpMethod = "get",
+       InsertionMode = InsertionMode.Replace
+
+   }, new { id = "uu" })
+    </div>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+    <script type="text/javascript">
+
+       
+        setInterval(function () {
+            document.getElementById('uu').click();
+        }, 2000);
+     
+    </script>
+</body>
+</html>

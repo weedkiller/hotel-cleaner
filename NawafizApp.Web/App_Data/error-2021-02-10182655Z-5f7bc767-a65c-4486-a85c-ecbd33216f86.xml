@@ -1,0 +1,168 @@
+﻿<error errorId="5f7bc767-a65c-4486-a85c-ecbd33216f86" application="/LM/W3SVC/2/ROOT" host="DESKTOP-T4IQH61" type="System.Web.Mvc.HttpAntiForgeryException" message="The required anti-forgery form field &quot;__RequestVerificationToken&quot; is not present." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The required anti-forgery form field &quot;__RequestVerificationToken&quot; is not present.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1c(AsyncCallback asyncCallback, Object asyncState, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__14(AsyncCallback asyncCallback, Object callbackState, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__4(AsyncCallback asyncCallback, Object asyncState, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="cleaner" time="2021-02-10T18:26:55.7187836Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=7J_e8sfUDGVi3GGs-bA3gMLSxUfREMARppfvPjWQUlX-yuAPraWbFBRJ_F7dMPq3vrmB7XFjL84Cueawp8LBH3slMyXKKnBDjICj4opbUAA1; .AspNet.ApplicationCookie=uxEVEpuET8yYENuDbIow2J_yzheIlmLRS_vgQ_pHXkJOnzsTNW-WpVol_hxIxGTmLprpWKqeClXiXlej69H-SAg75zPnmxvRe6-2Io3YLdcdqz9zUqvQC94eFB3wCDLY1ZKQD-hXyE0x8D4c9nhebpeNtNswdIhXVAe7RVSA6-043uIgnlQPUNGHxFczqDegaP_a51tlXgSCogVDeA_ukw1ddGYne8737E5NuYMDqJIWGZa7luXe8hH8SuJGf3Lx6_D3OvNSn0RBxF7886SwudblyPKl6LFnzosXM0aBX2lFc7nbKjcq413xhTagWBJDNAlI2yNUUNKoEnlu8sSfydgRocIdz-omWeWVORsPs8R98vxixMnThCzoYuYkjn3f9qgww2hmWWL7AYZ2cJU-xZfSccYA3T83MY3FR3gM8HPhgnQsfNIJsV5q36j5A5sDGYumkbDeQ6T-SU4j6q69r-m-UzMow-bpnv881PAbVYyitL6Nxa8H7IhWxG-42KQPmHL7gqkty7vqT0SyPdM4lg&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_REFERER:http://localhost:50000/Account/Login?ReturnUrl=%2F&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3&#xD;&#xA;Cookie: __RequestVerificationToken=7J_e8sfUDGVi3GGs-bA3gMLSxUfREMARppfvPjWQUlX-yuAPraWbFBRJ_F7dMPq3vrmB7XFjL84Cueawp8LBH3slMyXKKnBDjICj4opbUAA1; .AspNet.ApplicationCookie=uxEVEpuET8yYENuDbIow2J_yzheIlmLRS_vgQ_pHXkJOnzsTNW-WpVol_hxIxGTmLprpWKqeClXiXlej69H-SAg75zPnmxvRe6-2Io3YLdcdqz9zUqvQC94eFB3wCDLY1ZKQD-hXyE0x8D4c9nhebpeNtNswdIhXVAe7RVSA6-043uIgnlQPUNGHxFczqDegaP_a51tlXgSCogVDeA_ukw1ddGYne8737E5NuYMDqJIWGZa7luXe8hH8SuJGf3Lx6_D3OvNSn0RBxF7886SwudblyPKl6LFnzosXM0aBX2lFc7nbKjcq413xhTagWBJDNAlI2yNUUNKoEnlu8sSfydgRocIdz-omWeWVORsPs8R98vxixMnThCzoYuYkjn3f9qgww2hmWWL7AYZ2cJU-xZfSccYA3T83MY3FR3gM8HPhgnQsfNIJsV5q36j5A5sDGYumkbDeQ6T-SU4j6q69r-m-UzMow-bpnv881PAbVYyitL6Nxa8H7IhWxG-42KQPmHL7gqkty7vqT0SyPdM4lg&#xD;&#xA;Host: localhost:50000&#xD;&#xA;Referer: http://localhost:50000/Account/Login?ReturnUrl=%2F&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="cleaner" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="cleaner" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="cleaner" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/HotelBlock/AddHotelBlock" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Sales\NawafizApp.Web\HotelBlock\AddHotelBlock" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="20717" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/HotelBlock/AddHotelBlock" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/HotelBlock/AddHotelBlock" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, image/jxr, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8,ar-SY;q=0.5,ar;q=0.3" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=7J_e8sfUDGVi3GGs-bA3gMLSxUfREMARppfvPjWQUlX-yuAPraWbFBRJ_F7dMPq3vrmB7XFjL84Cueawp8LBH3slMyXKKnBDjICj4opbUAA1; .AspNet.ApplicationCookie=uxEVEpuET8yYENuDbIow2J_yzheIlmLRS_vgQ_pHXkJOnzsTNW-WpVol_hxIxGTmLprpWKqeClXiXlej69H-SAg75zPnmxvRe6-2Io3YLdcdqz9zUqvQC94eFB3wCDLY1ZKQD-hXyE0x8D4c9nhebpeNtNswdIhXVAe7RVSA6-043uIgnlQPUNGHxFczqDegaP_a51tlXgSCogVDeA_ukw1ddGYne8737E5NuYMDqJIWGZa7luXe8hH8SuJGf3Lx6_D3OvNSn0RBxF7886SwudblyPKl6LFnzosXM0aBX2lFc7nbKjcq413xhTagWBJDNAlI2yNUUNKoEnlu8sSfydgRocIdz-omWeWVORsPs8R98vxixMnThCzoYuYkjn3f9qgww2hmWWL7AYZ2cJU-xZfSccYA3T83MY3FR3gM8HPhgnQsfNIJsV5q36j5A5sDGYumkbDeQ6T-SU4j6q69r-m-UzMow-bpnv881PAbVYyitL6Nxa8H7IhWxG-42KQPmHL7gqkty7vqT0SyPdM4lg" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50000/Account/Login?ReturnUrl=%2F" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="7J_e8sfUDGVi3GGs-bA3gMLSxUfREMARppfvPjWQUlX-yuAPraWbFBRJ_F7dMPq3vrmB7XFjL84Cueawp8LBH3slMyXKKnBDjICj4opbUAA1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="uxEVEpuET8yYENuDbIow2J_yzheIlmLRS_vgQ_pHXkJOnzsTNW-WpVol_hxIxGTmLprpWKqeClXiXlej69H-SAg75zPnmxvRe6-2Io3YLdcdqz9zUqvQC94eFB3wCDLY1ZKQD-hXyE0x8D4c9nhebpeNtNswdIhXVAe7RVSA6-043uIgnlQPUNGHxFczqDegaP_a51tlXgSCogVDeA_ukw1ddGYne8737E5NuYMDqJIWGZa7luXe8hH8SuJGf3Lx6_D3OvNSn0RBxF7886SwudblyPKl6LFnzosXM0aBX2lFc7nbKjcq413xhTagWBJDNAlI2yNUUNKoEnlu8sSfydgRocIdz-omWeWVORsPs8R98vxixMnThCzoYuYkjn3f9qgww2hmWWL7AYZ2cJU-xZfSccYA3T83MY3FR3gM8HPhgnQsfNIJsV5q36j5A5sDGYumkbDeQ6T-SU4j6q69r-m-UzMow-bpnv881PAbVYyitL6Nxa8H7IhWxG-42KQPmHL7gqkty7vqT0SyPdM4lg" />
+    </item>
+  </cookies>
+</error>

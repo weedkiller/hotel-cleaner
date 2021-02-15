@@ -1,0 +1,154 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.RoomDto>
+
+@{
+    Layout = null;
+}
+
+<style>
+    .a {
+    }
+
+    .btn.green:not(.btn-outline):hover {
+        background-color: #9c6d16;
+        border-color: #d8d45c;
+    }
+
+    .btn.green:not(.btn-outline) {
+        color: #FFF;
+        background-color: #9c6d16;
+        border-color: #d8d45c;
+    }
+
+    td {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .tttt {
+        text-align: center !important;
+        background-color: #f5f3a7;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 3px;
+        line-height: 1.42857;
+        vertical-align: top;
+        border-top: 1px solid #e7ecf1;
+    }
+
+    .table td, .table th {
+        font-size: 12px;
+    }
+
+    .title2 {
+        font-size: 14px !important;
+        color: #707127;
+    }
+
+    .searchForm {
+        margin-bottom: 4% !important;
+    }
+
+    .exel {
+        display: none;
+    }
+
+    .payed {
+        background-color: rgba(53, 190, 37, 0.61);
+    }
+
+    .notpayed {
+        background-color: rgba(224, 47, 47, 0.74);
+    }
+</style>
+@{
+    int i = 1;
+    string id = "";
+    string href = "";
+}
+
+@foreach (var s in Model)
+{
+    id = "p" + i;
+
+    i++;
+    id = "";
+}
+
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>الغرف
+        </div>
+
+    </div>
+    <div class="portlet-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="mytab">
+                <thead class="t">
+                    <tr>
+                        <th class="tttt"> # </th>
+                        <th class="tttt"> رقم الغرفة </th>
+                        <th class="tttt"> اتجاه الغرفة </th>
+                        @{
+
+                            if (User.IsInRole("MaintenanceEmp"))
+                            {
+                                <th class="tttt"> طلب صيانة </th>
+                            }
+                            else if (User.IsInRole("CleanEmp"))
+                            {
+                                <th class="tttt"> طلب صيانة </th>
+                            }
+
+                        }
+                   
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        i = 1;
+                    }
+                    @foreach (var x in Model)
+                    {
+
+                        href = "#p" + i;
+                    <tr>
+                        <td>@i</td>
+                        <td>@x.RoomNum</td>
+                        <td>@x.RoomDirection</td>
+
+                        
+                        <td>
+                            @{ if (User.IsInRole("MaintenanceEmp"))
+                                {
+
+                                    @Html.ActionLink("طلب صيانة", "AddMaintenanceRequest", "Not", new { roomId = x.Id, rromNum = x.RoomNum }, "")
+                                }
+                                else if (User.IsInRole("CleanEmp"))
+                                {
+                                    @Html.ActionLink("طلب تنظيف", "AddCleanRequest", "Not", new { roomId = x.Id, rromNum = x.RoomNum }, "")
+                                }}
+                        </td>
+
+                        
+                    </tr>
+                        i++;
+                        href = "";
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        @*<button class="btn btn-warning" type="button" onclick="fnExcelReport();">تصدير <i class="fa fa-download"></i></button>*@
+    </div>
+</div>
+<iframe id="txtArea1" style="display:none"></iframe>
+
+
+

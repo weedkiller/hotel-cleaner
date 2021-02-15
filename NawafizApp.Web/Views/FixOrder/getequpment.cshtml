@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.FixOrderEqupDto>
+
+@{
+    ViewBag.Title = "getequpment";
+    Layout = "~/Views/Shared/_Layout-fixEmp.cshtml";
+}
+
+<h2>getequpment</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           القطعة 
+        </th>
+        <th>
+            رقم الطلب
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FixOrder)
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

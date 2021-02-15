@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "blank";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class=" icon-layers font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Floating Label Validation</span>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <i class="icon-cloud-upload"></i>
+                    </a>
+                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <i class="icon-wrench"></i>
+                    </a>
+                    <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <i class="icon-trash"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="#" id="form_sample_3" novalidate="novalidate">
+                    <div class="form-body">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="text" class="form-control" name="name" id="form_control_1">
+                            <label for="form_control_1">Name</label>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="text" class="form-control" name="email" id="form_control_1">
+                            <label for="form_control_1">Email</label>
+                            <span class="help-block">Some help goes here...</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="text" class="form-control" name="url" id="form_control_1">
+                            <label for="form_control_1">URL</label>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="text" class="form-control" name="number" id="form_control_1">
+                            <label for="form_control_1">Number</label>
+                            <span class="help-block">Some help goes here...</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <div class="input-group">
+                                <div class="input-group-control">
+                                    <input type="text" class="form-control" name="digits">
+                                    <label for="form_control_1">Digits</label>
+                                </div>
+                                <span class="input-group-btn btn-right">
+                                    <button type="button" class="btn green-haze dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="javascript:;">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Something else here</a>
+                                        </li>
+                                        <li class="divider"> </li>
+                                        <li>
+                                            <a href="javascript:;">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <select class="form-control" name="delivery">
+                                <option value=""></option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label for="form_control_1">Error State</label>
+                            <span class="help-block">Some help goes here...</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <textarea class="form-control" name="memo" rows="3"></textarea>
+                            <label for="form_control_1">Memo</label>
+                            <span class="help-block">Some help goes here...</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="email2">
+                                <label for="form_control_1">Email</label>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn dark">Validate</button>
+                                <button type="reset" class="btn default">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+<script src="~/Content/JQuery/jquery.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+
+
+
+
+<script src="~/Content/JQuery/form-validation.min.js"></script>
+<script src="~/Content/JQuery/jquery.validate.min.js"></script>

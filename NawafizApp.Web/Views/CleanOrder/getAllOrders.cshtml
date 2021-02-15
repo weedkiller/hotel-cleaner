@@ -1,0 +1,103 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.CleanOrderDto>
+
+@{
+    ViewBag.Title = "getAllOrders";
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
+}
+
+<h2>الطلبات </h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+           موظف الحجز
+        </th>
+
+        <th>
+            المشرف
+        </th>
+
+        <th>
+           النظافة 
+        </th>
+        <th>
+           تاربخ الأنشاء
+        </th>
+        <th>
+            وقت الأنشاء
+        </th>
+
+        <th>
+           وصف  
+        </th>
+
+        <th>
+           رقم الغرفة 
+        </th>
+        <th>
+            مستلمة ؟
+        </th>
+        <th>
+            منتهية ؟
+        </th>
+        <th>
+           تاريخ و وقت الأستلام 
+        </th>
+        <th>
+            تاريخ و وقت الأنتهاء
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.HosterName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.moshrefname)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.empName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creation_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creation_Time)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Roomnu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Istaked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isFinished)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.enddate)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

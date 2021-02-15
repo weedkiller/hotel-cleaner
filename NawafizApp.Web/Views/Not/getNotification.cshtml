@@ -1,0 +1,42 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.NotifictationDto>
+@{
+    Layout = null;
+}
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayName("الإشعار")
+        </th>
+        <th>@Html.DisplayName("المرسل")</th>
+        <th>@Html.DisplayName("التاريخ و الوقت")</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.ActionLink(item.NotText, "OpenNotifications", new { notid = item.Id, roomId = item.Room_ID })
+            </td>
+
+
+            <td>
+
+                @item.SenderName
+                @*// @item.date*@
+            </td>
+
+            <td>
+
+                @item.NotDateTime
+                @*// @item.date*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+

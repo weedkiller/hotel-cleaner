@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "EditTown";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/category_view/Css/AdminCities.css" rel="stylesheet" />
+<div style="">
+
+    @model NawafizApp.Services.Dtos.InputTownDto
+
+   
+
+
+<div class="page-content" style="overflow-x:hidden;">
+    <div class="portlet light " style="min-height:575px;margin-bottom:0px;">
+
+        @using (Html.BeginForm("EditTown", "Home", FormMethod.Post))
+            {
+        @Html.AntiForgeryToken()
+
+            <div class="portlet-title" >
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase" style="font-size: large;"> تعديل منطقة</span>
+                </div>
+
+            </div>
+                <div class="portlet-body form" >
+                    <form role="form">
+                        <div class="form-body" style="padding-left: 4%;padding-right: 4%;">
+                            <div class="form-group form-md-line-input has-success">
+                                @Html.TextBoxFor(m => m.ArabicTownName, new { @Value = ViewBag.name, @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Id, new { @Value = ViewBag.id, @Style = "display:none;" })
+                                @Html.TextBoxFor(m => m.CityId, new { @Value = ViewBag.CityID, @style = "display:none;" })
+                                @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                                @*<input type="text" class="form-control" id="form_control_1" placeholder="Enter your name">*@
+                                <label for="form_control_1">الاسم العربي</label>
+                                @*<span class="help-block">تعديل الاسم العربي للمنطقة ...</span>*@
+                                @Html.ValidationMessageFor(m => m.ArabicTownName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                @Html.TextBoxFor(m => m.EnglishTownName, new { @Value = ViewBag.EnName, @class = "form-control" })
+                                @*@Html.TextBoxFor(m => m.EnglishCityName, new { @Value = ViewBag.EnName, @class = "form-control" })*@
+                                @*<input type="text" class="form-control" id="form_control_1" placeholder="Success state">*@
+                                <label for="form_control_1">الاسم الانكليزي</label>
+                                @*<span class="help-block">تعديل الاسم الانكليزي للمنطقة ...</span>*@
+                                @Html.ValidationMessageFor(m => m.EnglishTownName, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="form-group form-md-line-input has-success">
+                                    @Html.TextBoxFor(m => m.EnglishCityName, new { @Value = ViewBag.EnName, @class = "form-control" })
+
+                                    <label for="form_control_1">الاسم الانكليزي</label>
+                                </div>*@
+                            @*<div class="form-group form-md-line-input has-warning">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Warning state">
+                                    <label for="form_control_1">Warning input</label>
+                                </div>
+                                <div class="form-group form-md-line-input has-error">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Error state">
+                                    <label for="form_control_1">Error input</label>
+                                </div>
+                                <div class="form-group form-md-line-input has-info">
+                                    <input type="text" class="form-control" id="form_control_1" placeholder="Info state">
+                                    <label for="form_control_1">Info input</label>
+                                </div>*@
+
+                            @Html.TextBox("cc",null,new { @Value = ViewBag.city, @readonly = "readonly", @style = "", @class = "form-control" })@*background-color:#364150;color:white*@
+                            @Html.ValidationMessageFor(m => m.EnglishTownName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-actions noborder" style="padding-right:4%;">
+                            <button type="submit" class="btn blue">حفظ التعديل</button>
+                            @Html.ActionLink("الغاء", "Cities", "Home", new { @class = "btn default", @style = "text-decoration:none;" })
+                            @Html.ActionLink("رؤية إعلانات المنطقة", "Classified", "Home", new { @TownId = ViewBag.id }, new { @class = "btn default" })
+                            @*<button type="button" class="btn default">Cancel</button>*@
+                        </div>
+                    </form>
+                </div><br />
+
+        }
+        
+    </div>
+</div>
+
+
+    </div>
