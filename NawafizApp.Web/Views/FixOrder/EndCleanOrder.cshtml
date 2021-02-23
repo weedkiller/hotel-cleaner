@@ -1,116 +1,69 @@
-﻿@model NawafizApp.Services.Dtos.FixOrderDto
-
+﻿@model IEnumerable<NawafizApp.Services.Dtos.EquipmentDto>
 @{
-    ViewBag.Title = "طلب نظافة";
-    Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
-}
-
-<h2> إنهاء طلب نظافة  </h2>
+    Layout = "~/Views/Shared/_Layout-fixEmp.cshtml";}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>
+                التجهيز
+            </th>
+            <th>
+                الوصف
+            </th>
+            <th>
+                الحالة
+            </th>
+            <th>
+                بحاجة صيانة ؟
+            </th>
+            <th>
+                موجودة ؟
+            </th>
 
-    <div class="form-horizontal">
-        <h4></h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stauts)
+                </td>
+
+                @if (item.needfix)
+                {
+                    <td class="Checked"> بحاجة صيانة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-remove"></i> جاهزة  </a></td>
+                }
+                @if (!item.needfix)
+                {
+                    <td class="notChecked">جاهزة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-check"></i>بحاجة صيانة  </a></td>
+                }
 
 
+                @if (item.ishere)
+                {
+                    <td class="Checked"> موجود <a class="linlpay" href="@Url.Action("CheckedToggle", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-remove"></i> غير موجود </a></td>
+                }
+                @if (!item.ishere)
+                {
+                    <td class="notChecked">غير موجود <a class="linlpay" href="@Url.Action("CheckedToggle", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-check"></i>موجود </a></td>
+                }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.empName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.empName, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.empName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            </tr>
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Creation_Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Creation_Date, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.Creation_Date, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Creation_Time, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Creation_Time, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.Creation_Time, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Creation_At, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Creation_At, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.Creation_At, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Room_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Room_ID, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.Room_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Istaked, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Istaked, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                    @Html.ValidationMessageFor(model => model.Istaked, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.isFinished, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.isFinished, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                    @Html.ValidationMessageFor(model => model.isFinished, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.startdate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.startdate, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.startdate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.enddate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.enddate, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.enddate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="أنهاء الطلب" class="default" />
-            </div>
-        </div>
-    </div>
+    </table>
+    <input id="Submit1" type="submit" value="submit" />
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

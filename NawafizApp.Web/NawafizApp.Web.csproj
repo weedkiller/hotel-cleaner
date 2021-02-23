@@ -5149,8 +5149,6 @@
     <Content Include="Images\avatar3.jpg" />
     <Content Include="Images\avatar3_small.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Images\PROFILE PHOTO.png" />
-    <Content Include="Images\small.png" />
     <Content Include="img\425-hand-pointer.png" />
     <Content Include="img\collapse.png" />
     <Content Include="img\expand.png" />
@@ -5695,13 +5693,16 @@
     <Content Include="Views\Equipment\getAllEquipmentsForcleaningEmp.cshtml" />
     <Content Include="Views\FixOrder\AddFixOrder.cshtml" />
     <Content Include="Views\FixOrder\Getallformosh.cshtml" />
-    <Content Include="Views\FixOrder\GetAllFixOrder.cshtml" />
     <Content Include="Views\FixOrder\sendOrderToemp.cshtml" />
     <Content Include="Views\FixOrder\GetallforCleanEmp.cshtml" />
     <Content Include="Views\FixOrder\takeCleanOrder.cshtml" />
-    <Content Include="Views\FixOrder\EndCleanOrder.cshtml" />
     <Content Include="Views\Shared\_Layout-fixEmp.cshtml" />
     <Content Include="Views\FixOrder\getequpment.cshtml" />
+    <Content Include="Views\Room\getAllRoom22.cshtml" />
+    <Content Include="Views\Room\RoomView.cshtml" />
+    <Content Include="Views\FixOrder\GetAllFixOrder.cshtml" />
+    <Content Include="Views\FixOrder\getAllEquipmentsForcleaningEmpdd.cshtml" />
+    <Content Include="Views\FixOrder\EndCleanOrder.cshtml" />
     <None Include="Views\Shared\_Layout_supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>

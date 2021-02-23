@@ -23,20 +23,21 @@ namespace NawafizApp.Web.Controllers
         }
 
 
-        [Authorize(Roles = "Admin,ReservationEmp,HouseKeepingEmp,ReceptiomEmp,service,manager,MaintenanceEmp,CleanEmp")]
+        [Authorize(Roles = "Admin,Hoster")]
         [HttpGet]
         public ActionResult Add()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin,Hoster")]
+        [HttpPost]
         public ActionResult Add(RoomTypeDto roomTypeDto)
         {
             _roomTypeService.Add(roomTypeDto);
             
             return RedirectToAction("getAll", "RoomType");
         }
-        [Authorize(Roles = "Admin,ReservationEmp,HouseKeepingEmp,ReceptiomEmp,service,manager,MaintenanceEmp,CleanEmp")]
+        [Authorize(Roles = "Admin,Hoster")]
         public ActionResult Edit(int id)
         {
 
@@ -44,8 +45,8 @@ namespace NawafizApp.Web.Controllers
             return View(dto);
         }
         [HttpPost]
-        [Authorize(Roles = "Admin,ReservationEmp,HouseKeepingEmp,ReceptiomEmp,service,manager,MaintenanceEmp,CleanEmp")]
-        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Hoster")]
+
         
         public ActionResult Edit(RoomTypeDto roomTypeDto)
         {
@@ -60,8 +61,7 @@ namespace NawafizApp.Web.Controllers
             return View(roomTypeDto);
         }
 
-        [Authorize(Roles = "Admin,ReservationEmp,HouseKeepingEmp,ReceptiomEmp,service,manager,MaintenanceEmp,CleanEmp")]
-
+        [Authorize(Roles = "Admin,Hoster")]
         public ActionResult getall()
         {
             return View(_roomTypeService.GetRoomTypes());
@@ -69,9 +69,8 @@ namespace NawafizApp.Web.Controllers
 
 
         }
-        [Authorize(Roles = "Admin,ReservationEmp,HouseKeepingEmp,ReceptiomEmp,service,manager,MaintenanceEmp,CleanEmp")]
+        [Authorize(Roles = "Admin,Hoster")]
 
-       
         public ActionResult Delete(int?id)
         {
             _roomTypeService.delete(id.Value);

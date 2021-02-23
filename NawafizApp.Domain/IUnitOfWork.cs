@@ -25,6 +25,7 @@ namespace NawafizApp.Domain
         IRepository<Notifictation> NotifictationRepository { get; }
         IRepository<FixOrder> FixOrderRepository { get; }
         IRepository<FIxOrderEqupment> FIxOrderEqupment { get; }
+        IRepository<RoomRec> roomrecRepository { get; }
         #endregion
 
         #region Methods

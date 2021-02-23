@@ -6,79 +6,85 @@
     Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
 }
 
-<h2>المهام</h2>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>تجهيزات الطلب التي بحاجة صيانة
+        </div>
+    </div>
+    <div class="portlet-body">
+
+        <table class="table" id="1">
+            <tr>
+                <th>
+                    الحجز
+                </th>
+                <th>
+                    المشرف
+                </th>
+                <th>
+                    النظافة
+                </th>
+
+                تاربخ الأنشاء
+                </th>
+
+                <th>
+                    الغرفة
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.HosterName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.moshrefname)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_At)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.startdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.enddate)
+                    </td>
+                    <td>
+                        
+                        @Html.ActionLink("أستلام المهمة ", "takeCleanOrder", new { id = item.Id })|
+                        @Html.ActionLink("قطع الصيانة  ", "getequpment", new { id = item.Id })
 
 
-<table class="table" id="1">
-    <tr>
-        <th>
-            الحجز
-        </th>
-        <th>
-            المشرف
-        </th>
-        <th>
-            النظافة
-        </th>
+                    </td>
+                </tr>
+            }
 
-        تاربخ الأنشاء
-        </th>
-
-        <th>
-            الغرفة
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-
-                @Html.DisplayFor(modelItem => item.HosterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.moshrefname)
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.empName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_At)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roomnu)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enddate)
-            </td>
-            <td>
-                getequpment
-                @Html.ActionLink("أستلام المهمة ", "takeFixOrder", new { id = item.Id })
-                @Html.ActionLink("قطع الصيانة  ", "getequpment", new { id = item.Id })
+        </table>
 
 
-            </td>
-        </tr>
-    }
-
-</table>
-
-
-<h2>GetallforCleanEmp</h2>
+      </div>
+    </div>
 

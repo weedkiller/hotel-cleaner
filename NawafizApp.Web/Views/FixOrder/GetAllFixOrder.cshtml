@@ -1,97 +1,124 @@
 ﻿@model IEnumerable<NawafizApp.Services.Dtos.FixOrderDto>
-
 @{
-    ViewBag.Title = "Getallformosh";
-    Layout = "~/Views/Shared/_Layout_supervices.cshtml";
+    ViewBag.Title = "GetAllFixOrder";
+
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
 }
 
-<h2>Getallformosh</h2>
+<h2>GetAllFixOrder</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-
         <th>
-            الحجز
-        </th>
-
-        <th>
-            المشرف
-        </th>
-
-        <th>
-            الصيانة
-        </th>
-
-        <th>
-            وقت الأنشاء
+            @Html.DisplayNameFor(model => model.Hoster)
         </th>
         <th>
-            وصف
-        </th>
-
-        <th>
-            الغرفة
+            @Html.DisplayNameFor(model => model.HosterName)
         </th>
         <th>
-            تم أستلامها 
+            @Html.DisplayNameFor(model => model.moshId)
         </th>
         <th>
-            تم الأنتهاء
+            @Html.DisplayNameFor(model => model.moshrefname)
         </th>
         <th>
-            وقت الأنتهاء
+            @Html.DisplayNameFor(model => model.maitremp)
         </th>
         <th>
-           وقت البدء
+            @Html.DisplayNameFor(model => model.empName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creation_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creation_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creation_At)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roomnu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Istaked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isFinished)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enddate)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.HosterName)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.moshrefname)
-            </td>
-
-            <td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_At)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Roomnu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Istaked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isFinished)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enddate)
-            </td>
-            <td>
-                @Html.ActionLink("أرسال الى  عامل الصيانة ", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("تفاصيل", "getequpment", new { id = item.Id }) |
-
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hoster)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HosterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moshId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moshrefname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maitremp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creation_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creation_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creation_At)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Roomnu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Istaked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isFinished)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.enddate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
 </table>

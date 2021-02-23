@@ -5,103 +5,113 @@
     Layout = "~/Views/Shared/_Layout_supervices.cshtml";
 }
 
-<h2>مهام التنظيف</h2>
 
-<p>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>كافة طلبات النظافة 
+        </div>
+    </div>
+    <div class="portlet-body">
 
-</p>
-<table class="table">
-    <tr>
+        <p>
 
-        <th>
-            الحجز
-        </th>
+        </p>
+        <table class="table">
+            <tr>
 
-        <th>
-            المشرف
-        </th>
+                <th>
+                    الحجز
+                </th>
 
-        <th>
-            التنظيف
-        </th>
-        <th>
-            وقت الأنشاء
-        </th>
-        <th>
-            تاريخ الأنشاء
-        </th>
+                <th>
+                    المشرف
+                </th>
 
-        <th>
-            وصف
-        </th>
+                <th>
+                    التنظيف
+                </th>
+                <th>
+                    وقت الأنشاء
+                </th>
+                <th>
+                    تاريخ الأنشاء
+                </th>
 
-        <th>
-            رقم الغرفة
-        </th>
-        <th>
-            تم الأستلام من التنظيف ؟
-        </th>
-        <th>
-            منتهية
-        </th>
-        <th>
-            وقت البدء
-        </th>
-        <th>
-            وقت الأنتهاء
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                    وصف
+                </th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
+                <th>
+                    رقم الغرفة
+                </th>
+                <th>
+                    تم الأستلام من التنظيف ؟
+                </th>
+                <th>
+                    منتهية
+                </th>
+                <th>
+                    وقت البدء
+                </th>
+                <th>
+                    وقت الأنتهاء
+                </th>
+                <th></th>
+            </tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.HosterName)
-            </td>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.moshrefname)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HosterName)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.empName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Time)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.moshrefname)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_Time)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Roomnu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Istaked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isFinished)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enddate)
-            </td>
-            <td>
-                @if (item.cleaningEmp == null)
-                {
-                    @Html.ActionLink("أرسال الى العامل ", "sendOrderToemp", new { id = item.Id })
-                }
-                | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Istaked)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.isFinished)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.startdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.enddate)
+                    </td>
+                    <td>
+                        @if (item.cleaningEmp == null)
+                        {
+                            @Html.ActionLink("أرسال الى العامل ", "sendOrderToemp", new { id = item.Id })
+                        }
+                        | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        </div>
+    </div>

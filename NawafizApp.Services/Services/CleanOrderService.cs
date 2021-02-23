@@ -75,16 +75,36 @@ namespace NawafizApp.Services.Services
             {
                 Order.enddate = dto.enddate;
             }
-            Order.Creation_At = dto.Creation_At;
-            Order.Creation_Date = dto.Creation_Date;
-            Order.Creation_Time = dto.Creation_Time;
+            if (!string.IsNullOrWhiteSpace(dto.Creation_At))
+            {
+                Order.Creation_At = dto.Creation_At;
+            }
+            if (!string.IsNullOrWhiteSpace(dto.Creation_Date))
+            {
+                Order.Creation_Date = dto.Creation_Date;
+            }
+            if (!string.IsNullOrWhiteSpace(dto.Creation_Time))
+            {
+                Order.Creation_Time = dto.Creation_Time;
+            }
+            
 
 
                
             Order.isFinished = dto.isFinished;
-            Order.cleaningEmp = dto.cleaningEmp;
-            Order.moshId = dto.moshId;
-            Order.Hoster = dto.Hoster;
+            if (dto.cleaningEmp.HasValue)
+            {
+                Order.cleaningEmp = dto.cleaningEmp;
+            }
+            if (dto.moshId.HasValue)
+            {
+                Order.moshId = dto.moshId;
+            }
+            if (dto.Hoster.HasValue)
+            {
+                Order.Hoster = dto.Hoster;
+            }
+            
             Order.isTaked = dto.Istaked;
             
 
@@ -111,6 +131,9 @@ namespace NawafizApp.Services.Services
             foreach (var item in list)
             {
                 dto.Id = item.Id;
+                dto.Istaked = item.isTaked;
+
+
                 dto.moshId = item.moshId;
                 dto.Hoster = item.Hoster;
                 dto.startdate = item.startdate;
@@ -149,6 +172,11 @@ namespace NawafizApp.Services.Services
                 dto.moshId = item.moshId;
                 dto.cleaningEmp = item.cleaningEmp;
                 dto.Hoster = item.Hoster;
+            dto.isFinished = item.isFinished;
+            dto.Istaked = item.isTaked;
+            dto.startdate = item.startdate;
+            dto.enddate = item.enddate;
+
                 
 
 

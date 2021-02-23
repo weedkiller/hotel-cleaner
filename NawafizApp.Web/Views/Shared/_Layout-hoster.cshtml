@@ -296,18 +296,40 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("getAllRoom","Room")" class="nav-link ">
+                                    <a href="@Url.Action("RoomView","Room")" class="nav-link ">
                                         <span class="title">إظهار كافة الغرف </span>
 
                                     </a>
                                 </li>
 
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("getAllRoom","Room")" class="nav-link ">
+                                    <a href="@Url.Action("RoomView","Room")" class="nav-link ">
                                         <span class="title">حالة الغرف</span>
 
                                     </a>
                                 </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-puzzle"></i>
+                                <span class="title">أنماط الغرف  </span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Add","RoomType")" class="nav-link ">
+                                        <span class="title">إضافة نمط جديد  </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("getall","RoomType")" class="nav-link ">
+                                        <span class="title">إظهار كافة الأنماط  </span>
+
+                                    </a>
+                                </li>
+
 
                             </ul>
                         </li>

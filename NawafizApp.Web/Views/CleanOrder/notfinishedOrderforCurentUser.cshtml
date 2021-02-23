@@ -5,95 +5,89 @@
     Layout = "~/Views/Shared/_Layout_supervices.cshtml";
 }
 
-<h2>notfinishedOrderforCurentUser</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.HosterName)
-        </th>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>المهام المستلمة غير المنتهية 
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table">
+            <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.moshrefname)
-        </th>
+                <th>
+                  الحجز
+                </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.empName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creation_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creation_Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creation_At)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+                <th>
+                    أسم المشرف
+                </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Roomnu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Istaked)
-        </th>
+                <th>
+                    أسم الموظف
+                </th>
+  
+                
+               <th>
+                   وقت و تاريخ الأنشاء
+               </th>
+                <th>
+                    الوصف
+                </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.startdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.enddate)
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                   الغرفة 
+                </th>
 
-@foreach (var item in Model) {
-    <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.HosterName)
-        </td>
+                <th>
+                    وقت البدء
+                </th>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.moshrefname)
-        </td>
+                <th></th>
+            </tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.empName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Creation_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Creation_Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Creation_At)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Roomnu)
-        </td>
-        <td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HosterName)
+                    </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.startdate)
-        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.moshrefname)
+                    </td>
 
-        <td>
-            @Html.ActionLink("إكمال المهمة  ", "EndCleanOrder1", new { id=item.Id }) |
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empName)
+                    </td>
 
-        </td>
-    </tr>
-}
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_At)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
+                    <td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.startdate)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("إكمال المهمة  ", "EndCleanOrder", new { Oid = item.Id }) |
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

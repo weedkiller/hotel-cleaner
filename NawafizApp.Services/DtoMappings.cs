@@ -25,6 +25,7 @@ namespace NawafizApp.Services
                 ;
                 cfg.CreateMap<Language, LanguageDto>();
                 cfg.CreateMap<RoomType, RoomTypeDto>();
+                cfg.CreateMap<RoomRec, roomrecDto>();
                 cfg.CreateMap<HotelBlock, HotelBlockDto>();
                 cfg.CreateMap<FixOrder, FixOrderDto>();
                 cfg.CreateMap<FIxOrderEqupment, FixOrderEqupDto>();
@@ -56,7 +57,7 @@ namespace NawafizApp.Services
                 cfg.CreateMap<FixOrderDto, FixOrder>();
                 cfg.CreateMap<FixOrderEqupDto, FIxOrderEqupment>();
                 cfg.CreateMap<HotelBlockDto, HotelBlock>();
-
+                cfg.CreateMap<roomrecDto, RoomRec>();
                 cfg.CreateMap<RoomTypeDto, RoomType>();
                 cfg.CreateMap<RoomStatusDto, RoomStatus>();
                 cfg.CreateMap<EquipmentDto, Equipment>();

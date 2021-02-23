@@ -30,26 +30,25 @@ namespace NawafizApp.Web.Controllers
         }
         // GET: FixOrder
         [Authorize(Roles = "Admin,Hoster")]
-        public ActionResult AddFixOrder(int rid)
+        public ActionResult AddFixOrder()
         {
-            TempData["rid"] = rid;
             return View();
         }
         [HttpPost]
 
         [Authorize(Roles = "Admin,Hoster")]
-        public ActionResult AddFixOrder(FixOrderDto fixOrderDto)
+        public ActionResult AddFixOrder(FixOrderDto fixOrderDto,int Rid )
         {
-            fixOrderDto.Room_ID = Convert.ToInt32(TempData["rid"]);
+
+            fixOrderDto.Room_ID = Rid;
             fixOrderDto.Hoster = Guid.Parse(User.Identity.GetUserId());
-            fixOrderDto.moshId = _fixOrderServices.getmoshbyroomId((int)fixOrderDto.Room_ID);
-            fixOrderDto.Creation_Time = DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            fixOrderDto.moshId = _fixOrderServices.getmoshbyroomId((int)Rid);
             fixOrderDto.Creation_At = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
-            var room = _roomService.GetById((int)fixOrderDto.Room_ID);
+            var room = _roomService.GetById(Rid);
             room.Isrequistedfix = true;
             _roomService.Edit(room);
             var fixorder_id = _fixOrderServices.addFixOrder(fixOrderDto);
-            var equ = _equipmentService.All(Convert.ToInt32(fixOrderDto.Room_ID));
+            var equ = _equipmentService.All(Convert.ToInt32(Rid));
 
             foreach (var item in equ)
             {
@@ -63,7 +62,7 @@ namespace NawafizApp.Web.Controllers
 
             }
 
-            return RedirectToAction("getAllRoom", "Room");
+            return RedirectToAction("RoomView", "Room");
         }
 
         [Authorize(Roles = "Admin,Hoster")]
@@ -241,9 +240,88 @@ namespace NawafizApp.Web.Controllers
             _userService.Edit(userdto, guid);
             _fixOrderServices.edit(dto);
             TempData["ord"] = dto.Id;
-            return RedirectToAction("EndCleanOrder");
+            return RedirectToAction("EndCleanOrder", new { rid = dto.Room_ID,oid = dto.Id });
 
         }
+
+
+        public ActionResult EndCleanOrder(int rid)
+        {
+
+            var dto = _equipmentService.All(rid).Where(x=>x.ishere==true & x.needfix==true);
+            return View(dto);
+
+        }
+        [HttpPost]
+        public ActionResult EndCleanOrder(int rid,int oid)
+        {
+            var cleanOrderDto = _fixOrderServices.GetById(oid);
+            var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
+            userdto.IsBusy = false;
+            _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
+            cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            cleanOrderDto.isFinished = true;
+            _fixOrderServices.edit(cleanOrderDto);
+
+            var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
+            //rom. = false;
+            rom.Isrequistedfix = false;
+            rom.IsNeedfix = false;
+            _roomService.Edit(rom);
+            return RedirectToAction("GetallforCleanEmp");
+
+        }
+
+
+        public ActionResult CheckedToggle(int id, int rid)
+        {
+            _equipmentService.checkedToggle(id);
+            var room = _roomService.GetById(rid);
+            room.IsNeedfix = !room.IsNeedfix;
+            _roomService.Edit(room);
+            return RedirectToAction("EndCleanOrder");
+
+
+
+        }
+
+        public ActionResult CheckedToggleFix(int id, int Rid)
+        {
+            _equipmentService.checkedToggleFix(id);
+            var room = _roomService.GetById(Rid);
+            room.IsNeedfix = !room.IsNeedfix;
+            _roomService.Edit(room);
+            return RedirectToAction("EndCleanOrder", new { Rid = Rid });
+
+
+
+        }
+
+        public ActionResult EndCleancOrder(int id)
+        {
+            var dto = _fixOrderServices.GetById(id);
+            dto.empName = _userService.GetById((Guid)dto.maitremp).FullName.ToString();
+            return View(dto);
+
+        }
+        [HttpPost]
+        public ActionResult EndClxeanOrder(FixOrderDto cleanOrderDto)
+        {
+            var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
+            userdto.IsBusy = false;
+            _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
+            cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+            cleanOrderDto.isFinished = true;
+            _fixOrderServices.edit(cleanOrderDto);
+
+            var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
+            //rom. = false;
+            rom.Isrequistedfix = false;
+            _roomService.Edit(rom);
+            return RedirectToAction("Check", "Equipment", rom.Id);
+
+        }
+
 
         public ActionResult notfinishedOrderforCurentUser()
         {
@@ -263,24 +341,9 @@ namespace NawafizApp.Web.Controllers
             return View(dto);
 
         }
-        public ActionResult EndCleanOrder()
-        {
-            var dto = _fixOrderServices.GetById(Convert.ToInt32(TempData["ord"]));
-            dto.empName = _userService.GetById((Guid)dto.maitremp).FullName.ToString();
-            return View(dto);
-
-        }
-
-        public ActionResult EndCleanOrder1()
-        {
-            var dto = _fixOrderServices.GetById(Convert.ToInt32(TempData["ord"]));
-            dto.empName = _userService.GetById((Guid)dto.moshId).FullName.ToString();
-            return View(dto);
 
 
 
-
-        }
         [HttpPost]
 
         public ActionResult EndCleanOrder1(int id)
@@ -295,23 +358,6 @@ namespace NawafizApp.Web.Controllers
 
             var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
             rom.IsNeedfix = false;
-            rom.Isrequistedfix = false;
-            _roomService.Edit(rom);
-            return RedirectToAction("Check", "Equipment", rom.Id);
-
-        }
-        [HttpPost]
-        public ActionResult EndCleanOrder(FixOrderDto cleanOrderDto)
-        {
-            var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
-            userdto.IsBusy = false;
-            _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
-            cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
-            cleanOrderDto.isFinished = true;
-            _fixOrderServices.edit(cleanOrderDto);
-
-            var                          rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
-            //rom. = false;
             rom.Isrequistedfix = false;
             _roomService.Edit(rom);
             return RedirectToAction("Check", "Equipment", rom.Id);

@@ -5,74 +5,69 @@
     ViewBag.Title = "مهام التنظيف";
     Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
 }
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>مهامي 
+        </div>
+    </div>
+    <div class="portlet-body">
 
-<h2>المهام</h2>
+        <table class="table" id="1">
+            <tr>
+                <th>
+                    الحجز
+                </th>
+                <th>
+                    المشرف
+                </th>
+                <th>
+                    النظافة
+                </th>
+                <th>
 
+                    وقت و تاريخ الأنشاء 
+                </th>
+                <th>
+                    الغرفة
+                </th>
 
-<table class="table" id="1">
-    <tr>
-        <th>
-            الحجز
-        </th>
-        <th>
-            المشرف
-        </th>
-        <th>
-            النظافة
-        </th>
+                <th></th>
+            </tr>
 
-        تاربخ الأنشاء
-        </th>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
 
-        <th>
-            الغرفة
-        </th>
+                        @Html.DisplayFor(modelItem => item.HosterName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.moshrefname)
 
-        <th></th>
-    </tr>
- 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empName)
+                    </td>
 
-                @Html.DisplayFor(modelItem => item.HosterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.moshrefname)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_At)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.empName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creation_At)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roomnu)
-            </td>
+                    <td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enddate)
-            </td>
-            <td>
+                        @Html.ActionLink("أستلام المهمة ", "takeCleanOrder", new { id = item.Id })
 
-                @Html.ActionLink("أستلام المهمة ", "takeCleanOrder", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-            </td>
-        </tr>
-    }
-        
-</table>
+        </table>
+        </div>
+</div>

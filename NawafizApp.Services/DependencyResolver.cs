@@ -33,6 +33,7 @@ namespace NawafizApp.Services
             registerComponent.RegisterType<IUserService, UserService>();
             registerComponent.RegisterType<IHotelBlockService, HotelBlockService>();
             registerComponent.RegisterType<IRoomService, RoomService>();
+            registerComponent.RegisterType<IRoomRecServices, RoomRecServices>();
             registerComponent.RegisterType<IRoomTypeService, RoomTypeService>();
             registerComponent.RegisterType<IRoomStatusService, RoomStatusService>();
             registerComponent.RegisterType<IFixOrderEqupService, FixOrderEqupService>();

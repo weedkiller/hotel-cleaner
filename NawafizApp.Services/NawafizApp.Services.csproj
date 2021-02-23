@@ -140,6 +140,7 @@
     <Compile Include="Dtos\PercentDto.cs" />
     <Compile Include="Dtos\RegisterUserDto.cs" />
     <Compile Include="Dtos\RoomDto.cs" />
+    <Compile Include="Dtos\roomrecDto.cs" />
     <Compile Include="Dtos\RoomStatusDto.cs" />
     <Compile Include="Dtos\RoomTypeDto.cs" />
     <Compile Include="Dtos\ShowUsersOfHotelBlockByRoleDto.cs" />
@@ -180,11 +181,13 @@
     <Compile Include="Interfaces\IFixOrderEqupService.cs" />
     <Compile Include="Services\INotifictationService.cs" />
     <Compile Include="Interfaces\IRoomTypeService.cs" />
+    <Compile Include="Services\IRoomRecServices.cs" />
     <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\NotifictationService.cs" />
     <Compile Include="Services\CleanOrderService.cs" />
     <Compile Include="Services\ReadEx.cs" />
     <Compile Include="Services\ReportService.cs" />
+    <Compile Include="Services\RoomRecServices.cs" />
     <Compile Include="Services\RoomService.cs" />
     <Compile Include="Services\RoomStatusService.cs" />
     <Compile Include="Services\RoomTypeService.cs" />

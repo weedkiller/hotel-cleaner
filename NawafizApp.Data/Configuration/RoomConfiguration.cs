@@ -13,7 +13,7 @@ namespace NawafizApp.Data.Configuration
     {
         internal RoomConfiguration()
         {
-            ToTable("Room");
+            ToTable("Rooms");
 
 
             HasKey(x => x.Id)
@@ -50,7 +50,7 @@ namespace NawafizApp.Data.Configuration
 ;
             HasRequired(x => x.RoomType).WithMany(x => x.Rooms);
             HasRequired(x => x.HotelBlock).WithMany(x => x.Rooms);
-            HasMany(x => x.Equipments).WithRequired(x => x.Room);
+            HasMany(x => x.Equipments).WithOptional(x => x.Room);
 
 
             HasMany(x => x.Orders).WithRequired(x => x.Room);

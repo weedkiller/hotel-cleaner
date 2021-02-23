@@ -1,6 +1,7 @@
 ﻿using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
+using NawafizApp.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,11 @@ namespace NawafizApp.Web.Controllers
         IRoomService _roomService;
         IRoomTypeService _roomTypeService;
         IHotelBlockService _hotelBlockService;
-        public RoomController(ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IRoomService roomService,IRoomTypeService roomTypeService,IHotelBlockService hotelBlockService)
+        IRoomRecServices _RoomRecServices;
+        public RoomController(IRoomRecServices RoomRecServices,ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IRoomService roomService,IRoomTypeService roomTypeService,IHotelBlockService hotelBlockService)
             : base(userManager, aps)
         {
-
+            _RoomRecServices = RoomRecServices;
             this._userService = IUS;
             this._roomService = roomService;
             _roomTypeService = roomTypeService;
@@ -38,6 +40,11 @@ namespace NawafizApp.Web.Controllers
             dto.RoomType_id = tid;
             dto.HotelBlock_id = hid;
             int i = _roomService.Add(dto);
+            roomrecDto roomrecDto = new roomrecDto();
+            roomrecDto.Room_Id = i;
+            roomrecDto.Recoed = "تم أضافة الغرفة ";
+            _RoomRecServices.Add(roomrecDto);
+   
             return RedirectToAction("AddEquipment", "Equipment",new { Rid = i });
         }
 
@@ -70,7 +77,11 @@ namespace NawafizApp.Web.Controllers
         //}
 
         //[Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
-
+        [Authorize(Roles = "Admin,Hoster")]
+        public ActionResult RoomView()
+        {
+            return View();
+        }
         [Authorize(Roles = "Admin,Hoster")]
 
         public ActionResult getAllRoom()
@@ -135,6 +146,11 @@ namespace NawafizApp.Web.Controllers
             {
 
                 _roomService.Edit(roomDto);
+
+                roomrecDto roomrecDto = new roomrecDto();
+                roomrecDto.Room_Id =roomDto.Id;
+                roomrecDto.Recoed = "تم تعديل  الغرفة ";
+                _RoomRecServices.Add(roomrecDto);
                 return RedirectToAction("getAllRoom", "Room");
 
             }

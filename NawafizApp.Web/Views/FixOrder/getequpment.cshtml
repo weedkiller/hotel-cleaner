@@ -1,38 +1,60 @@
 ﻿@model IEnumerable<NawafizApp.Services.Dtos.FixOrderEqupDto>
 
-@{
+
+
+@if (User.IsInRole("BlockSupervisor"))
+{
+
     ViewBag.Title = "getequpment";
+
+
+    Layout = "~/Views/Shared/_Layout_supervices.cshtml";
+
+}
+
+@if (User.IsInRole("MaintenanceEmp"))
+{
+
+    ViewBag.Title = "getequpment";
+
+
     Layout = "~/Views/Shared/_Layout-fixEmp.cshtml";
+
 }
 
-<h2>getequpment</h2>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>تجهيزات الطلب التي بحاجة صيانة 
+        </div>
+    </div>
+    <div class="portlet-body">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-           القطعة 
-        </th>
-        <th>
-            رقم الطلب
-        </th>
-        <th></th>
-    </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    القطعة
+                </th>
+                <th>
+                    رقم الطلب
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FixOrder)
-        </td>
-        <td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FixOrder)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
 
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+</div>

@@ -16,5 +16,6 @@ namespace NawafizApp.Services.Interfaces
         List<EquipmentDto> All(int rid);
         bool EquipmentRemove(int Id);
         void checkedToggle(int id);
+        void checkedToggleFix(int id);
     }
 }

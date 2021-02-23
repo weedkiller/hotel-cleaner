@@ -27,7 +27,7 @@ namespace NawafizApp.Web.Controllers
         }
         [Authorize(Roles = "Admin,Hoster")]
 
-        public ActionResult AddEquipment()
+        public ActionResult AddEquipment(int rid)
         {
 
 
@@ -46,25 +46,25 @@ namespace NawafizApp.Web.Controllers
 
             int i = _equipmentService.Add(dto);
 
-
-            return View();
+            ViewBag.Rid = rid;
+            return RedirectToAction("AddEquipment",new {rid=rid });
 
 
         }
 
-        [Authorize(Roles = "Admin,Hoster")]
+        [Authorize(Roles = "Admin,Hoster,Cleaner")]
 
-        public ActionResult getAllEquipments(int rid)
+        public ActionResult getAllEquipments(int Rid)
         {
 
-
-            return View(_equipmentService.All(rid));
+            ViewBag.Rid = Rid;
+            return View(_equipmentService.All(Rid));
 
         }
 
 
 
-
+        [Authorize(Roles = "Admin,Hoster")]
         public ActionResult Delete(int id)
         {
             var x = _equipmentService.EquipmentRemove(id);
@@ -96,39 +96,41 @@ namespace NawafizApp.Web.Controllers
             }
             return View(eqDto);
         }
-        [Authorize(Roles = "Admin,Hoster")]
+        [Authorize(Roles = "Admin,Hoster,Cleaner")]
 
 
-        public ActionResult Check(int id)
+        public ActionResult getAllEquipmentsForcleaningEmp(int Rid)
         {
 
-            var dto = _equipmentService.GetById(id);
+            var dto = _equipmentService.All(Rid);
             return View(dto);
 
         }
-        [HttpPost]
-        [Authorize(Roles = "Admin,Hoster")]
-        public ActionResult Check(EquipmentDto eqDto)
+
+
+        public ActionResult CheckedToggle(int id,int rid)
         {
-
-            if (ModelState.IsValid)
-            {
-
-                _equipmentService.Edit(eqDto);
-                if (eqDto.needfix==true)
-                {
-                  var room=  _roomService.GetById(eqDto.Room_id);
-                    room.IsNeedfix = true;
-                    _roomService.Edit(room);
-                }
-
-              
-                return RedirectToAction("getAllEquipments");
+            _equipmentService.checkedToggle(id);
+            var room = _roomService.GetById(rid);
+            room.IsNeedfix = !room.IsNeedfix;
+            _roomService.Edit(room);
+            return RedirectToAction("getAllEquipmentsForcleaningEmp");
 
 
-            }
-            return View(eqDto);
 
         }
+
+        public ActionResult CheckedToggleFix(int id, int Rid)
+        {
+            _equipmentService.checkedToggleFix(id);
+            var room = _roomService.GetById(Rid);
+            room.IsNeedfix = !room.IsNeedfix;
+            _roomService.Edit(room);
+            return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid }); 
+
+
+
+        }
+
     }
 }

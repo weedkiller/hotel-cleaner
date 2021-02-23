@@ -86,5 +86,13 @@ namespace NawafizApp.Services.Services
             _unitOfWork.EquipmentRepository.Update(model);
             _unitOfWork.SaveChanges();
         }
+
+        public void checkedToggleFix(int id)
+        {
+            var model = _unitOfWork.EquipmentRepository.FindById(id);
+            model.needfix = !model.needfix;
+            _unitOfWork.EquipmentRepository.Update(model);
+            _unitOfWork.SaveChanges();
+        }
     }
 }

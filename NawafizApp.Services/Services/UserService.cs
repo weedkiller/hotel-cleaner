@@ -156,7 +156,8 @@ namespace NawafizApp.Services.Services
 
         public List<UserDto> usersforblock(int bid)
         {
-            var list =_unitOfWork.UserRepository.GetAll().Where(x => x.HotelBlock.Id == bid);
+           
+            var list = _unitOfWork.HotelBlockRepository.FindById(bid).Users;
             List<UserDto> userDtol = new List<UserDto>();
             UserDto userDtos = new UserDto();
             foreach (var item in list)

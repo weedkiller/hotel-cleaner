@@ -54,6 +54,7 @@
     <Compile Include="Entities\OrderEqp.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\RoomRec.cs" />
     <Compile Include="Entities\RoomStatus.cs" />
     <Compile Include="Entities\RoomType.cs" />
     <Compile Include="Entities\User.cs" />
