@@ -16,6 +16,7 @@ using System.Threading;
 using System.Net;
 using System.Web.Caching;
 using System.Web.Helpers;
+using NawafizApp.Web.Helper;
 
 namespace NawafizApp.Web
 {
@@ -163,9 +164,10 @@ namespace NawafizApp.Web
               });
 
             AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
-            
 
 
+            //SignalR start for notifications
+            SignalHelper.Start();
 
         }
     }

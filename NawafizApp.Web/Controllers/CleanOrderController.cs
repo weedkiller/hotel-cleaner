@@ -159,6 +159,7 @@ namespace NawafizApp.Web.Controllers
         public ActionResult Getallformosh()
         {
 
+            _orderService.setIsSeenTrueForMosherf();
 
             List<CleanOrderDto> list1 = new List<CleanOrderDto>();
 
@@ -240,6 +241,7 @@ namespace NawafizApp.Web.Controllers
 
         public ActionResult GetallforCleanEmp()
         {
+            _orderService.setIsSeenTrue();
                List<CleanOrderDto> list1 = new List<CleanOrderDto>();
 
             var dc = _orderService.GetAll().OrderByDescending(x => x.Id).Where(x => x.cleaningEmp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false).Where(x=>x.Istaked==false);

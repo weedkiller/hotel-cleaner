@@ -194,5 +194,35 @@ namespace NawafizApp.Services.Services
 
                 
         }
+
+        public bool setIsSeenTrue()
+        {
+
+            List<CleanOrder> list = _unitOfWork.OrderRepository.GetAll();
+            foreach (var item in list)
+            {
+                item.IsSeenFromCleaner = true;
+
+                _unitOfWork.OrderRepository.Update(item);
+            }
+
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+        public bool setIsSeenTrueForMosherf()
+        {
+
+            List<CleanOrder> list = _unitOfWork.OrderRepository.GetAll();
+            foreach (var item in list)
+            {
+                item.IsSeenFromManager = true;
+
+                _unitOfWork.OrderRepository.Update(item);
+            }
+
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+        
     }
 }

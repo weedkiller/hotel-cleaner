@@ -32,7 +32,9 @@ namespace NawafizApp.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+
             SetANewRequestVerificationTokenManuallyInCookieAndOnTheForm();
+            
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -81,6 +83,16 @@ namespace NawafizApp.Web.Controllers
                     var user = await UserManager.FindByNameAsync(model.UserName);
                     if (user != null)
                     {
+                        //add http cookie 
+                        System.Web.HttpContext.Current.Session["userId"] = user.Id.ToString();
+                        System.Web.HttpContext.Current.Session["userRoles"] = _UserService.Roles(user.Id);
+                        HttpCookie usernameCookie = new HttpCookie("username", user.UserName);
+                        HttpCookie userIdCookie = new HttpCookie("userId", user.Id.ToString());
+                        usernameCookie.Expires = DateTime.Now.AddDays(1);
+                        userIdCookie.Expires = DateTime.Now.AddDays(1);
+                        HttpContext.Response.Cookies.Add(userIdCookie);
+                        HttpContext.Response.Cookies.Add(usernameCookie);
+
                         if (user.PassWordExpired)
                         {
                             var ErrorMessage = "انتهت صلاحية كلمة المرور الرجاء اعادة تعيين كلمة المرور";

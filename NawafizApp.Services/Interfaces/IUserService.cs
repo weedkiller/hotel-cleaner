@@ -1,4 +1,5 @@
-﻿using NawafizApp.Services.Dtos;
+﻿using NawafizApp.Domain.Entities;
+using NawafizApp.Services.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace NawafizApp.Services.Interfaces
         bool Exists(Guid id);
         bool IsEmailUnique(string email);
         void editForAdm(Guid id, string fullname, string userName);
+        List<Role> Roles(Guid id);
     }
 }

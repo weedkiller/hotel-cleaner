@@ -96,6 +96,7 @@ namespace NawafizApp.Web.Controllers
         {
 
 
+            _fixOrderServices.setIsSeenTrueForMosherf();
             List<FixOrderDto> list1 = new List<FixOrderDto>();
 
             List<FixOrderDto> list = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.moshId == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false).ToList();
@@ -174,6 +175,8 @@ namespace NawafizApp.Web.Controllers
 
         public ActionResult GetallforCleanEmp()
         {
+
+            _fixOrderServices.setIsSeenTrue();
             List<FixOrderDto> list1 = new List<FixOrderDto>();
 
             var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.maitremp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false);

@@ -122,6 +122,14 @@
     <Compile Include="Migrations\202102221502290_55.Designer.cs">
       <DependentUpon>202102221502290_55.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102251738286_addIsSeenToCleanOrders.cs" />
+    <Compile Include="Migrations\202102251738286_addIsSeenToCleanOrders.Designer.cs">
+      <DependentUpon>202102251738286_addIsSeenToCleanOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102252123176_addIsSeenToFixOrders.cs" />
+    <Compile Include="Migrations\202102252123176_addIsSeenToFixOrders.Designer.cs">
+      <DependentUpon>202102252123176_addIsSeenToFixOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\ExternalLoginRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -168,6 +176,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102221502290_55.resx">
       <DependentUpon>202102221502290_55.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102251738286_addIsSeenToCleanOrders.resx">
+      <DependentUpon>202102251738286_addIsSeenToCleanOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102252123176_addIsSeenToFixOrders.resx">
+      <DependentUpon>202102252123176_addIsSeenToFixOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

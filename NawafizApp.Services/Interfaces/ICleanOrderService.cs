@@ -15,5 +15,7 @@ namespace NawafizApp.Services.Interfaces
         bool delete(int id);
         CleanOrderDto GetById(int id);
         bool edit(CleanOrderDto dto);
+        bool setIsSeenTrue();
+        bool setIsSeenTrueForMosherf();
     }
 }

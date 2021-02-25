@@ -21,6 +21,8 @@ namespace NawafizApp.Domain.Entities
         public virtual Room Room { set; get; }
         public bool isTaked { get; set; }
         public bool isFinished { set; get; }
+        public bool IsSeenFromCleaner { set; get; }
+        public bool IsSeenFromManager { set; get; }
         public string startdate { set; get; }
         public string enddate { set; get; }
  

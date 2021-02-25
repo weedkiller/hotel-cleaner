@@ -170,6 +170,26 @@ License: You must have a valid license purchased only from themeforest(the above
         body, h1, h2, h3, h4, h5, h6 {
             font-family: jazeera !important;
         }
+               mark {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 2px solid #222222;
+    /*# c7c1c1 d61818*/
+    width: 30px;
+    height: 30px;
+    background-color: #222222;
+    position: absolute;
+    top: 2px;
+    left: 39px;
+    font-size: 14px;
+    padding-right: 3px;
+    line-height: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #FFF;
+    font-weight: 700;
+}
     </style>
 
 </head>
@@ -243,17 +263,20 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-puzzl"></i>
                                 <span class="title">الطلبات  </span>
+                                <mark id="requests-mark-manager"></mark>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("GetallforCleanEmp","CleanOrder")" class="nav-link ">
                                         <span class="title">طلبات التنظيف </span>
+                                        <mark id="requests-mark-clean"></mark>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("Getallformosh","FixOrder")" class="nav-link ">
                                         <span class="title">طلبات الصيانة  </span>
+                                        <mark id="requests-mark-fix"></mark>
 
                                     </a>
                                 </li>
@@ -268,6 +291,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("search","Report")" class="nav-link ">
+                                        <span class="title">تقرير نسب الغرف</span>
+                                    </a>
+                                </li>
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("ChangePassword","Account")" class="nav-link ">
                                         <span class="title">المهام المنجزة   </span>
@@ -470,5 +498,89 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="~/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
 
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        debugger;
+        var obj = $.connection.notificationHub;
+
+        var userId = getCookie("userId");
+        obj.client.sendNotification = function (data) {
+            var count = 0;
+            var countForCleaning = 0;
+            var countForFixing = 0;
+            data.forEach(function (element) {
+                if (element.Role.includes("MCleaner"))
+                    countForCleaning = countForCleaning + element.UserIds.filter(filterArrayById).length;
+                else if (element.Role.includes("MFixer"))
+                    countForFixing = countForFixing + element.UserIds.filter(filterArrayById).length;
+                count = countForCleaning + countForFixing;
+            })
+            if (count > 0) {
+                $("#requests-mark-manager").html(count);
+                $("#requests-mark-manager").css("background-color", "#d61818");
+                $("#requests-mark-manager").css("border-color", "#c7c1c1");
+                if (countForCleaning > 0) {
+                    $("#requests-mark-clean").html(countForCleaning);
+                    $("#requests-mark-clean").css("background-color", "#d61818");
+                    $("#requests-mark-clean").css("width", "10px");
+                    $("#requests-mark-clean").css("height", "10px");
+                    $("#requests-mark-clean").css("top", "10px");
+                    $("#requests-mark-clean").css("border-color", "#c7c1c1");
+                }
+                else {
+                    $("#requests-mark-clean").html("");
+                    $("#requests-mark-clean").css("background-color", "#222222");
+                    $("#requests-mark-clean").css("border-color", "#222222");
+                }
+                if (countForFixing > 0) {
+                    $("#requests-mark-fix").html(countForFixing);
+                    $("#requests-mark-fix").css("background-color", "#d61818");
+                    $("#requests-mark-fix").css("width", "10px");
+                    $("#requests-mark-fix").css("height", "10px");
+                    $("#requests-mark-fix").css("top", "10px");
+                    $("#requests-mark-fix").css("border-color", "#c7c1c1");
+                }
+                else {
+                    $("#requests-mark-fix").html("");
+                    $("#requests-mark-fix").css("background-color", "#222222");
+                    $("#requests-mark-fix").css("border-color", "#222222");
+                }
+            }
+            else {
+                $("#requests-mark-manager").html("");
+                $("#requests-mark-manager").css("background-color", "#222222");
+                $("#requests-mark-manager").css("border-color", "#222222");
+            }
+            console.log(count);
+        };
+        obj.client.addNewMessageToPage = function (data) {
+            console.log(data);
+        }
+        $.connection.hub.start().done(function () {
+            console.log("SUccess");
+            obj.server.send("test");
+        }).fail(function () { console.log("connect with hub"); });
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function filterArrayById(id) {
+            debugger
+            return id == userId;
+        }
+
+
+    </script>
 </body>
 </html>

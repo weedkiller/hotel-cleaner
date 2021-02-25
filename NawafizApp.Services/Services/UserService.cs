@@ -172,6 +172,11 @@ namespace NawafizApp.Services.Services
 
             return (userDtol);
         }
+        public List<Role> Roles(Guid id)
+        {
+            User u = _unitOfWork.UserRepository.FindById(id);
+            return u.Roles.ToList();
+        }
         public bool HasRole(Guid id,String role)
         {
             User u = _unitOfWork.UserRepository.FindById(id);

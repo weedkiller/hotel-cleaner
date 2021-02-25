@@ -49,6 +49,14 @@ namespace NawafizApp.Data.Configuration
     .HasColumnName("isFinished")
     .HasColumnType("bit").IsOptional()
     ;
+            Property(x => x.IsSeenFromCleaner)
+    .HasColumnName("IsSeenFromCleaner")
+    .HasColumnType("bit").IsOptional()
+    ;
+            Property(x => x.IsSeenFromManager)
+   .HasColumnName("IsSeenFromManager")
+   .HasColumnType("bit").IsOptional()
+   ;
             Property(x => x.Description)
         .HasColumnName("Description")
         .HasColumnType("nvarchar")
