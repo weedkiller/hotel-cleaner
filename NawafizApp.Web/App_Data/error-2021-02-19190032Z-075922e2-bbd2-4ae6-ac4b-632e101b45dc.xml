@@ -1,0 +1,224 @@
+﻿<error errorId="075922e2-bbd2-4ae6-ac4b-632e101b45dc" application="/LM/W3SVC/2/ROOT" host="DESKTOP-T4IQH61" type="System.ArgumentException" message="The parameters dictionary contains a null entry for parameter 'hid' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult AddRoom(NawafizApp.Services.Dtos.RoomDto, Int32, Int32)' in 'NawafizApp.Web.Controllers.RoomController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.&#xD;&#xA;Parameter name: parameters" source="System.Web.Mvc" detail="System.ArgumentException: The parameters dictionary contains a null entry for parameter 'hid' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult AddRoom(NawafizApp.Services.Dtos.RoomDto, Int32, Int32)' in 'NawafizApp.Web.Controllers.RoomController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.&#xD;&#xA;Parameter name: parameters&#xD;&#xA;   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="hajez1" time="2021-02-19T19:00:32.5325039Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_PRAGMA:no-cache&#xD;&#xA;HTTP_CONTENT_LENGTH:238&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.9&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=RQm6ssqRa-UQ-WiZBPLZJGB-fPnhUTCvHa_aA5PJ40zO4LqPe01ivbMiOxkYoTb0Bhtpd-f6y6WJX1lelp7BW250QpUYJlOqNCsaRH1H4r41; .AspNet.ApplicationCookie=SdIwFTU2eHtO1tUxXQ5p73kyhBUBfb3t38bbyr8giAhKb05gQJQx1HMFWwYCZV-t08II3x7CLJn2CNDJf6_jOAa8dmkWM-FHs1gzIYh68uAYTepPFMjakpGijZ9RcT_e4b7yCgSH9p2RoYZRNt-61aXqcvnMMCOoeGBF5y2p4fxvrtuoFq_itaLrDbv4BSazBbgPaO_eQ80G3rSGsECtBixSxcRLozHbGyFD9ADGbeTaTpra6FReKtMbD5HxJedcjv6QpxSbZ1oN5Lf46zrPeK3zdIOL1gWsZRIFWZRTjzbJ4myUiYGtxhx8XVYQ3pqBjQt5T0cCOaQ1GtVyeAgR3PkiaXtj8pBQJQaF3EviZUhimJmaIOjGsc59jX4SGaWOz9LlszYpNLX0y4Q6AAOVi3edV4fJVAF1mBmwiGbPTEYL-KkoaQ2UJmbR9bgdGGDlD9jGBAR373gNa3oO-37WkowT6x-CpYvhRCLe7fjYUuTxwmK5CEhkkpsSqLJOxgO3XIj7wQndAVl1g9t78PQ6ug&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_REFERER:http://localhost:50000/Room/AddRoom&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_ORIGIN:http://localhost:50000&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_USER:?1&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Content-Length: 238&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-US,en;q=0.9&#xD;&#xA;Cookie: __RequestVerificationToken=RQm6ssqRa-UQ-WiZBPLZJGB-fPnhUTCvHa_aA5PJ40zO4LqPe01ivbMiOxkYoTb0Bhtpd-f6y6WJX1lelp7BW250QpUYJlOqNCsaRH1H4r41; .AspNet.ApplicationCookie=SdIwFTU2eHtO1tUxXQ5p73kyhBUBfb3t38bbyr8giAhKb05gQJQx1HMFWwYCZV-t08II3x7CLJn2CNDJf6_jOAa8dmkWM-FHs1gzIYh68uAYTepPFMjakpGijZ9RcT_e4b7yCgSH9p2RoYZRNt-61aXqcvnMMCOoeGBF5y2p4fxvrtuoFq_itaLrDbv4BSazBbgPaO_eQ80G3rSGsECtBixSxcRLozHbGyFD9ADGbeTaTpra6FReKtMbD5HxJedcjv6QpxSbZ1oN5Lf46zrPeK3zdIOL1gWsZRIFWZRTjzbJ4myUiYGtxhx8XVYQ3pqBjQt5T0cCOaQ1GtVyeAgR3PkiaXtj8pBQJQaF3EviZUhimJmaIOjGsc59jX4SGaWOz9LlszYpNLX0y4Q6AAOVi3edV4fJVAF1mBmwiGbPTEYL-KkoaQ2UJmbR9bgdGGDlD9jGBAR373gNa3oO-37WkowT6x-CpYvhRCLe7fjYUuTxwmK5CEhkkpsSqLJOxgO3XIj7wQndAVl1g9t78PQ6ug&#xD;&#xA;Host: localhost:50000&#xD;&#xA;Referer: http://localhost:50000/Room/AddRoom&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;Origin: http://localhost:50000&#xD;&#xA;Sec-Fetch-Site: same-origin&#xD;&#xA;Sec-Fetch-Mode: navigate&#xD;&#xA;Sec-Fetch-User: ?1&#xD;&#xA;Sec-Fetch-Dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="238" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Room/AddRoom" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Sales\NawafizApp.Web\Room\AddRoom" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="32521" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Room/AddRoom" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Room/AddRoom" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_PRAGMA">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="238" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.9" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=RQm6ssqRa-UQ-WiZBPLZJGB-fPnhUTCvHa_aA5PJ40zO4LqPe01ivbMiOxkYoTb0Bhtpd-f6y6WJX1lelp7BW250QpUYJlOqNCsaRH1H4r41; .AspNet.ApplicationCookie=SdIwFTU2eHtO1tUxXQ5p73kyhBUBfb3t38bbyr8giAhKb05gQJQx1HMFWwYCZV-t08II3x7CLJn2CNDJf6_jOAa8dmkWM-FHs1gzIYh68uAYTepPFMjakpGijZ9RcT_e4b7yCgSH9p2RoYZRNt-61aXqcvnMMCOoeGBF5y2p4fxvrtuoFq_itaLrDbv4BSazBbgPaO_eQ80G3rSGsECtBixSxcRLozHbGyFD9ADGbeTaTpra6FReKtMbD5HxJedcjv6QpxSbZ1oN5Lf46zrPeK3zdIOL1gWsZRIFWZRTjzbJ4myUiYGtxhx8XVYQ3pqBjQt5T0cCOaQ1GtVyeAgR3PkiaXtj8pBQJQaF3EviZUhimJmaIOjGsc59jX4SGaWOz9LlszYpNLX0y4Q6AAOVi3edV4fJVAF1mBmwiGbPTEYL-KkoaQ2UJmbR9bgdGGDlD9jGBAR373gNa3oO-37WkowT6x-CpYvhRCLe7fjYUuTxwmK5CEhkkpsSqLJOxgO3XIj7wQndAVl1g9t78PQ6ug" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50000/Room/AddRoom" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:50000" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_USER">
+      <value string="?1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="XQOTI65GJV5F5-82Wz7xkgR0eZFnxQTEnaCiLged4PU4DJdxXGgbuXPK84SKNqCr67qPKpFlcCcX8Xzx2E-C1C_eUIEBjKZkHQoEpDYKVP01" />
+    </item>
+    <item name="RoomNum">
+      <value string="2524" />
+    </item>
+    <item name="RoomDirection">
+      <value string="" />
+    </item>
+    <item name="Isbusy">
+      <value string="false" />
+    </item>
+    <item name="IsNeedfix">
+      <value string="false" />
+    </item>
+    <item name="isneedclean">
+      <value string="false" />
+    </item>
+    <item name="IsInService">
+      <value string="false" />
+    </item>
+    <item name="hid">
+      <value string="" />
+    </item>
+    <item name="tid">
+      <value string="" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="RQm6ssqRa-UQ-WiZBPLZJGB-fPnhUTCvHa_aA5PJ40zO4LqPe01ivbMiOxkYoTb0Bhtpd-f6y6WJX1lelp7BW250QpUYJlOqNCsaRH1H4r41" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="SdIwFTU2eHtO1tUxXQ5p73kyhBUBfb3t38bbyr8giAhKb05gQJQx1HMFWwYCZV-t08II3x7CLJn2CNDJf6_jOAa8dmkWM-FHs1gzIYh68uAYTepPFMjakpGijZ9RcT_e4b7yCgSH9p2RoYZRNt-61aXqcvnMMCOoeGBF5y2p4fxvrtuoFq_itaLrDbv4BSazBbgPaO_eQ80G3rSGsECtBixSxcRLozHbGyFD9ADGbeTaTpra6FReKtMbD5HxJedcjv6QpxSbZ1oN5Lf46zrPeK3zdIOL1gWsZRIFWZRTjzbJ4myUiYGtxhx8XVYQ3pqBjQt5T0cCOaQ1GtVyeAgR3PkiaXtj8pBQJQaF3EviZUhimJmaIOjGsc59jX4SGaWOz9LlszYpNLX0y4Q6AAOVi3edV4fJVAF1mBmwiGbPTEYL-KkoaQ2UJmbR9bgdGGDlD9jGBAR373gNa3oO-37WkowT6x-CpYvhRCLe7fjYUuTxwmK5CEhkkpsSqLJOxgO3XIj7wQndAVl1g9t78PQ6ug" />
+    </item>
+  </cookies>
+</error>

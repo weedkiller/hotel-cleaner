@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.CleanOrderDto>
+@using NawafizApp.Services.Services
+
+@{
+    ViewBag.Title = "مهام التنظيف";
+    Layout = "~/Views/Shared/_Layout-cleanEmp.cshtml";
+}
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>المهام المنجزة
+        </div>
+    </div>
+    <div class="portlet-body">
+
+        <table class="table" id="1">
+            <tr>
+                <th>
+
+                    وقت و تاريخ الأنشاء
+                </th>
+                <th>
+                    الغرفة
+                </th>
+                <th>
+                    الوصف
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_At)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

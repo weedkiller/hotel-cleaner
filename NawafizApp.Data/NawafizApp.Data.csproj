@@ -94,45 +94,41 @@
     <Compile Include="Configuration\RoomStatusConfiguration.cs" />
     <Compile Include="Configuration\RoomTypeConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
-    <Compile Include="Migrations\202102081827575_12125555.cs" />
-    <Compile Include="Migrations\202102081827575_12125555.Designer.cs">
-      <DependentUpon>202102081827575_12125555.cs</DependentUpon>
+    <Compile Include="Migrations\202102191708570_data6.cs" />
+    <Compile Include="Migrations\202102191708570_data6.Designer.cs">
+      <DependentUpon>202102191708570_data6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102082050029_1212555555.cs" />
-    <Compile Include="Migrations\202102082050029_1212555555.Designer.cs">
-      <DependentUpon>202102082050029_1212555555.cs</DependentUpon>
+    <Compile Include="Migrations\202102191716128_data9.cs" />
+    <Compile Include="Migrations\202102191716128_data9.Designer.cs">
+      <DependentUpon>202102191716128_data9.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102082337525_12125555cc55.cs" />
-    <Compile Include="Migrations\202102082337525_12125555cc55.Designer.cs">
-      <DependentUpon>202102082337525_12125555cc55.cs</DependentUpon>
+    <Compile Include="Migrations\202102191739288_data11.cs" />
+    <Compile Include="Migrations\202102191739288_data11.Designer.cs">
+      <DependentUpon>202102191739288_data11.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102101546543_1222.cs" />
-    <Compile Include="Migrations\202102101546543_1222.Designer.cs">
-      <DependentUpon>202102101546543_1222.cs</DependentUpon>
+    <Compile Include="Migrations\202102191745156_data15.cs" />
+    <Compile Include="Migrations\202102191745156_data15.Designer.cs">
+      <DependentUpon>202102191745156_data15.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102101615017_12132465.cs" />
-    <Compile Include="Migrations\202102101615017_12132465.Designer.cs">
-      <DependentUpon>202102101615017_12132465.cs</DependentUpon>
+    <Compile Include="Migrations\202102191750064_data16.cs" />
+    <Compile Include="Migrations\202102191750064_data16.Designer.cs">
+      <DependentUpon>202102191750064_data16.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102111423503_kok66.cs" />
-    <Compile Include="Migrations\202102111423503_kok66.Designer.cs">
-      <DependentUpon>202102111423503_kok66.cs</DependentUpon>
+    <Compile Include="Migrations\202102201547278_74454.cs" />
+    <Compile Include="Migrations\202102201547278_74454.Designer.cs">
+      <DependentUpon>202102201547278_74454.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102111445588_kok661.cs" />
-    <Compile Include="Migrations\202102111445588_kok661.Designer.cs">
-      <DependentUpon>202102111445588_kok661.cs</DependentUpon>
+    <Compile Include="Migrations\202102221502290_55.cs" />
+    <Compile Include="Migrations\202102221502290_55.Designer.cs">
+      <DependentUpon>202102221502290_55.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102130050282_555km.cs" />
-    <Compile Include="Migrations\202102130050282_555km.Designer.cs">
-      <DependentUpon>202102130050282_555km.cs</DependentUpon>
+    <Compile Include="Migrations\202102251738286_addIsSeenToCleanOrders.cs" />
+    <Compile Include="Migrations\202102251738286_addIsSeenToCleanOrders.Designer.cs">
+      <DependentUpon>202102251738286_addIsSeenToCleanOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102130231036_51.cs" />
-    <Compile Include="Migrations\202102130231036_51.Designer.cs">
-      <DependentUpon>202102130231036_51.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102131133392_61251.cs" />
-    <Compile Include="Migrations\202102131133392_61251.Designer.cs">
-      <DependentUpon>202102131133392_61251.cs</DependentUpon>
+    <Compile Include="Migrations\202102252123176_addIsSeenToFixOrders.cs" />
+    <Compile Include="Migrations\202102252123176_addIsSeenToFixOrders.Designer.cs">
+      <DependentUpon>202102252123176_addIsSeenToFixOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\ExternalLoginRepository.cs" />
@@ -160,35 +156,32 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102081827575_12125555.resx">
-      <DependentUpon>202102081827575_12125555.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191708570_data6.resx">
+      <DependentUpon>202102191708570_data6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102082050029_1212555555.resx">
-      <DependentUpon>202102082050029_1212555555.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191716128_data9.resx">
+      <DependentUpon>202102191716128_data9.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102082337525_12125555cc55.resx">
-      <DependentUpon>202102082337525_12125555cc55.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191739288_data11.resx">
+      <DependentUpon>202102191739288_data11.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102101546543_1222.resx">
-      <DependentUpon>202102101546543_1222.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191745156_data15.resx">
+      <DependentUpon>202102191745156_data15.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102101615017_12132465.resx">
-      <DependentUpon>202102101615017_12132465.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191750064_data16.resx">
+      <DependentUpon>202102191750064_data16.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102111423503_kok66.resx">
-      <DependentUpon>202102111423503_kok66.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102201547278_74454.resx">
+      <DependentUpon>202102201547278_74454.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102111445588_kok661.resx">
-      <DependentUpon>202102111445588_kok661.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102221502290_55.resx">
+      <DependentUpon>202102221502290_55.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102130050282_555km.resx">
-      <DependentUpon>202102130050282_555km.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102251738286_addIsSeenToCleanOrders.resx">
+      <DependentUpon>202102251738286_addIsSeenToCleanOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102130231036_51.resx">
-      <DependentUpon>202102130231036_51.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102131133392_61251.resx">
-      <DependentUpon>202102131133392_61251.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102252123176_addIsSeenToFixOrders.resx">
+      <DependentUpon>202102252123176_addIsSeenToFixOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

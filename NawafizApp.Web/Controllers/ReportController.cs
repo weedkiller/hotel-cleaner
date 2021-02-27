@@ -50,29 +50,29 @@ namespace NawafizApp.Web.Controllers
         //    PercentDto dt = _reportService.getAllRoomsStatusePercentInHotelBlock(id.Value);
         //    return View(dt);
         //}
-        [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
-        public ActionResult searchForRoomStatus()
-        {
+        //[Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
+        //public ActionResult searchForRoomStatus()
+        //{
 
-            return View();
-        }
-        [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
-        public ActionResult getAllHotelBlockForRoom(int BlockNum = -100, string BlockName = "")
-        {
-            List<HotelBlockDto> list = _hotelBlockService.GetAll().OrderByDescending(x => x.Id).ToList();
-            if (Request.IsAjaxRequest())
-            {
-                if (BlockNum != -100)
-                {
-                    list = list.Where(x => x.BlockNum == BlockNum.ToString()).ToList();
-                }
-                if (!string.IsNullOrWhiteSpace(BlockName))
-                {
-                    list = list.Where(x => x.BlockName.Contains(BlockName)).ToList();
-                }
-            }
-            return View(list);
-        }
+        //    return View();
+        //}
+        //[Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
+        //public ActionResult getAllHotelBlockForRoom(int BlockNum = -100, string BlockName = "")
+        //{
+        //    List<HotelBlockDto> list = _hotelBlockService.GetAll().OrderByDescending(x => x.Id).ToList();
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        if (BlockNum != -100)
+        //        {
+        //            list = list.Where(x => x.BlockNum == BlockNum.ToString()).ToList();
+        //        }
+        //        if (!string.IsNullOrWhiteSpace(BlockName))
+        //        {
+        //            list = list.Where(x => x.BlockName.Contains(BlockName)).ToList();
+        //        }
+        //    }
+        //    return View(list);
+        //}
 
         [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
         public ActionResult searchForRoom(int?id)

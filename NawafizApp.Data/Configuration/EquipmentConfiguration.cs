@@ -46,7 +46,7 @@ namespace NawafizApp.Data.Configuration
     ;
 
 
-            HasRequired(x => x.Room)
+            HasOptional(x => x.Room)
               .WithMany(x => x.Equipments);
        
 

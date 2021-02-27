@@ -103,7 +103,7 @@ namespace NawafizApp.Services.Services
         //    //return listdto;
         //}
 
-        public bool Edit(RoomDto dto)
+        public bool Edit(RoomDto dto, bool Editing = false)
         {
             Room n = _unitOfWork.RoomRepository.FindById(dto.Id);
             n.Id = dto.Id;
@@ -114,8 +114,14 @@ namespace NawafizApp.Services.Services
             n.IsInService = dto.IsInService;
             n.isneedclean = dto.isneedclean;
             n.IsNeedfix = dto.IsNeedfix;
-            n.Isrequisted = dto.Isrequisted;
-            n.Isrequistedfix = dto.Isrequistedfix;
+            if (!Editing)
+            {
+                n.Isrequisted = dto.Isrequisted;
+                n.Isrequistedfix = dto.Isrequistedfix;
+            }
+
+            n.HotelBlock = _unitOfWork.HotelBlockRepository.FindById(dto.HotelBlock_id);
+            n.RoomType = _unitOfWork.RoomTypeRepository.FindById(dto.RoomType_id);
             _unitOfWork.RoomRepository.Update(n);
 
             _unitOfWork.SaveChanges();

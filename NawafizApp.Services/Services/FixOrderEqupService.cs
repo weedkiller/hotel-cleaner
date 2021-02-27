@@ -27,6 +27,7 @@ namespace NawafizApp.Services.Services
             fIxOrderEqupment.fixOrder = _unitOfWork.FixOrderRepository.FindById(orderid);
 
             _unitOfWork.FIxOrderEqupment.Add(fIxOrderEqupment);
+            _unitOfWork.SaveChanges();
             return fixOrderEqupDto.Id;
 
         }
@@ -36,11 +37,27 @@ namespace NawafizApp.Services.Services
         {
 
 
+            FixOrderEqupDto equpDto = new FixOrderEqupDto();
+            var list = _unitOfWork.FixOrderRepository.FindById(oid).FIxOrderEqupment;
+            List<FixOrderEqupDto> vd = new List<FixOrderEqupDto>();
+            foreach (var item in list)
 
-            var list = _unitOfWork.FIxOrderEqupment.GetAll().Where(x => x.fixOrder.Id == oid).ToList();
+            {
+
+                equpDto.Id = item.Id;
+                equpDto.Name = item.Name;
+
+                vd.Add(equpDto);
+                equpDto = new FixOrderEqupDto();
+
+            }
+            
 
 
-            return Mapper.Map<List<FIxOrderEqupment>, List<FixOrderEqupDto>>(list);
+            return vd;
+
+
+
 
         }
     }

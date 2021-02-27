@@ -33,6 +33,14 @@ namespace NawafizApp.Data.Configuration
 .HasColumnName("isFinished")
 .HasColumnType("nvarchar")
 ;
+            Property(x => x.IsSeenFromFixer)
+.HasColumnName("IsSeenFromFixer")
+.HasColumnType("bit").IsOptional()
+;
+            Property(x => x.IsSeenFromManager)
+   .HasColumnName("IsSeenFromManager")
+   .HasColumnType("bit").IsOptional()
+   ;
         }
 
 

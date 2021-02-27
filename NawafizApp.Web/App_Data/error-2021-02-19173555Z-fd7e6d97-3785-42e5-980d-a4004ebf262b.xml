@@ -1,0 +1,198 @@
+﻿<error errorId="fd7e6d97-3785-42e5-980d-a4004ebf262b" application="/LM/W3SVC/2/ROOT" host="DESKTOP-T4IQH61" type="System.Web.HttpException" message="A public action method 'Equipment' was not found on controller 'NawafizApp.Web.Controllers.EquipmentController'." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): A public action method 'Equipment' was not found on controller 'NawafizApp.Web.Controllers.EquipmentController'.&#xD;&#xA;   at System.Web.Mvc.Controller.HandleUnknownAction(String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="hajez1" time="2021-02-19T17:35:55.1820184Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-GB,en;q=0.9,ar-AE;q=0.8,ar;q=0.7,en-US;q=0.6&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken_L0hvdGVsQXBw0=MPiIq-DS6kCbIT2My-asCnLOn0K8rWGYxxWv6bwLgzvv2SWgUj8CDF54y-7SwnE7sTG9YUJgldcL4N8ozOtYlJANnuD3fXXZG78A3iFEilI1; ASP.NET_SessionId=5hfz3jgfpiv410pvau0xid3p; __RequestVerificationToken=GXOzoTP8FhO66ervXU9dDZ9RZNKN1Vchc4Ag5cHI0dttGoQuNUYmv8EDUewZgH3TKvI2e8hjqDEtkeE4vHbY3eht88Bci982ydSN76xsg981; .AspNet.ApplicationCookie=NEaFgOKoFsxpDLY0106Nrhu4YZ1v8nWZoSHqOU44YqOEKqqHpbP8h88rk8NXNnkHGbLNHGFdRikSJx_jeO-ig3m7TDYKX45PuzmST_uUla7RlICiVxZHYl4hOXBqGZfgRyaOfSTwbZS_nDRDke7-p4SgraqkLZe-45S9IRJP-3FOVxzmP7lvl7EJWZr0hiZz9760NAwXV0slOZ8xoeSykj0qImSe814SUFXruocahr7NN3nEQEq8uQPXui3C3AloFjgqE4U3yHi1CScgljc56jM9ckHxFcGS3qIoZ7C21CT22xEluw7BFM3-PQYb3YP6atzDcq02_JmrcFUGYbyB006_-rOh4cZgbH10CYIGvSkEHyO76FzEmEsIayZMEppngePxw-v2ebUEuWSWan4zbGYMbhCN-8zO4KK3EhP9__yXhXk0b45mgxKEnSApxWybQeQiAPCwxAiX_YsATtW5JL-YzuiUHwRkIaddi9btvhtwYeFogbZfO5kr5pIxODCzvA9BA4_hfe5BvfcS0gfctQ; sidebar_closed=0&#xD;&#xA;HTTP_HOST:localhost:50000&#xD;&#xA;HTTP_REFERER:http://localhost:50000/Equipment/getAllEquipments?rid=11&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36&#xD;&#xA;HTTP_SEC_CH_UA:&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;HTTP_SEC_CH_UA_MOBILE:?0&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;HTTP_DNT:1&#xD;&#xA;HTTP_SEC_FETCH_SITE:same-origin&#xD;&#xA;HTTP_SEC_FETCH_MODE:navigate&#xD;&#xA;HTTP_SEC_FETCH_USER:?1&#xD;&#xA;HTTP_SEC_FETCH_DEST:document&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: en-GB,en;q=0.9,ar-AE;q=0.8,ar;q=0.7,en-US;q=0.6&#xD;&#xA;Cookie: __RequestVerificationToken_L0hvdGVsQXBw0=MPiIq-DS6kCbIT2My-asCnLOn0K8rWGYxxWv6bwLgzvv2SWgUj8CDF54y-7SwnE7sTG9YUJgldcL4N8ozOtYlJANnuD3fXXZG78A3iFEilI1; ASP.NET_SessionId=5hfz3jgfpiv410pvau0xid3p; __RequestVerificationToken=GXOzoTP8FhO66ervXU9dDZ9RZNKN1Vchc4Ag5cHI0dttGoQuNUYmv8EDUewZgH3TKvI2e8hjqDEtkeE4vHbY3eht88Bci982ydSN76xsg981; .AspNet.ApplicationCookie=NEaFgOKoFsxpDLY0106Nrhu4YZ1v8nWZoSHqOU44YqOEKqqHpbP8h88rk8NXNnkHGbLNHGFdRikSJx_jeO-ig3m7TDYKX45PuzmST_uUla7RlICiVxZHYl4hOXBqGZfgRyaOfSTwbZS_nDRDke7-p4SgraqkLZe-45S9IRJP-3FOVxzmP7lvl7EJWZr0hiZz9760NAwXV0slOZ8xoeSykj0qImSe814SUFXruocahr7NN3nEQEq8uQPXui3C3AloFjgqE4U3yHi1CScgljc56jM9ckHxFcGS3qIoZ7C21CT22xEluw7BFM3-PQYb3YP6atzDcq02_JmrcFUGYbyB006_-rOh4cZgbH10CYIGvSkEHyO76FzEmEsIayZMEppngePxw-v2ebUEuWSWan4zbGYMbhCN-8zO4KK3EhP9__yXhXk0b45mgxKEnSApxWybQeQiAPCwxAiX_YsATtW5JL-YzuiUHwRkIaddi9btvhtwYeFogbZfO5kr5pIxODCzvA9BA4_hfe5BvfcS0gfctQ; sidebar_closed=0&#xD;&#xA;Host: localhost:50000&#xD;&#xA;Referer: http://localhost:50000/Equipment/getAllEquipments?rid=11&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36&#xD;&#xA;sec-ch-ua: &quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;&#xD;&#xA;sec-ch-ua-mobile: ?0&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;DNT: 1&#xD;&#xA;Sec-Fetch-Site: same-origin&#xD;&#xA;Sec-Fetch-Mode: navigate&#xD;&#xA;Sec-Fetch-User: ?1&#xD;&#xA;Sec-Fetch-Dest: document&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="D:\Sales\NawafizApp.Web\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="hajez1" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Equipment/Equipment/11" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="D:\Sales\NawafizApp.Web\Equipment\Equipment\11" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="31700" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Equipment/Equipment/11" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50000" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Equipment/Equipment/11" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-GB,en;q=0.9,ar-AE;q=0.8,ar;q=0.7,en-US;q=0.6" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken_L0hvdGVsQXBw0=MPiIq-DS6kCbIT2My-asCnLOn0K8rWGYxxWv6bwLgzvv2SWgUj8CDF54y-7SwnE7sTG9YUJgldcL4N8ozOtYlJANnuD3fXXZG78A3iFEilI1; ASP.NET_SessionId=5hfz3jgfpiv410pvau0xid3p; __RequestVerificationToken=GXOzoTP8FhO66ervXU9dDZ9RZNKN1Vchc4Ag5cHI0dttGoQuNUYmv8EDUewZgH3TKvI2e8hjqDEtkeE4vHbY3eht88Bci982ydSN76xsg981; .AspNet.ApplicationCookie=NEaFgOKoFsxpDLY0106Nrhu4YZ1v8nWZoSHqOU44YqOEKqqHpbP8h88rk8NXNnkHGbLNHGFdRikSJx_jeO-ig3m7TDYKX45PuzmST_uUla7RlICiVxZHYl4hOXBqGZfgRyaOfSTwbZS_nDRDke7-p4SgraqkLZe-45S9IRJP-3FOVxzmP7lvl7EJWZr0hiZz9760NAwXV0slOZ8xoeSykj0qImSe814SUFXruocahr7NN3nEQEq8uQPXui3C3AloFjgqE4U3yHi1CScgljc56jM9ckHxFcGS3qIoZ7C21CT22xEluw7BFM3-PQYb3YP6atzDcq02_JmrcFUGYbyB006_-rOh4cZgbH10CYIGvSkEHyO76FzEmEsIayZMEppngePxw-v2ebUEuWSWan4zbGYMbhCN-8zO4KK3EhP9__yXhXk0b45mgxKEnSApxWybQeQiAPCwxAiX_YsATtW5JL-YzuiUHwRkIaddi9btvhtwYeFogbZfO5kr5pIxODCzvA9BA4_hfe5BvfcS0gfctQ; sidebar_closed=0" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50000" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50000/Equipment/getAllEquipments?rid=11" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" />
+    </item>
+    <item name="HTTP_SEC_CH_UA">
+      <value string="&quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;" />
+    </item>
+    <item name="HTTP_SEC_CH_UA_MOBILE">
+      <value string="?0" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_DNT">
+      <value string="1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_SITE">
+      <value string="same-origin" />
+    </item>
+    <item name="HTTP_SEC_FETCH_MODE">
+      <value string="navigate" />
+    </item>
+    <item name="HTTP_SEC_FETCH_USER">
+      <value string="?1" />
+    </item>
+    <item name="HTTP_SEC_FETCH_DEST">
+      <value string="document" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken_L0hvdGVsQXBw0">
+      <value string="MPiIq-DS6kCbIT2My-asCnLOn0K8rWGYxxWv6bwLgzvv2SWgUj8CDF54y-7SwnE7sTG9YUJgldcL4N8ozOtYlJANnuD3fXXZG78A3iFEilI1" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="5hfz3jgfpiv410pvau0xid3p" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="GXOzoTP8FhO66ervXU9dDZ9RZNKN1Vchc4Ag5cHI0dttGoQuNUYmv8EDUewZgH3TKvI2e8hjqDEtkeE4vHbY3eht88Bci982ydSN76xsg981" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="NEaFgOKoFsxpDLY0106Nrhu4YZ1v8nWZoSHqOU44YqOEKqqHpbP8h88rk8NXNnkHGbLNHGFdRikSJx_jeO-ig3m7TDYKX45PuzmST_uUla7RlICiVxZHYl4hOXBqGZfgRyaOfSTwbZS_nDRDke7-p4SgraqkLZe-45S9IRJP-3FOVxzmP7lvl7EJWZr0hiZz9760NAwXV0slOZ8xoeSykj0qImSe814SUFXruocahr7NN3nEQEq8uQPXui3C3AloFjgqE4U3yHi1CScgljc56jM9ckHxFcGS3qIoZ7C21CT22xEluw7BFM3-PQYb3YP6atzDcq02_JmrcFUGYbyB006_-rOh4cZgbH10CYIGvSkEHyO76FzEmEsIayZMEppngePxw-v2ebUEuWSWan4zbGYMbhCN-8zO4KK3EhP9__yXhXk0b45mgxKEnSApxWybQeQiAPCwxAiX_YsATtW5JL-YzuiUHwRkIaddi9btvhtwYeFogbZfO5kr5pIxODCzvA9BA4_hfe5BvfcS0gfctQ" />
+    </item>
+    <item name="sidebar_closed">
+      <value string="0" />
+    </item>
+  </cookies>
+</error>

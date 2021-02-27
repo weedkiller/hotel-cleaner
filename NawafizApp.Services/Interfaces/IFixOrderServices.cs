@@ -12,6 +12,8 @@ namespace NawafizApp.Services.Interfaces
         bool edit(FixOrderDto dto);
         FixOrderDto GetById(int id);
 
+        bool setIsSeenTrue();
+        bool setIsSeenTrueForMosherf();
 
     }
 }

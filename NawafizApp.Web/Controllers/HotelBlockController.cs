@@ -79,12 +79,14 @@ namespace NawafizApp.Web.Controllers
         [Authorize(Roles = "Admin,Hoster")]
         public ActionResult getHotelBlocks()
         {
-            return View(_IHotelBlockService.GetAll().OrderByDescending(x => x.Id));
+            var result = _IHotelBlockService.GetAll().OrderByDescending(x => x.Id);
+            return View(result);
         }
 
         public ActionResult getblockemp(int id)
         {
-            return View(_userservice.usersforblock(id));
+            var result = _userservice.usersforblock(id);
+            return View(result);
         }
 
 

@@ -27,6 +27,7 @@ namespace NawafizApp.Data
         private IRepository<RoomType> _RoomTypeRepository;
         private IRepository<FixOrder> _fixOrderRepository;
         private IRepository<FIxOrderEqupment> _FIxOrderEqupment;
+        private IRepository<RoomRec> _roomrecRepository;
         #endregion
 
         #region Constructors
@@ -51,6 +52,12 @@ namespace NawafizApp.Data
         {
             get { return _roleRepository ?? (_roleRepository = new RoleRepository(_context)); }
         }
+
+        public IRepository<RoomRec> roomrecRepository
+        {
+            get { return _roomrecRepository ?? (_roomrecRepository = new Repository<RoomRec>(_context)); }
+        }
+
 
         public IUserRepository UserRepository
         {

@@ -40,7 +40,12 @@ namespace NawafizApp.Domain.Entities
             get { return _fixOrder ?? (_fixOrder = new List<FixOrder>()); }
             set { _fixOrder = value; }
         }
-
+        private ICollection<RoomRec> _RoomRec;
+        public virtual ICollection<RoomRec> RoomRec
+        {
+            get { return _RoomRec ?? (_RoomRec = new List<RoomRec>()); }
+            set { _RoomRec = value; }
+        }
 
 
     }

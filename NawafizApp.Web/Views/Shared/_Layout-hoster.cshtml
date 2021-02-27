@@ -170,6 +170,26 @@ License: You must have a valid license purchased only from themeforest(the above
         body, h1, h2, h3, h4, h5, h6 {
             font-family: jazeera !important;
         }
+        mark {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 2px solid #222222;
+    /*# c7c1c1 d61818*/
+    width: 30px;
+    height: 30px;
+    background-color: #222222;
+    position: absolute;
+    top: 2px;
+    left: 39px;
+    font-size: 14px;
+    padding-right: 3px;
+    line-height: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #FFF;
+    font-weight: 700;
+}
     </style>
 
 </head>
@@ -237,7 +257,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
 
 
-                        <li class="nav-item  ">
+                        @*<li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-puzzle"></i>
                                 <span class="title">تقارير</span>
@@ -257,7 +277,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </li>
 
                             </ul>
-                        </li>
+                        </li>*@
 
 
                         <li class="nav-item  ">
@@ -296,18 +316,40 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("getAllRoom","Room")" class="nav-link ">
+                                    <a href="@Url.Action("RoomView","Room")" class="nav-link ">
                                         <span class="title">إظهار كافة الغرف </span>
 
                                     </a>
                                 </li>
 
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("getAllRoom","Room")" class="nav-link ">
+                                    <a href="@Url.Action("RoomView","Room")" class="nav-link ">
                                         <span class="title">حالة الغرف</span>
 
                                     </a>
                                 </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-puzzle"></i>
+                                <span class="title">أنماط الغرف  </span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Add","RoomType")" class="nav-link ">
+                                        <span class="title">إضافة نمط جديد  </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("getall","RoomType")" class="nav-link ">
+                                        <span class="title">إظهار كافة الأنماط  </span>
+
+                                    </a>
+                                </li>
+
 
                             </ul>
                         </li>
@@ -336,11 +378,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item  ">
+                                @*<li class="nav-item  ">
                                     <a href="@Url.Action("Register","Account")" class="nav-link ">
                                         <span class="title">تقارير الطلبات </span>
                                     </a>
-                                </li>
+                                </li>*@
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("getAllOrders","CleanOrder")" class="nav-link ">
                                         <span class="title">طلبات النظافة   </span>

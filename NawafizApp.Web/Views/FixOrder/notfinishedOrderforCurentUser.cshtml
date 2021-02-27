@@ -1,0 +1,71 @@
+﻿
+@model IEnumerable<NawafizApp.Services.Dtos.FixOrderDto>
+@{
+    ViewBag.Title = "notfinishedOrderforCurentUser";
+    Layout = "~/Views/Shared/_Layout-fixEmp.cshtml";
+}
+
+
+
+
+
+
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>المهام المستلمة غير المنتهية
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table">
+            <tr>
+                <th>
+                    وقت و تاريخ الأنشاء
+                </th>
+                <th>
+                    الوصف
+                </th>
+
+                <th>
+                    الغرفة
+                </th>
+
+
+                <th>
+                    وقت البدء
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_At)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roomnu)
+                    </td>
+                    <td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.startdate)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("إكمال المهمة  ", "EndCleanOrder", new { Oid = item.Id }) |
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

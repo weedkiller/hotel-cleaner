@@ -156,20 +156,27 @@ namespace NawafizApp.Services.Services
 
         public List<UserDto> usersforblock(int bid)
         {
-            var list =_unitOfWork.UserRepository.GetAll().Where(x => x.HotelBlock.Id == bid);
+           
+            var list = _unitOfWork.HotelBlockRepository.FindById(bid).Users;
             List<UserDto> userDtol = new List<UserDto>();
             UserDto userDtos = new UserDto();
             foreach (var item in list)
             {
                 userDtos.UserId = item.UserId;
                 userDtos.UserName = item.UserName;
-                userDtos.Role = item.Roles.ToString();
+                userDtos.FullName = item.FullName;
+                userDtos.Role = item.Roles.SingleOrDefault().Name.ToString();
                 userDtol.Add(userDtos);
                 userDtos = new UserDto();
             }
 
 
             return (userDtol);
+        }
+        public List<Role> Roles(Guid id)
+        {
+            User u = _unitOfWork.UserRepository.FindById(id);
+            return u.Roles.ToList();
         }
         public bool HasRole(Guid id,String role)
         {

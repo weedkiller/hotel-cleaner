@@ -1,6 +1,8 @@
 ﻿using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
+using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +18,11 @@ namespace NawafizApp.Web.Controllers
         IRoomService _roomService;
         IRoomTypeService _roomTypeService;
         IHotelBlockService _hotelBlockService;
-        public RoomController(ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IRoomService roomService,IRoomTypeService roomTypeService,IHotelBlockService hotelBlockService)
+        IRoomRecServices _RoomRecServices;
+        public RoomController(IRoomRecServices RoomRecServices,ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IRoomService roomService,IRoomTypeService roomTypeService,IHotelBlockService hotelBlockService)
             : base(userManager, aps)
         {
-
+            _RoomRecServices = RoomRecServices;
             this._userService = IUS;
             this._roomService = roomService;
             _roomTypeService = roomTypeService;
@@ -38,6 +41,11 @@ namespace NawafizApp.Web.Controllers
             dto.RoomType_id = tid;
             dto.HotelBlock_id = hid;
             int i = _roomService.Add(dto);
+            roomrecDto roomrecDto = new roomrecDto();
+            roomrecDto.Room_Id = i;
+            roomrecDto.Recoed = "تم أضافة الغرفة ";
+            _RoomRecServices.Add(roomrecDto);
+   
             return RedirectToAction("AddEquipment", "Equipment",new { Rid = i });
         }
 
@@ -70,11 +78,30 @@ namespace NawafizApp.Web.Controllers
         //}
 
         //[Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
-
+        [Authorize(Roles = "Admin,Hoster")]
+        public ActionResult RoomView()
+        {
+            return View();
+        }
         [Authorize(Roles = "Admin,Hoster")]
 
         public ActionResult getAllRoom()
         {
+            List<Helper.MySQlRoom> res=   MysqlFetchingRoomData.getDataFromMySql();
+            foreach (var item in res)
+            {
+                var room = _roomService.GetAll().Where(x => x.RoomNum == item.RoomNum).FirstOrDefault();
+                if (room != null)
+                {
+                    room.IsNeedfix = item.MantStatus == "M" ? true : false;
+                    room.isneedclean = item.CleanStatus == "D" ? true : false;
+                    _roomService.Edit(room);
+                }
+
+            }
+
+
+            
             List<RoomDto> list1 = _roomService.GetAll();
             List<RoomDto> list2 = new List<RoomDto>();
             foreach (var item in list1)
@@ -115,7 +142,7 @@ namespace NawafizApp.Web.Controllers
         {
             var x = _roomService.RoomRemove(id);
             if (x)
-                return RedirectToAction("getAllRoom");
+                return RedirectToAction("RoomView");
             return RedirectToAction("Error");
         }
 
@@ -128,14 +155,20 @@ namespace NawafizApp.Web.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "Admin,Hoster")]
-        public ActionResult Edit(RoomDto roomDto)
+        public ActionResult Edit(RoomDto roomDto, int hid, int tid)
         {
 
             if (ModelState.IsValid)
             {
+                roomDto.RoomType_id = tid;
+                roomDto.HotelBlock_id = hid;
+                _roomService.Edit(roomDto, true);
 
-                _roomService.Edit(roomDto);
-                return RedirectToAction("getAllRoom", "Room");
+                roomrecDto roomrecDto = new roomrecDto();
+                roomrecDto.Room_Id =roomDto.Id;
+                roomrecDto.Recoed = "تم تعديل  الغرفة ";
+                _RoomRecServices.Add(roomrecDto);
+                return RedirectToAction("RoomView", "Room");
 
             }
             return View(roomDto);

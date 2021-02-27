@@ -152,8 +152,34 @@ namespace NawafizApp.Services.Services
             _unitOfWork.SaveChanges();
             return true;
         }
+        public bool setIsSeenTrue()
+        {
 
+            List<FixOrder> list = _unitOfWork.FixOrderRepository.GetAll();
+            foreach (var item in list)
+            {
+                item.IsSeenFromFixer = true;
 
+                _unitOfWork.FixOrderRepository.Update(item);
+            }
+
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+        public bool setIsSeenTrueForMosherf()
+        {
+
+            List<FixOrder> list = _unitOfWork.FixOrderRepository.GetAll();
+            foreach (var item in list)
+            {
+                item.IsSeenFromManager = true;
+
+                _unitOfWork.FixOrderRepository.Update(item);
+            }
+
+            _unitOfWork.SaveChanges();
+            return true;
+        }
     }
 
 }
