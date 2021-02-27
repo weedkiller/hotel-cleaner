@@ -20,18 +20,23 @@
   HttpMethod = "get",
   InsertionMode = InsertionMode.Replace
   }, new { id = "uu" })
+
+
     </div>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
 
+        document.getElementById('uu').click();
+    </script>
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
 
 
         setInterval(function () {
             document.getElementById('uu').click();
-        }, 2000);
+        }, 1000000000);
 
-    </script>
+    </script>*@
 </body>
 </html>

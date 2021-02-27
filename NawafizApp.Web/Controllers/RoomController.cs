@@ -2,6 +2,7 @@
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
 using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,6 +87,21 @@ namespace NawafizApp.Web.Controllers
 
         public ActionResult getAllRoom()
         {
+            List<Helper.MySQlRoom> res=   MysqlFetchingRoomData.getDataFromMySql();
+            foreach (var item in res)
+            {
+                var room = _roomService.GetAll().Where(x => x.RoomNum == item.RoomNum).FirstOrDefault();
+                if (room != null)
+                {
+                    room.IsNeedfix = item.MantStatus == "M" ? true : false;
+                    room.isneedclean = item.CleanStatus == "D" ? true : false;
+                    _roomService.Edit(room);
+                }
+
+            }
+
+
+            
             List<RoomDto> list1 = _roomService.GetAll();
             List<RoomDto> list2 = new List<RoomDto>();
             foreach (var item in list1)
