@@ -126,7 +126,7 @@ namespace NawafizApp.Web.Controllers
         {
             var x = _roomService.RoomRemove(id);
             if (x)
-                return RedirectToAction("getAllRoom");
+                return RedirectToAction("RoomView");
             return RedirectToAction("Error");
         }
 
@@ -139,19 +139,20 @@ namespace NawafizApp.Web.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "Admin,Hoster")]
-        public ActionResult Edit(RoomDto roomDto)
+        public ActionResult Edit(RoomDto roomDto, int hid, int tid)
         {
 
             if (ModelState.IsValid)
             {
-
-                _roomService.Edit(roomDto);
+                roomDto.RoomType_id = tid;
+                roomDto.HotelBlock_id = hid;
+                _roomService.Edit(roomDto, true);
 
                 roomrecDto roomrecDto = new roomrecDto();
                 roomrecDto.Room_Id =roomDto.Id;
                 roomrecDto.Recoed = "تم تعديل  الغرفة ";
                 _RoomRecServices.Add(roomrecDto);
-                return RedirectToAction("getAllRoom", "Room");
+                return RedirectToAction("RoomView", "Room");
 
             }
             return View(roomDto);

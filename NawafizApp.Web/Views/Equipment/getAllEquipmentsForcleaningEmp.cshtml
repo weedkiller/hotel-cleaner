@@ -17,16 +17,10 @@
             {
 
 
-                <table class="table">
+                <table class="table" style="margin:20px">
                     <tr>
                         <th>
                             الأسم
-                        </th>
-                        <th>
-                            الوصف
-                        </th>
-                        <th>
-                            الحالة
                         </th>
                         <th>
                             بحاجة صيانة ؟
@@ -43,34 +37,33 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Stauts)
-                    </td>
+                    @*<td>
+                        <div class="checkbox" onclick="@Url.Action("CheckedToggleFix",new { id = item.Id,rid=item.Room_id })">
+                            @Html.EditorFor(model => item.needfix)
+                        </div>
+                    </td>*@
 
                     @if (item.needfix)
                     {
-                        <td class="Checked"> بحاجة صيانة  <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,rid=item.Room_id })"><i class="fa fa-remove"></i> جاهزة  </a></td>
+                        <td class="Checked"> لا <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-remove"></i> نعم  </a></td>
                     }
                     @if (!item.needfix)
                     {
-                        <td class="notChecked">جاهزة  <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,rid=item.Room_id })"><i class="fa fa-check"></i>بحاجة صيانة  </a></td>
+                        <td class="notChecked">نعم  <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-check"></i>لا  </a></td>
                     }
 
 
                     @if (item.ishere)
                     {
-                        <td class="Checked"> موجود <a class="linlpay" href="@Url.Action("CheckedToggle",new { id = item.Id,rid=item.Room_id })"><i class="fa fa-remove"></i> غير موجود </a></td>
+                        <td class="Checked"> نعم <a class="linlpay" href="@Url.Action("CheckedToggle",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-remove"></i> لا </a></td>
                     }
                     @if (!item.ishere)
                     {
-                        <td class="notChecked">غير موجود <a class="linlpay" href="@Url.Action("CheckedToggle",new { id = item.Id,rid=item.Room_id })"><i class="fa fa-check"></i>موجود </a></td>
+                        <td class="notChecked"> لا <a class="linlpay" href="@Url.Action("CheckedToggle",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-check"></i>نعم </a></td>
                     }
 
                    
-                    }
+                    
 
                     </tr>
                 }

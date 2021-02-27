@@ -81,7 +81,7 @@ namespace NawafizApp.Web.Models
                                    }
                            };
 
-            list.AddRange(service.GetAll().Where(x =>  service.HasRole(x.UserId, "Reception"))
+            list.AddRange(service.GetAll().Where(x =>  service.HasRole(x.UserId, "Hoster"))
                               .ToList()
 
                               .Select(x => new SelectListItem
@@ -109,7 +109,7 @@ namespace NawafizApp.Web.Models
                                    }
                            };
 
-            list.AddRange(service.GetAll().Where(x => service.HasRole(x.UserId, "Hoster"))
+            list.AddRange(service.GetAll().Where(x => service.HasRole(x.UserId, "service"))
                               .ToList()
 
                               .Select(x => new SelectListItem
@@ -205,21 +205,23 @@ namespace NawafizApp.Web.Models
             return list;
         }
 
-        public static IList<SelectListItem> AveEmp(Guid? selected)
+        public static IList<SelectListItem> AveEmp(int? roomId)
         {
             var service = DependencyResolver.Current.GetService<IUserService>();
+            var roomService = DependencyResolver.Current.GetService<IRoomService>();
 
+            var currentRoom = roomService.GetById((int)roomId);
             var list = new List<SelectListItem>
                            {
                                new SelectListItem
                                    {
-                                       Selected = !selected.HasValue,
+                                       Selected = false,
                                        Text = String.Empty,
                                        Value=""
                                    }
                            };
-
-            list.AddRange(service.GetAll().Where(x => service.HasRole(x.UserId, "Cleaner")).Where(x=>x.IsBusy==false)
+            var users = service.GetAll().Where(x => x.Hotelblock_id == currentRoom.HotelBlock_id).ToList();
+            list.AddRange(users.Where(x => service.HasRole(x.UserId, "Cleaner"))
                               .ToList()
 
                               .Select(x => new SelectListItem
@@ -233,21 +235,24 @@ namespace NawafizApp.Web.Models
             return list;
         }
 
-        public static IList<SelectListItem> AveMEmp(Guid? selected)
+        public static IList<SelectListItem> AveMEmp(int? roomId)
         {
             var service = DependencyResolver.Current.GetService<IUserService>();
+            var roomService = DependencyResolver.Current.GetService<IRoomService>();
+
+            var currentRoom = roomService.GetById((int)roomId);
 
             var list = new List<SelectListItem>
                            {
                                new SelectListItem
                                    {
-                                       Selected = !selected.HasValue,
+                                       Selected = false,
                                        Text = String.Empty,
                                        Value=""
                                    }
                            };
-
-            list.AddRange(service.GetAll().Where(x => service.HasRole(x.UserId, "MaintenanceEmp")).Where(x => x.IsBusy == false)
+            var users = service.GetAll().Where(x => x.Hotelblock_id == currentRoom.HotelBlock_id).ToList();
+            list.AddRange(users.Where(x => service.HasRole(x.UserId, "MaintenanceEmp"))
                               .ToList()
 
                               .Select(x => new SelectListItem

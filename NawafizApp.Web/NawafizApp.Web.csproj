@@ -5716,6 +5716,9 @@
     <Content Include="Views\FixOrder\GetAllFixOrder.cshtml" />
     <Content Include="Views\FixOrder\getAllEquipmentsForcleaningEmpdd.cshtml" />
     <Content Include="Views\FixOrder\EndCleanOrder.cshtml" />
+    <Content Include="Views\CleanOrder\GetallFinishedforCleanEmp.cshtml" />
+    <Content Include="Views\FixOrder\notfinishedOrderforCurentUser.cshtml" />
+    <Content Include="Views\Shared\_Layout-account.cshtml" />
     <None Include="Views\Shared\_Layout_supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>

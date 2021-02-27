@@ -1,59 +1,55 @@
 ﻿@model IEnumerable<NawafizApp.Services.Dtos.UserDto>
 
 @{
-    ViewBag.Title = "getblockemp";
+    ViewBag.Title = "موظفين الكتلة";
     Layout = "~/Views/Shared/_Layout-hoster.cshtml";
 }
 
-<h2>getblockemp</h2>
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>موظفين الكتلة
+        </div>
+    </div>
+    <div class="portlet-body">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-      
+        <table class="table">
+            <tr>
+                <th>
+                    اسم المستخدم
+                </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-      
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
+                <th>
+                   الاسم الكامل
+                </th>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-     
-        <td>
-            @Html.DisplayFor(modelItem => item.Role)
-        </td>
-       
-       
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+                <th>
+                    الدور
+                </th>
 
-</table>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+
+
+                    
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

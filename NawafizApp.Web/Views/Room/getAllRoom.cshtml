@@ -49,7 +49,9 @@
 
             @foreach (var item in Model)
             {
-                <tr>
+                if (item.isneedclean == true || item.IsNeedfix == true)
+                {
+                <tr id="item.RoomNum" style="background-color:lightsalmon">
                     <td>
                         @Html.DisplayFor(modelItem => item.RoomNum)
                     </td>
@@ -75,9 +77,12 @@
                         @Html.DisplayFor(modelItem => item.IsInService)
                     </td>
                     <td>
+                        <span>
+                            @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
+                        </span>
+                        <span>
+                            @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
                         
-                        @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
-                        @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
 
                         @if (item.IsInService == true)
                         {
@@ -87,8 +92,10 @@
 
                                 if (item.isneedclean == true)
                                 {
+                                    <span>
+                                        @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                    </span>
 
-                                    @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })
 
                                 }
                             }
@@ -97,16 +104,89 @@
                             {
                                 if (item.IsNeedfix)
                                 {
-                                    
+                                    <span>
+                                        @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                    </span>
 
-                                    @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })
 
                                 }
                             }
                         }
-                        @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                        <span>
+                            @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                        </span>
                     </td>
                 </tr>
+                }
+                if (item.isneedclean == false && item.IsNeedfix == false)
+                {
+                <tr id="item.RoomNum">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomDirection)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.blockName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Isbusy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsNeedfix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.isneedclean)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsInService)
+                    </td>
+                    <td>
+                        <span>
+                            @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
+                        </span>
+                        <span>
+                            @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
+
+
+                            @if (item.IsInService == true)
+                            {
+                                if (item.Isrequisted == false)
+                                {
+
+
+                                    if (item.isneedclean == true)
+                                    {
+                                        <span>
+                                            @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                        </span>
+
+
+                                    }
+                                }
+
+                                if (item.Isrequistedfix == false)
+                                {
+                                    if (item.IsNeedfix)
+                                    {
+                                        <span>
+                                            @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                        </span>
+
+
+                                    }
+                                }
+                            }
+                            <span>
+                                @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                            </span>
+                    </td>
+                </tr>
+                }
             }
 
         </table>

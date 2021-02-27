@@ -133,7 +133,7 @@
                             </span>
                             <select id="single-prepend-text" name="rids" class="form-control select2 select2-hidden-accessible" multiple="multiple" tabindex="-1" aria-hidden="true">
                                 <option></option>
-                                @foreach (var item in Selects.ReservationEmpUsers(null))
+                                @foreach (var item in Selects.ServiceEmpUsers(null))
                                 {
                                     <option value="@item.Value">@item.Text</option>
                                 }
@@ -152,7 +152,7 @@
                             </span>
                             <select id="single-prepend-text" name="sids" class="form-control select2 select2-hidden-accessible" multiple="multiple" tabindex="-1" aria-hidden="true">
                                 <option></option>
-                                @foreach (var item in Selects.ServiceEmpUsers(null))
+                                @foreach (var item in Selects.ReservationEmpUsers(null))
                                 {
                                     <option value="@item.Value">@item.Text</option>
                                 }

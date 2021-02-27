@@ -155,7 +155,7 @@ namespace NawafizApp.Web.Controllers
 
         }
 
-        //[Authorize(Roles = "Admin,manager")]
+        [Authorize(Roles = "Admin,BlockSupervisor")]
         public ActionResult Getallformosh()
         {
 
@@ -236,6 +236,52 @@ namespace NawafizApp.Web.Controllers
 
            
             
+        }
+        public ActionResult GetallFinishedforCleanEmp()
+        {
+            _orderService.setIsSeenTrue();
+            List<CleanOrderDto> list1 = new List<CleanOrderDto>();
+
+            var dc = _orderService.GetAll().OrderByDescending(x => x.Id).Where(x => x.cleaningEmp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == true).Where(x => x.Istaked == true);
+            foreach (var item in dc)
+            {
+                if (item.Roomnu == null)
+                {
+                    item.Roomnu = _RoomService.GetById(Convert.ToInt32(item.Room_ID)).RoomNum;
+                }
+
+
+                if (item.moshId == null)
+                {
+                    item.moshrefname = "لم يتم أرسالها الى المشرف ";
+                }
+                else
+                {
+                    item.moshrefname = _userService.GetById((Guid)item.moshId).FullName.ToString();
+                }
+                if (item.Hoster == null)
+                {
+                    item.HosterName = "لم تنشأ من موظف الحجز....! ";
+
+                }
+                else
+                {
+                    item.HosterName = _userService.GetById((Guid)item.Hoster).FullName.ToString();
+                }
+                if (item.cleaningEmp == null)
+                {
+                    item.empName = "لم يتم أرسالها الى موظف التنظيف";
+                }
+                else
+                {
+                    item.empName = _userService.GetById((Guid)item.cleaningEmp).FullName.ToString();
+                }
+                list1.Add(item);
+
+            }
+
+
+            return View(list1);
         }
         [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
 

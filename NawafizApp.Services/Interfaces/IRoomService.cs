@@ -10,7 +10,7 @@ namespace NawafizApp.Services.Interfaces
   public  interface IRoomService
     {
         int Add(RoomDto dto);
-        bool Edit(RoomDto dto);
+        bool Edit(RoomDto dto, bool Editing = false);
         List<Guid> getReservationEmpIdForRoom(int? id);
         Guid getMangerIdForRoom(int? id);
         RoomDto GetById(int id);

@@ -69,7 +69,7 @@ namespace NawafizApp.Web.Controllers
         {
             var x = _equipmentService.EquipmentRemove(id);
 
-            return RedirectToAction("getAllRoom", "Room");
+            return RedirectToAction("RoomView", "Room");
 
         }
 
@@ -91,7 +91,7 @@ namespace NawafizApp.Web.Controllers
             {
 
                 _equipmentService.Edit(eqDto);
-                return RedirectToAction("getAllRoom", "Room");
+                return RedirectToAction("RoomView", "Room");
 
             }
             return View(eqDto);
@@ -108,13 +108,13 @@ namespace NawafizApp.Web.Controllers
         }
 
 
-        public ActionResult CheckedToggle(int id,int rid)
+        public ActionResult CheckedToggle(int id,int Rid)
         {
             _equipmentService.checkedToggle(id);
-            var room = _roomService.GetById(rid);
+            var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
-            return RedirectToAction("getAllEquipmentsForcleaningEmp");
+            return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid });
 
 
 

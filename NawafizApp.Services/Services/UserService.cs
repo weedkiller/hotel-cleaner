@@ -164,7 +164,8 @@ namespace NawafizApp.Services.Services
             {
                 userDtos.UserId = item.UserId;
                 userDtos.UserName = item.UserName;
-                userDtos.Role = item.Roles.ToString();
+                userDtos.FullName = item.FullName;
+                userDtos.Role = item.Roles.SingleOrDefault().Name.ToString();
                 userDtol.Add(userDtos);
                 userDtos = new UserDto();
             }

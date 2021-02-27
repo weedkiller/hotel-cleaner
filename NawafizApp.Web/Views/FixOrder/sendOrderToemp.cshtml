@@ -41,7 +41,7 @@
                             </span>
                             <select id="single-prepend-text" name="eid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
                                 <option></option>
-                                @foreach (var item in Selects.AveMEmp(null))
+                                @foreach (var item in Selects.AveMEmp(Model.Room_ID))
                                 {
                                     <option value="@item.Value">@item.Text</option>
                                 }

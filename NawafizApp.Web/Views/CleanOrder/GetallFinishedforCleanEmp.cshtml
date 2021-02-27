@@ -8,7 +8,7 @@
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>مهامي 
+            <i class="fa fa-gift"></i>المهام المنجزة
         </div>
     </div>
     <div class="portlet-body">
@@ -17,7 +17,7 @@
             <tr>
                 <th>
 
-                    وقت و تاريخ الأنشاء 
+                    وقت و تاريخ الأنشاء
                 </th>
                 <th>
                     الغرفة
@@ -42,14 +42,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
-                    <td>
-
-                        @Html.ActionLink("أستلام المهمة ", "takeCleanOrder", new { id = item.Id })
-
-                    </td>
                 </tr>
             }
 
         </table>
-        </div>
+    </div>
 </div>
