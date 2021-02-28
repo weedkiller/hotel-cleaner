@@ -1,0 +1,257 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.RoomDto>
+
+<link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
+
+<div class="col-md-12">
+    <div class="portlet light portlet-fit bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-layers font-green"></i>
+                <span class="caption-subject  bold uppercase">عرض الغرف</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="mt-element-card mt-element-overlay">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+
+                      
+                        if (item.Isbusy == true)
+                        {
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="border:2px solid red;">
+                                <div class="mt-card-item">
+                                    <div class="mt-card-avatar mt-overlay-1">
+
+                                        <img src="~/Images/avatar3.jpg">
+
+
+
+                                        <div class="mt-overlay-2-grey">
+                                            <ul class="mt-info">
+                                                <li>
+                                                    <a class="btn default btn-outline" href="@Url.Action("Edit",new {id = item.Id})">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+
+
+                                                    @if (item.IsNeedfix == true & item.Isrequistedfix == false)
+                                                    {
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="@Url.Action("fix","Edit",new {id = item.Id})">
+                                                            <i class="fa fa-android"></i>
+                                                        </a>
+                                                    </li>
+
+
+
+                                                }
+
+                                                    @if (item.isneedclean == true & item.Isrequisted == false)
+                                                    {
+                                                        <li>
+                                                            <a class="btn default btn-outline" href="@Url.Action("fix","Edit",new {id = item.Id})">
+                                                                <i class="fa fa-android"></i>
+                                                            </a>
+                                                        </li>
+
+
+
+                                                    }
+
+                                                    <a id="" class="btn default btn-outline linkDel" href="@Url.Action("Remove",new {id = item.Id })">
+                                                        <i class="fa fa-remove"></i>
+                                                    </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="mt-card-content">
+                                      
+                                            @if (item.RoomNum != null)
+                                            {
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    @item.RoomNum
+                                                </p>
+                                            }
+                                            @if (item.Isbusy == true)
+                                            {
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    مشغولة
+                                                </p>
+                                            }
+                                            @if (item.IsNeedfix == true)
+                                            {
+
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    بحاجة صيانة
+                                                </p>
+                                            }
+                                            @if (item.isneedclean == true)
+                                            {
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    بحاجة تنظيف
+                                                </p>
+                                            }
+
+                                            @if (item.Isrequisted == true)
+                                            {
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    تم إضافة طلب نظافة
+                                                </p>
+                                            }
+
+                                            @if (item.Isrequisted == true)
+                                            {
+                                                <p class="mt-card-desc font-grey-mint">
+                                                    تم إضافة طلب صيانة
+                                                </p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="mt-card-item">
+                                        <div class="mt-card-avatar mt-overlay-1">
+
+                                            <img src="~/Images/avatar3.jpg">
+
+
+
+                                            <div class="mt-overlay-2-grey">
+                                                <ul class="mt-info">
+                                                    <li>
+                                                        <a class="btn default btn-outline" href="@Url.Action("Edit",new {id = item.Id})">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+
+
+                                                        @if (item.IsNeedfix == true & item.Isrequistedfix == false)
+                                                        {
+                                                        <li>
+                                                            <a class="btn default btn-outline" href="@Url.Action("fix","Edit",new {id = item.Id})">
+                                                                <i class="fa fa-android"></i>
+                                                            </a>
+                                                        </li>
+
+
+
+                                                    }
+
+                                                        @if (item.isneedclean == true & item.Isrequisted == false)
+                                                        {
+                                                            <li>
+                                                                <a class="btn default btn-outline" href="@Url.Action("fix","Edit",new {id = item.Id})">
+                                                                    <i class="fa fa-android"></i>
+                                                                </a>
+                                                            </li>
+
+
+
+                                                        }
+
+                                                        <a id="" class="btn default btn-outline linkDel" href="@Url.Action("Remove",new {id = item.Id })">
+                                                            <i class="fa fa-remove"></i>
+                                                        </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="mt-card-content">
+                                                <h3 class="mt-card-name" style="font-family:jazeera">@item.</h3>
+                                                @if (item.RoomNum != null)
+                                                {
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        @item.RoomNum
+                                                    </p>
+                                                }
+                                                @if (item.Isbusy == true)
+                                                {
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        مشغولة
+                                                    </p>
+                                                }
+                                                @if (item.IsNeedfix == true)
+                                                {
+
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        بحاجة صيانة
+                                                    </p>
+                                                }
+                                                @if (item.isneedclean == true)
+                                                {
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        بحاجة تنظيف
+                                                    </p>
+                                                }
+
+                                                @if (item.Isrequisted == true)
+                                                {
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        تم إضافة طلب نظافة
+                                                    </p>
+                                                }
+
+                                                @if (item.Isrequisted == true)
+                                                {
+                                                    <p class="mt-card-desc font-grey-mint">
+                                                        تم إضافة طلب صيانة
+                                                    </p>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+                            }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+        overflow: hidden !important;
+    }
+</style>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-confirm.min.js"></script>
+<script>
+    $('.linkDel').confirm({
+        title: 'تأكيد الحذف !',
+
+        content: 'هل تريد بالتأكيد حذف هذا المستخدم ؟',
+
+
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            },
+            إلغاء: function () {
+
+            }
+
+
+        }
+    });
+    $('a.twitter').confirm({
+        content: "...",
+    });
+    $('a.twitter').confirm({
+        buttons: {
+            نعم: function () {
+                location.href = this.$target.attr('href');
+            }
+        }
+    });
+    $(".jconfirm-content-pane").removeClass("no-scroll");
+</script>
