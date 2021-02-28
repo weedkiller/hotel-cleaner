@@ -3,6 +3,7 @@ using NawafizApp.Common;
 using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -271,6 +272,8 @@ namespace NawafizApp.Web.Controllers
             rom.Isrequistedfix = false;
             rom.IsNeedfix = false;
             _roomService.Edit(rom);
+
+            MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("GetallforCleanEmp");
 
         }
@@ -282,6 +285,8 @@ namespace NawafizApp.Web.Controllers
             var room = _roomService.GetById(rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("EndCleanOrder");
 
 
@@ -294,6 +299,8 @@ namespace NawafizApp.Web.Controllers
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("EndCleanOrder", new { Rid = Rid });
 
 
@@ -363,6 +370,8 @@ namespace NawafizApp.Web.Controllers
             rom.IsNeedfix = false;
             rom.Isrequistedfix = false;
             _roomService.Edit(rom);
+
+            MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("Check", "Equipment", rom.Id);
 
         }

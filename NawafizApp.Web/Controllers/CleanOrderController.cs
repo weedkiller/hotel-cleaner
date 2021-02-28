@@ -4,6 +4,7 @@ using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
 using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -402,6 +403,7 @@ namespace NawafizApp.Web.Controllers
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
 
+            MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
 
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = (int) cleanOrderDto.Room_ID;
@@ -461,6 +463,8 @@ namespace NawafizApp.Web.Controllers
             rom.isneedclean = false;
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
+
+            MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
             return RedirectToAction("Check", "Equipment", rom.Id);
 
         }

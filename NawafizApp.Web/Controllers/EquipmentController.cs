@@ -3,6 +3,7 @@ using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
 using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,6 +115,7 @@ namespace NawafizApp.Web.Controllers
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid });
 
 
@@ -126,6 +128,8 @@ namespace NawafizApp.Web.Controllers
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid }); 
 
 
