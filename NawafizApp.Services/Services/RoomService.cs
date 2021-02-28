@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+
 using NawafizApp.Domain;
 using NawafizApp.Domain.Entities;
 using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -49,7 +51,49 @@ namespace NawafizApp.Services.Services
         }
         public List<RoomDto> GetAll()
         {
+            string connStr = "server=localhost;database=account_1;port=3306;SslMode=none;";
+            //using (MySqlConnection conn = new MySqlConnection(connStr))
+            //{
+            //    List<DataRow> list = new List<DataRow>();
+            //    try
+            //    {
+            //        conn.Open();
+
+            //        string sql = "select room_code,room_ClnStatus,room_MenStatus from Hot_Room;";
+            //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+            //        MySqlDataReader rdr = cmd.ExecuteReader();
+            //        DataTable dt = new DataTable();
+            //        dt.Load(rdr);
+            //        IEnumerable<DataRow> collection = dt.Rows.Cast<DataRow>();
+            //        List<MySQlRoom> mySQlRooms = new List<MySQlRoom>();
+            //        foreach (var item in collection)
+            //        {
+            //            mySQlRooms.Add(new MySQlRoom() {
+            //                CleanStatus = item.ItemArray.First().ToString(),
+            //                MantStatus = item.ItemArray.First().ToString(),
+            //                RoomNum = item.ItemArray.First().ToString()
+            //            });
+            //        }
+
+            //        //list = dt.AsEnumerable().ToList();
+            //        conn.Close();
+
+            //    }
+            //    catch (Exception)
+            //    {
+
+            //        throw;
+            //    }
+ 
+            //}
+           
             
+          
+
+          
+            
+        
+
             var dto = _unitOfWork.RoomRepository.GetAll();
             
             
@@ -187,6 +231,14 @@ namespace NawafizApp.Services.Services
 
         
 
+
+    }
+
+    public class MySQlRoom
+    {
+        public string RoomNum { get; set; }
+        public string CleanStatus { get; set; }
+        public string MantStatus { get; set; }
 
     }
 }

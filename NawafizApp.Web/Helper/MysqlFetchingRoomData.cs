@@ -13,7 +13,7 @@ namespace NawafizApp.Web.Helper
         public static List<MySQlRoom> getDataFromMySql()
         {
             List<MySQlRoom> mySQlRooms = new List<MySQlRoom>();
-            string connStr = "server=localhost;database=account_1;port=3306;SslMode=none;";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 List<DataRow> list = new List<DataRow>();
