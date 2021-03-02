@@ -350,7 +350,6 @@ namespace NawafizApp.Web.Controllers
        
         public ActionResult takeCleanOrder(CleanOrderDto ordd)
         {
-
             var dto= _orderService.GetById(ordd.Id);
             dto.startdate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             var id = User.Identity.GetUserId();
@@ -362,6 +361,9 @@ namespace NawafizApp.Web.Controllers
             _userService.Edit(userdto, guid);
             _orderService.edit(dto);
             TempData["ord"] = dto.Id;
+            var rom = _RoomService.GetById(Convert.ToInt32(dto.Room_ID));
+
+            MysqlFetchingRoomData.setincleaning(rom.RoomNum.ToString(), false);
 
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = Convert.ToInt32(_orderService.GetById(dto.Id).Room_ID);
