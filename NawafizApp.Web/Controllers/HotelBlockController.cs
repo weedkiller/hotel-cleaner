@@ -1,6 +1,7 @@
 ﻿using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
+using NawafizApp.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,14 +32,22 @@ namespace NawafizApp.Web.Controllers
 
 
         [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
-        public ActionResult AddHotelBlock(HotelBlockDto dto, List<string> sids, List<string> mgId,List<string> cids,List<string> mids,List<string> rids)
+        public ActionResult AddHotelBlock(HotelBlockDto dto, List<string> sids, List<string> mgId, List<DateTime> fromTime, List<DateTime> toTime, List<string> cids,List<string> mids,List<string> rids)
         {
             List<string> Ids = new List<string>();
             if (mgId != null)
             {
+                var index = 0;
                 foreach (var item in mgId)
                 {
                     Ids.Add(item);
+                    dto.Supervisors.Add(new SupervisorDto()
+                    {
+                        Id = item,
+                        FromTime = fromTime[index],
+                        ToTime = toTime[index],
+                    });
+                    index++;
                 }
             }
             if (sids != null)
@@ -74,7 +83,12 @@ namespace NawafizApp.Web.Controllers
             return RedirectToAction("getHotelBlocks");
         }
         //[ValidateAntiForgeryToken]
-
+        [HttpGet]
+        public JsonResult GetSupervisors()
+        {
+            var list = Selects.ManagerEmpUsers(null);
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
         //[Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
         [Authorize(Roles = "Admin,Hoster")]
         public ActionResult getHotelBlocks()

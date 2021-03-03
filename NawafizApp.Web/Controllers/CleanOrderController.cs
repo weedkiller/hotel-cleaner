@@ -19,13 +19,15 @@ namespace NawafizApp.Web.Controllers
         IRoomService _RoomService;
         IUserService _userService;
         IRoomRecServices _roomrec;
-        public CleanOrderController(IRoomRecServices roomrec, ApplicationUserManager userManager, ApplicationSignInManager aps, IRoomService RoomService, IUserService userService, INotifictationService notifictationService, ICleanOrderService orderService)
+        IFixOrderServices _fixOrderServices;
+        public CleanOrderController(IRoomRecServices roomrec, ApplicationUserManager userManager, ApplicationSignInManager aps, IRoomService RoomService, IUserService userService, IFixOrderServices fixOrderServices, INotifictationService notifictationService, ICleanOrderService orderService)
             : base(userManager, aps)
         {
             _userService=userService;
             this._orderService = orderService;
             this._RoomService = RoomService;
             this._notifictationService = notifictationService;
+            _fixOrderServices = fixOrderServices;
             _roomrec = roomrec;
 
         }
@@ -46,7 +48,7 @@ namespace NawafizApp.Web.Controllers
             dto.Creation_Time = DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             dto.Creation_At = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY)+" " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             dto.Room_ID = rid;
-            dto.moshId = _orderService.getmoshbyroomId(rid);
+            dto.moshId = _fixOrderServices.getmoshbyroomId((int)rid);
             int i = _orderService.addOrder(dto);
             var room = _RoomService.GetById(rid);
             room.Isrequisted = true;
@@ -80,6 +82,8 @@ namespace NawafizApp.Web.Controllers
         {
             List<CleanOrderDto> list1 = new List<CleanOrderDto>();
             List<CleanOrderDto> list = _orderService.GetAll().OrderByDescending(x => x.Id).ToList();
+            var finishedCount = 0;
+            var allCount = 0;
             foreach (var item in list)
             {
 
@@ -108,13 +112,16 @@ namespace NawafizApp.Web.Controllers
                 { 
                     item.empName = _userService.GetById((Guid)item.cleaningEmp).FullName.ToString();
                 }
-                
+                if (item.isFinished)
+                    finishedCount++;
                 item.Roomnu = _RoomService.GetById((int)item.Room_ID).RoomNum.ToString();
                 list1.Add(item);
+                allCount++;
             }
 
 
-                return View(list1);
+            ViewBag.CleanFinishedCount = ((finishedCount * 100) / allCount) + " %";
+            return View(list1);
 
            
 

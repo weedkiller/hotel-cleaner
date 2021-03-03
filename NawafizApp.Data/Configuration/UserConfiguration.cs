@@ -65,6 +65,16 @@ namespace NawafizApp.Data.Configuration
                 .HasPrecision(23)
                 .IsOptional();
 
+            Property(x => x.FromTime)
+                .HasColumnName("FromTime")
+                .HasColumnType("datetime")
+                .IsOptional();
+
+            Property(x => x.ToTime)
+                .HasColumnName("ToTime")
+                .HasColumnType("datetime")
+                .IsOptional();
+
             Property(x => x.LockoutEnabled)
                 .HasColumnName("LockoutEnabled")
                 .HasColumnType("bit")

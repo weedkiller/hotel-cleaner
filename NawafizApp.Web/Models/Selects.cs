@@ -127,15 +127,7 @@ namespace NawafizApp.Web.Models
         {
             var service = DependencyResolver.Current.GetService<IUserService>();
 
-            var list = new List<SelectListItem>
-                           {
-                               new SelectListItem
-                                   {
-                                       Selected = !selected.HasValue,
-                                       Text = String.Empty,
-                                       Value=""
-                                   }
-                           };
+            var list = new List<SelectListItem>();
 
             list.AddRange(service.GetAll().Where(x =>  service.HasRole(x.UserId, "BlockSupervisor"))
                               .ToList()

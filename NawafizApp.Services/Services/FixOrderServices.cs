@@ -50,9 +50,18 @@ namespace NawafizApp.Services.Services
 
         public Guid getmoshbyroomId(int rid)
         {
-            var ie = _unitOfWork.OrderRepository.getManIdforRoom(rid);
+            var room = _unitOfWork.RoomRepository.GetAll().FirstOrDefault(x => x.Id == rid);
+            var hotelBlock = _unitOfWork.HotelBlockRepository.GetAll().FirstOrDefault(x => x.Id == room.HotelBlock.Id);
+            var users = _unitOfWork.UserRepository.GetAll().Where(x =>x.HotelBlock != null && x.HotelBlock.Id == hotelBlock.Id && x.Roles.Any(y => y.Name == "BlockSupervisor")).ToList();
+            
+            var supervisorId = new Guid();
+            foreach (var user in users)
+            {
+                if (user.FromTime != null && user.ToTime != null && user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                    supervisorId = user.UserId;
+            }
 
-            return ie;
+            return supervisorId;
 
 
         }
