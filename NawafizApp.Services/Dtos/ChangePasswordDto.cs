@@ -14,5 +14,7 @@ namespace NawafizApp.Services.Dtos
         public string UserName { set; get; }
         public string fullname { set; get; }
         public bool wantEditpassword { set; get; }
+        public string Phone { set; get; }
+        public string Email { set; get; }
     }
 }

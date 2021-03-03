@@ -18,7 +18,6 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-               
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -94,6 +93,7 @@
                             </select>
                         </div>
                     </div>
+                    <p class="text-danger">@ViewBag.blockMsg</p>
                 </div>
                 <div>
                     <div class="form-group ">
@@ -114,13 +114,19 @@
                                 </select>
                             </div>
                             </div>
+                        <p class="text-danger">@ViewBag.typeMsg</p>
                         </div>
                     </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    @if (!string.IsNullOrEmpty(ViewBag.typeMsg) || !string.IsNullOrEmpty(ViewBag.blockMsg)){
+                      <input type="submit" value="Create" disabled class="btn btn-default" />
+                    }
+                    else{
+                      <input type="submit" value="Create" class="btn btn-default" /> 
+                    }
                 </div>
             </div>
             <div>

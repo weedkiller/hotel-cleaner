@@ -31,7 +31,14 @@ namespace NawafizApp.Web.Controllers
         [Authorize(Roles = "Admin,Hoster")]
         public ActionResult AddRoom()
         {
-
+            var typeMsg = "";
+            var blockMsg = "";
+            var types = _roomTypeService.GetRoomTypes();
+            var hotelBlocks = _hotelBlockService.GetAll();
+            typeMsg = !types.Any() ? "يجب إضافة نوع غرفة" :"";
+            blockMsg = !hotelBlocks.Any() ? "يجب إضافة كتلة بنائية " : "";
+            ViewBag.blockMsg = blockMsg;
+            ViewBag.typeMsg = typeMsg;
             return View();
         }
         [HttpPost]

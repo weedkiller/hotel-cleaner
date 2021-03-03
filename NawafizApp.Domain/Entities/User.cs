@@ -35,6 +35,8 @@ namespace NawafizApp.Domain.Entities
         public int AccessFailedCount { get; set; }
         public string FullName { get; set; }
         public DateTime CreationDate { get; set; }
+        public DateTime? FromTime { get; set; }
+        public DateTime? ToTime { get; set; }
         public bool PassWordExpired { set; get; }
         public virtual HotelBlock HotelBlock { set; get; }
         public bool IsBusy { get; set; }

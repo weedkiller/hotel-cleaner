@@ -70,7 +70,8 @@ namespace NawafizApp.Web.Controllers
         public ActionResult GetAllFixOrder()
         {
             List<FixOrderDto> list1 = new List<FixOrderDto>();
-
+            var finishedCount = 0;
+            var allCount = 0;
             var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id);
             foreach (var item in dc)
             {
@@ -85,11 +86,14 @@ namespace NawafizApp.Web.Controllers
                     item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
                 }
                 item.Roomnu = _roomService.GetById((int)item.Room_ID).RoomNum.ToString();
+                if (item.isFinished)
+                    finishedCount++;
                 list1.Add(item);
-
+                allCount++;
             }
 
 
+            ViewBag.FixFinishedCount = ((finishedCount * 100) / allCount) + " %";
             return View(list1);
 
         }

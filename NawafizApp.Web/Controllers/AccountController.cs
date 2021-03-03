@@ -130,6 +130,8 @@ namespace NawafizApp.Web.Controllers
             ViewBag.ErrorMessage = ErrorMessage;
             dto.fullname = model.FullName;
             dto.UserName = model.UserName;
+            dto.Phone = model.PhoneNumber;
+            dto.Email = model.Email;
 
             return View(dto);
         }

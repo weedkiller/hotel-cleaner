@@ -34,6 +34,13 @@ namespace NawafizApp.Services.Services
                 {
                     if (!string.IsNullOrWhiteSpace(item))
                     {
+                        var _user = _unitOfWork.UserRepository.FindById(Guid.Parse(item));
+                        if(dto.Supervisors.Any(x => x.Id == item))
+                        {
+                            _user.FromTime = dto.Supervisors.FirstOrDefault(x => x.Id == item).FromTime;
+                            _user.ToTime = dto.Supervisors.FirstOrDefault(x => x.Id == item).ToTime;
+                            _unitOfWork.UserRepository.Update(_user);
+                        }
                         HotelBlock.Users.Add(_unitOfWork.UserRepository.FindById(Guid.Parse(item)));
                     }
                 }
