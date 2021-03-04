@@ -71,7 +71,7 @@ namespace NawafizApp.Web.Helper
                     l_oConnection.Open();
                     // Create a String to hold the query.
                     string query = "select id from Rooms " +
-                        "where (isneedclean = 1 and Isrequisted = 0) and (Isrequistedfix=0 or IsNeedfix=1)";
+                        "where (isneedclean = 1 and Isrequisted = 0) Or (Isrequistedfix=0 and IsNeedfix=1)";
                     ///
                     /// 
                     ///

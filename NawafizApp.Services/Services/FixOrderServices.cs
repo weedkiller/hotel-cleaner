@@ -113,6 +113,7 @@ namespace NawafizApp.Services.Services
             dto.maitremp = item.maitremp;
             dto.Hoster = item.Hoster;
             dto.Room_ID = item.Room.Id;
+            dto.Istaked = item.isTaked;
             return dto;
         }
 

@@ -42,11 +42,18 @@ namespace NawafizApp.Web.Controllers
             return View();
         }
         [HttpPost]
+        public bool CheckIfRoomNumberValid(string num)
+        {
+            var exist = _roomService.GetAll().Any(x => x.RoomNum == num);
+            return exist;
+        }
+        [HttpPost]
         [Authorize(Roles = "Admin,Hoster")]
         public ActionResult AddRoom(RoomDto dto, int hid ,int tid)
         {
-            dto.RoomType_id = tid;
-            dto.HotelBlock_id = hid;
+            //dto.RoomType_id = tid;
+            //dto.HotelBlock_id = hid;
+           // if()
             int i = _roomService.Add(dto);
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = i;

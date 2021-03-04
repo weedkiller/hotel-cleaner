@@ -608,12 +608,17 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <script>
+        debugger;
         var obj = $.connection.notificationHub;
-
-        var userId = getCookie("userId");
+        $.connection.hub.start().done(function () {
+            console.log("SUccess");
+            obj.server.send("test");
+        }).fail(function () { console.log("connect with hub"); });
         obj.client.sendRoomNotification = function (data) {
+            console.log("test");
+            console.log(data);
             if (data > 0) {
-                $("#all-requests-mark").html(count);
+                $("#all-requests-mark").html(data);
                 $("#all-requests-mark").css("background-color", "#d61818");
                 $("#all-requests-mark").css("border-color", "#c7c1c1");
             }
@@ -623,10 +628,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 $("#all-requests-mark").css("border-color", "#222222");
             }
         };
-        $.connection.hub.start().done(function () {
-            console.log("SUccess");
-            obj.server.send("test");
-        }).fail(function () { console.log("connect with hub"); });
+        
 
     </script>
 </body>
