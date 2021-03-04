@@ -57,16 +57,14 @@ namespace NawafizApp.Services.Services
             {
                 var i = _unitOfWork.HotelBlockRepository.FindById(id);
                 if (i == null) return false;
-                i.Users.Clear();
-                i.Rooms.Clear();
-                var rooms = _unitOfWork.RoomRepository.GetAll().Where(x=> x.HotelBlock.Id == i.Id);
-                foreach (var item in rooms)
-                {
-                    item.HotelBlock = null;
-                    _unitOfWork.RoomRepository.Update(item);
-                    _unitOfWork.SaveChanges();
-                }
-                var users = _unitOfWork.UserRepository.GetAll().Where(x => x.HotelBlock.Id == i.Id);
+                //var rooms = _unitOfWork.RoomRepository.GetAll().Where(x=> x.HotelBlock.Id == i.Id);
+                //foreach (var item in rooms)
+                //{
+                //    item.HotelBlock = null;
+                //    _unitOfWork.RoomRepository.Update(item);
+                //    _unitOfWork.SaveChanges();
+                //}
+                var users = _unitOfWork.UserRepository.GetAll().Where(x => x.HotelBlock !=null && x.HotelBlock.Id == i.Id);
                 foreach (var item in users)
                 {
                     item.HotelBlock = null;
