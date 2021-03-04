@@ -70,7 +70,7 @@ namespace NawafizApp.Web.Controllers
         {
             var x = _equipmentService.EquipmentRemove(id);
 
-            return RedirectToAction("RoomView", "Room");
+            return RedirectToAction("getAllRoom", "Room");
 
         }
 
@@ -92,7 +92,7 @@ namespace NawafizApp.Web.Controllers
             {
 
                 _equipmentService.Edit(eqDto);
-                return RedirectToAction("RoomView", "Room");
+                return RedirectToAction("getAllRoom", "Room");
 
             }
             return View(eqDto);

@@ -73,7 +73,7 @@ namespace NawafizApp.Web.Controllers
             //dto1.NotDateTime = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY);
             //dto1.Room_ID = dto.Room_ID;
             //_notifictationService.Add(dto1);
-            return RedirectToAction("RoomView","Room");
+            return RedirectToAction("getAllRoom", "Room");
         }
         [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
 

@@ -63,7 +63,7 @@ namespace NawafizApp.Web.Controllers
 
             }
 
-            return RedirectToAction("RoomView", "Room");
+            return RedirectToAction("getAllRoom", "Room");
         }
 
         [Authorize(Roles = "Admin,Hoster")]
