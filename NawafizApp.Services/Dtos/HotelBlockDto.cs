@@ -27,7 +27,7 @@ namespace NawafizApp.Services.Dtos
     public class SupervisorDto{
 
         public string Id { set; get; }
-        public DateTime? FromTime { set; get; }
-        public DateTime? ToTime { set; get; }
+        public TimeSpan? FromTime { set; get; }
+        public TimeSpan? ToTime { set; get; }
     }
 }

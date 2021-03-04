@@ -70,7 +70,7 @@ Cleaner
                     return RedirectToAction("Getallformosh", "CleanOrder");
                     
                 case "Hoster":
-                    return RedirectToAction("RoomView", "Room");
+                    return RedirectToAction("getAllRoom", "Room");
                 case "MaintenanceEmp":
                     return RedirectToAction("GetallforCleanEmp", "FixOrder");
                 case "Reception":

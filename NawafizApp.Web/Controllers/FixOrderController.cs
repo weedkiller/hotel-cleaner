@@ -275,8 +275,12 @@ namespace NawafizApp.Web.Controllers
             //rom. = false;
             rom.Isrequistedfix = false;
             rom.IsNeedfix = false;
+            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
+            if (rom.IsNeedfix && !rom.Isrequistedfix)
+                roomsStatusChangedCount++;
             _roomService.Edit(rom);
-
+            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
+            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("GetallforCleanEmp");
 
@@ -288,7 +292,12 @@ namespace NawafizApp.Web.Controllers
             _equipmentService.checkedToggle(id);
             var room = _roomService.GetById(rid);
             room.IsNeedfix = !room.IsNeedfix;
+            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
+            if (room.IsNeedfix && !room.Isrequistedfix)
+                roomsStatusChangedCount++;
             _roomService.Edit(room);
+            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
+            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
 
             MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("EndCleanOrder");
@@ -302,8 +311,13 @@ namespace NawafizApp.Web.Controllers
             _equipmentService.checkedToggleFix(id);
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
-            _roomService.Edit(room);
+            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
 
+            if (room.IsNeedfix && !room.Isrequistedfix)
+                roomsStatusChangedCount++;
+            _roomService.Edit(room);
+            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
+            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("EndCleanOrder", new { Rid = Rid });
 
@@ -373,8 +387,12 @@ namespace NawafizApp.Web.Controllers
             var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
             rom.IsNeedfix = false;
             rom.Isrequistedfix = false;
+            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
+            if (rom.IsNeedfix && !rom.Isrequistedfix)
+                roomsStatusChangedCount++;
             _roomService.Edit(rom);
-
+            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
+            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("Check", "Equipment", rom.Id);
 

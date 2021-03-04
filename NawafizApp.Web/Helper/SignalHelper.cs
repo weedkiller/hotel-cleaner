@@ -48,16 +48,63 @@ namespace NawafizApp.Web.Helper
         {
             var context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
             Send(context);
+            SendRoomsStatusChangedCount(context);
+        }
+        public static void SendRoomsStatusChangedCount(IHubContext context)
+        {
+            try
+            {
+                context.Clients.All.sendRoomNotification(GetCountOfNotOrderedRooms());
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
-        /// <summary>
-        /// قراءة قيمة بطاقة الموزع
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="context"></param>
-        /// <remarks>
-        /// <para>تتم قراءة قيمة البطاقة  NormalUser في حال كان المستخدم ينتمي إلى الدور </para>
-        /// </remarks>
+        private static int GetCountOfNotOrderedRooms()
+        {
+            using (var l_oConnection = new SqlConnection(System.Configuration.ConfigurationManager.
+                                                    ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                try
+                {
+                    l_oConnection.Open();
+                    // Create a String to hold the query.
+                    string query = "select id from Rooms " +
+                        "where (isneedclean = 1 and Isrequisted = 0) and (Isrequistedfix=0 or IsNeedfix=1)";
+                    ///
+                    /// 
+                    ///
+                    /// 
+                    //for Fixing manager
+                    SqlCommand queryCommand = new SqlCommand(query, l_oConnection);
+                    SqlDataReader queryCommandReaderFM = queryCommand.ExecuteReader();
+                    DataTable dataTableFM = new DataTable();
+                    dataTableFM.Load(queryCommandReaderFM);
+                    IEnumerable<DataRow> collectionFM = dataTableFM.Rows.Cast<DataRow>();
+
+                    var rowsCount = dataTableFM.Rows.Count;
+                    l_oConnection.Close();
+                    return rowsCount;
+                }
+                catch (SqlException ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static void SendRoomsStatusChangedCount(int count)
+        {
+            try
+            {
+                var context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+                context.Clients.All.sendRRoomNotification(count);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
         static void Send(IHubContext context)
         {
             try

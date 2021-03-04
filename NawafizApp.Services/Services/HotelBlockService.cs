@@ -37,8 +37,8 @@ namespace NawafizApp.Services.Services
                         var _user = _unitOfWork.UserRepository.FindById(Guid.Parse(item));
                         if(dto.Supervisors.Any(x => x.Id == item))
                         {
-                            _user.FromTime = dto.Supervisors.FirstOrDefault(x => x.Id == item).FromTime;
-                            _user.ToTime = dto.Supervisors.FirstOrDefault(x => x.Id == item).ToTime;
+                            _user.FromTime = new DateTime(2000,01,01, dto.Supervisors.FirstOrDefault(x => x.Id == item).FromTime.Value.Hours, dto.Supervisors.FirstOrDefault(x => x.Id == item).FromTime.Value.Minutes,0);
+                            _user.ToTime = new DateTime(2000, 01, 01, dto.Supervisors.FirstOrDefault(x => x.Id == item).ToTime.Value.Hours, dto.Supervisors.FirstOrDefault(x => x.Id == item).ToTime.Value.Minutes,0);
                             _unitOfWork.UserRepository.Update(_user);
                         }
                         HotelBlock.Users.Add(_unitOfWork.UserRepository.FindById(Guid.Parse(item)));
@@ -53,14 +53,21 @@ namespace NawafizApp.Services.Services
 
         public bool delete(int id)
         {
-            var i = _unitOfWork.HotelBlockRepository.FindById(id);
-            if (i == null) return false;
-            i.Users.Clear();
-            i.Rooms.Clear();
-           
-            _unitOfWork.HotelBlockRepository.Remove(i);
-            _unitOfWork.SaveChanges();
-            return true;
+            try
+            {
+                var i = _unitOfWork.HotelBlockRepository.FindById(id);
+                if (i == null) return false;
+                i.Users.Clear();
+                i.Rooms.Clear();
+
+                _unitOfWork.HotelBlockRepository.Remove(i);
+                _unitOfWork.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool edit(HotelBlockDto dto)
@@ -78,6 +85,13 @@ namespace NawafizApp.Services.Services
                 {
                     if (!string.IsNullOrWhiteSpace(userId))
                     {
+                        var _user = _unitOfWork.UserRepository.FindById(Guid.Parse(userId));
+                        if (dto.Supervisors.Any(x => x.Id == userId))
+                        {
+                            _user.FromTime = new DateTime(2000, 01, 01, dto.Supervisors.FirstOrDefault(x => x.Id == userId).FromTime.Value.Hours, dto.Supervisors.FirstOrDefault(x => x.Id == userId).FromTime.Value.Minutes, 0);
+                            _user.ToTime = new DateTime(2000, 01, 01, dto.Supervisors.FirstOrDefault(x => x.Id == userId).ToTime.Value.Hours, dto.Supervisors.FirstOrDefault(x => x.Id == userId).ToTime.Value.Minutes, 0);
+                            _unitOfWork.UserRepository.Update(_user);
+                        }
                         if (!HotelBlock.Users.Contains(_unitOfWork.UserRepository.FindById(Guid.Parse(userId))))
                         {
                             HotelBlock.Users.Add(_unitOfWork.UserRepository.FindById(Guid.Parse(userId)));

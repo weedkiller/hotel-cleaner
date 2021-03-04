@@ -1,9 +1,7 @@
-﻿@model IEnumerable<NawafizApp.Services.Dtos.RoomDto>
-
+﻿@model NawafizApp.Web.Controllers.RoomFilter
 
 @{
-
-    Layout=null;
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
 }
 <link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
 
@@ -17,37 +15,80 @@
         <p>
             @Html.ActionLink("إنشاء غرفة جديدة ", "AddRoom")
         </p>
+        @using (Html.BeginForm("getAllRoom", "Room", FormMethod.Get))
+        {
+            <div class="row" style="margin:25px 10px">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> الكتلة الفندقية</label>
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DropDownListFor(f=> f.SelectedBlock, Model.HotelBlocks, "اختيار")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> نوع الغرفة</label>
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DropDownListFor(f => f.SelectedType, Model.Types, "اختيار")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> رقم الغرفة</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input class="form-control col-md-5" type="text" name="selectedRoomNum" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="btn btn-primary" value="بحث" />
+                    <a href="getAllRoom" class="btn btn-warning">مسح التصفية</a>
+                </div>
+            </div>
+        }
         <table class="table" id="tableroom">
 
             <tr>
                 <th>
-                    رقم الغرفة
+                    @Html.ActionLink("رقم الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomNumberSortParm })
                 </th>
                 <th>
-                    أتجاه الغرفة
+                    @Html.ActionLink("أتجاه الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomDirSortParm })
                 </th>
                 <th>
-                    الكتلة الفندقية
+                    @Html.ActionLink("الكتلة الفندقية", "getAllRoom", new { sortOrder = ViewBag.RoomBlockSortParm })
+                    
                 </th>
                 <th>
-                    نمط الغرفة
+                    @Html.ActionLink(" نمط الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomTypeSortParm })
+                   
                 </th>
                 <th>
-                    مشغولة
+                    @Html.ActionLink("مشغولة", "getAllRoom", new { sortOrder = ViewBag.RoomIsBusySortParm })
                 </th>
                 <th>
-                    بحاجة صيانة
+                    @Html.ActionLink(" بحاجة صيانة", "getAllRoom", new { sortOrder = ViewBag.RoomIsNeedFixSortParm })
                 </th>
                 <th>
-                    بحاجة تنظيف
+                    @Html.ActionLink(" بحاجة تنظيف", "getAllRoom", new { sortOrder = ViewBag.RoomIsNeedCleanSortParm })
+                   
                 </th>
                 <th>
-                    في الخدمة ؟
+                    @Html.ActionLink(" في الخدمة ؟", "getAllRoom", new { sortOrder = ViewBag.RoomIsInServiceSortParm })
+                   
                 </th>
                 <th></th>
             </tr>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Data)
             {
                 if (item.isneedclean == true || item.IsNeedfix == true)
                 {
@@ -113,7 +154,7 @@
                             }
                         }
                         <span>
-                            @Html.ActionLink("اضافة تجهيزات", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                            @Html.ActionLink("تجهيزات الغرفة", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
                         </span>
                     </td>
                 </tr>
@@ -182,7 +223,7 @@
                                 }
                             }
                             <span>
-                                @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                                @Html.ActionLink("تجهيزات الغرفة", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
                             </span>
                     </td>
                 </tr>
@@ -196,11 +237,13 @@
 
 
 
-
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
         <script src="~/Scripts/jquery-confirm.min.js"></script>
         <script>
+            $("select").addClass("form-control");
             $('.linkDel').confirm({
                 title: 'تأكيد الحذف !',
 
