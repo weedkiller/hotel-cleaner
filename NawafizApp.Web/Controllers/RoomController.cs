@@ -51,9 +51,9 @@ namespace NawafizApp.Web.Controllers
         [Authorize(Roles = "Admin,Hoster")]
         public ActionResult AddRoom(RoomDto dto, int hid ,int tid)
         {
-            //dto.RoomType_id = tid;
-            //dto.HotelBlock_id = hid;
-           // if()
+            dto.RoomType_id = tid;
+            dto.HotelBlock_id = hid;
+            // if()
             int i = _roomService.Add(dto);
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = i;
