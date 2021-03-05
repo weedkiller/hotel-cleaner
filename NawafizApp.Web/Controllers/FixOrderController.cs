@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using NawafizApp.Common;
+using NawafizApp.Domain;
 using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
@@ -16,15 +17,17 @@ namespace NawafizApp.Web.Controllers
     {
         IUserService _userService;
         IEquipmentService _equipmentService;
+        IUnitOfWork _unitOfWork;
 
         IRoomService _roomService;
         IFixOrderServices _fixOrderServices;
         IFixOrderEqupService _fixOrderEqupService;
 
-        public FixOrderController(ApplicationUserManager userManager, ApplicationSignInManager aps, IUserService IUS, IEquipmentService equipmentService, IRoomService roomService, IFixOrderServices fixOrderServices, IFixOrderEqupService fixOrderEqupService) : base(userManager, aps)
+        public FixOrderController(ApplicationUserManager userManager, IUnitOfWork unitOfWork, ApplicationSignInManager aps, IUserService IUS, IEquipmentService equipmentService, IRoomService roomService, IFixOrderServices fixOrderServices, IFixOrderEqupService fixOrderEqupService) : base(userManager, aps)
         {
             _roomService = roomService;
             this._userService = IUS;
+            _unitOfWork = unitOfWork;
             this._equipmentService = equipmentService;
             _fixOrderServices = fixOrderServices;
             _fixOrderEqupService = fixOrderEqupService;
@@ -184,7 +187,7 @@ namespace NawafizApp.Web.Controllers
             _fixOrderServices.setIsSeenTrue();
             List<FixOrderDto> list1 = new List<FixOrderDto>();
 
-            var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.maitremp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false);
+            var dc = _fixOrderServices.GetAll().OrderByDescending(x => x.Id).Where(x => x.maitremp == new Guid(User.Identity.GetUserId())).Where(x => x.isFinished == false && !x.Istaked);
             foreach (var item in dc)
             {
 
@@ -213,10 +216,11 @@ namespace NawafizApp.Web.Controllers
                 {
                     item.empName = _userService.GetById((Guid)item.maitremp).FullName.ToString();
                 }
-                list1.Add(item);
+                var room = _roomService.GetById((int)item.Room_ID);
+                item.Roomnu = room.RoomNum;
+                    list1.Add(item);
 
             }
-
 
             return View(list1);
         }
@@ -248,20 +252,21 @@ namespace NawafizApp.Web.Controllers
             _userService.Edit(userdto, guid);
             _fixOrderServices.edit(dto);
             TempData["ord"] = dto.Id;
-            return RedirectToAction("EndCleanOrder", new { rid = dto.Room_ID,oid = dto.Id });
+            return RedirectToAction("EndCleanOrder", new { rid = dto.Room_ID,oid = dto.Id , msg = "" });
 
         }
 
 
-        public ActionResult EndCleanOrder(int rid)
+        public ActionResult EndCleanOrder(int rid, int oid, string msg = "")
         {
-
+            //add oid for view to finish the order recently
+            ViewBag.Oid = oid;
             var dto = _equipmentService.All(rid).Where(x=>x.ishere==true & x.needfix==true);
             return View(dto);
 
         }
         [HttpPost]
-        public ActionResult EndCleanOrder(int rid,int oid)
+        public ActionResult EndCleanOrder(int rid, int oid)
         {
             var cleanOrderDto = _fixOrderServices.GetById(oid);
             var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
@@ -275,29 +280,44 @@ namespace NawafizApp.Web.Controllers
             //rom. = false;
             rom.Isrequistedfix = false;
             rom.IsNeedfix = false;
-            //var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-            //if (rom.IsNeedfix && !rom.Isrequistedfix)
-            //    roomsStatusChangedCount++;
             _roomService.Edit(rom);
-            //System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            //SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("GetallforCleanEmp");
 
         }
+        [HttpPost]
+         public bool SetOrderAsFinished(int oid)
+        {
+           try
+            {
+                var cleanOrderDto = _fixOrderServices.GetById(oid);
+                var userdto = _userService.GetById(new Guid(User.Identity.GetUserId()));
+                userdto.IsBusy = false;
+                _userService.Edit(userdto, new Guid(User.Identity.GetUserId()));
+                cleanOrderDto.enddate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
+                cleanOrderDto.isFinished = true;
+                _fixOrderServices.edit(cleanOrderDto);
 
+                var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
+                //rom. = false;
+                rom.Isrequistedfix = false;
+                rom.IsNeedfix = false;
+                _roomService.Edit(rom);
+                MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
 
         public ActionResult CheckedToggle(int id, int rid)
         {
             _equipmentService.checkedToggle(id);
             var room = _roomService.GetById(rid);
             room.IsNeedfix = !room.IsNeedfix;
-            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-            if (room.IsNeedfix && !room.Isrequistedfix)
-                roomsStatusChangedCount++;
             _roomService.Edit(room);
-            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
 
             MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("EndCleanOrder");
@@ -306,20 +326,14 @@ namespace NawafizApp.Web.Controllers
 
         }
 
-        public ActionResult CheckedToggleFix(int id, int Rid)
+        public ActionResult CheckedToggleFix(int id, int Rid, int Oid)
         {
             _equipmentService.checkedToggleFix(id);
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
-            //var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-
-            //if (room.IsNeedfix && !room.Isrequistedfix)
-            //    roomsStatusChangedCount++;
             _roomService.Edit(room);
-            //System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            //SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
-            return RedirectToAction("EndCleanOrder", new { Rid = Rid });
+            return RedirectToAction("EndCleanOrder", new { Rid = Rid, Oid = Oid, Msg = "" });
 
 
 
@@ -387,12 +401,7 @@ namespace NawafizApp.Web.Controllers
             var rom = _roomService.GetById(Convert.ToInt32(cleanOrderDto.Room_ID));
             rom.IsNeedfix = false;
             rom.Isrequistedfix = false;
-            //var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-            //if (rom.IsNeedfix && !rom.Isrequistedfix)
-            //    roomsStatusChangedCount++;
             _roomService.Edit(rom);
-            //System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            //SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetFixStatus(rom.RoomNum, rom.IsNeedfix);
             return RedirectToAction("Check", "Equipment", rom.Id);
 

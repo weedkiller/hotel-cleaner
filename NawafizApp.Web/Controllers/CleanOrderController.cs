@@ -411,11 +411,6 @@ namespace NawafizApp.Web.Controllers
             rom.isneedclean = false;
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
-            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-            if (rom.isneedclean && !rom.Isrequisted)
-                roomsStatusChangedCount++;
-            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
 
             roomrecDto roomrecDto = new roomrecDto();
@@ -476,11 +471,6 @@ namespace NawafizApp.Web.Controllers
             rom.isneedclean = false;
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
-            var roomsStatusChangedCount = (int)int.Parse(System.Web.HttpContext.Current.Session["roomsStatusChangedCount"].ToString());
-            if (rom.isneedclean && !rom.Isrequisted)
-                roomsStatusChangedCount++;
-            System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = roomsStatusChangedCount;
-            SignalHelper.SendRoomsStatusChangedCount(roomsStatusChangedCount);
             MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
             return RedirectToAction("Check", "Equipment", rom.Id);
 

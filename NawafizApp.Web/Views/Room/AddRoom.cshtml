@@ -161,24 +161,25 @@
     $("#RoomNum").on('change', function () {
         var val = this.value;
         if (this.value != null) {
-            debugger;
             $.ajax({
                 type: "POST",
                 url: window.location.origin + "/Room/CheckIfRoomNumberValid",
                 data: { num: val },
                 success: function (data) {
+                    debugger;
                     console.log(data);
-                    if (!data) {
-                        $("#text-number").html("الرقم موجود مسبقا");
-                        $("#submit-form-add").prop('disabled', true);
-                        $validforNumber = false;
-                    }
-                    else {
+                    if (data == "False") {
                         $("#text-number").html("");
                         $validforNumber = true;
                         if ($validforBlocks && $validforTypes) {
                             $("#submit-form-add").prop('disabled', false);
                         }
+                    }
+                    else {
+                        $validforNumber = false;
+                        $("#submit-form-add").prop('disabled', true);
+                        $("#text-number").html("الرقم موجود مسبقا");
+                        
 }
                 }
             });

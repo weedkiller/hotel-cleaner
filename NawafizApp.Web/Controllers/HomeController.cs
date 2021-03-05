@@ -67,7 +67,7 @@ Cleaner
                     return RedirectToAction("getHotelBlocks", "HotelBlock");
 
                 case "BlockSupervisor":
-                    return RedirectToAction("Getallformosh", "CleanOrder");
+                    return RedirectToAction("Index", "Dashboard");
                     
                 case "Hoster":
                     return RedirectToAction("getAllRoom", "Room");

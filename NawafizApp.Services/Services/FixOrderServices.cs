@@ -82,6 +82,7 @@ namespace NawafizApp.Services.Services
                 dto.startdate = item.startdate;
                 dto.enddate = item.enddate;
                 dto.maitremp = item.maitremp;
+                dto.Istaked = item.isTaked;
 
                 dto.isFinished = item.isFinished;
                 dto.Description = item.Description;

@@ -45,11 +45,11 @@
 
                     @if (item.needfix)
                     {
-                        <td class="Checked"> لا <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-remove"></i> نعم  </a></td>
+                        <td class="Checked"> نعم <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-remove"></i> لا  </a></td>
                     }
                     @if (!item.needfix)
                     {
-                        <td class="notChecked">نعم  <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-check"></i>لا  </a></td>
+                        <td class="notChecked">لا  <a class="linlpay" href="@Url.Action("CheckedToggleFix",new { id = item.Id,Rid=item.Room_id })"><i class="fa fa-check"></i>نعم  </a></td>
                     }
 
 

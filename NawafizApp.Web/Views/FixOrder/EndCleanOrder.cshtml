@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<NawafizApp.Services.Dtos.EquipmentDto>
 @{
     Layout = "~/Views/Shared/_Layout-fixEmp.cshtml";}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 
 @using (Html.BeginForm())
 {
@@ -43,11 +41,11 @@
 
                 @if (item.needfix)
                 {
-                    <td class="Checked"> بحاجة صيانة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-remove"></i> جاهزة  </a></td>
+                    <td class="Checked"> بحاجة صيانة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id  , Oid = ViewBag.Oid })"><i class="fa fa-remove"></i> جاهزة  </a></td>
                 }
                 @if (!item.needfix)
                 {
-                    <td class="notChecked">جاهزة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id })"><i class="fa fa-check"></i>بحاجة صيانة  </a></td>
+                    <td class="notChecked">جاهزة  <a class="linlpay" href="@Url.Action("CheckedToggleFix", new { id = item.Id, rid = item.Room_id , Oid = ViewBag.Oid })"><i class="fa fa-check"></i>بحاجة صيانة  </a></td>
                 }
 
 
@@ -65,5 +63,38 @@
 
 
     </table>
-    <input id="Submit1" type="submit" value="submit" />
+    <div class="row">
+        <div class="col-md-1">
+            <input id="Submit1" class="btn btn-primary" type="submit" value="انهاء المهمة" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-block">@Html.ActionLink("الرجوع الى قائمة المهمات ", "GetallforCleanEmp")</button>
+        </div>
+        
+    </div>
 }
+
+
+<script>
+    //$(document).ready(function () {
+    //    $("#Submit1").on("click", function () {
+    //        $.ajax({
+    //            type: "POST",
+    //            url: window.location.origin + "/FixOrder/SetOrderAsFinished",
+    //            data: { oid: CurrentId },
+    //            success: function (data) {
+    //                debugger;
+    //                console.log(data);
+    //                if (data == "False") {
+
+    //                }
+    //                else {
+
+    //                }
+    //            }
+    //        });
+
+    //    });
+    
+    //});
+</script>

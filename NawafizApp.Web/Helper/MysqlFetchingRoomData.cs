@@ -76,7 +76,7 @@ namespace NawafizApp.Web.Helper
                 }
                 catch (Exception e)
                 {
-                    throw e;
+                    return;
 
                 }
 
@@ -104,7 +104,7 @@ namespace NawafizApp.Web.Helper
                 }
                 catch (Exception e)
                 {
-                    throw e;
+                    return;
 
                 }
 
@@ -135,7 +135,7 @@ namespace NawafizApp.Web.Helper
                 }
                 catch (Exception e)
                 {
-                    throw e;
+                    return;
 
                 }
 
@@ -167,7 +167,7 @@ namespace NawafizApp.Web.Helper
                 }
                 catch (Exception e)
                 {
-                    throw e;
+                    return;
 
                 }
 

@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseAuthorizeController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FixOrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -5723,6 +5724,7 @@
     <Content Include="Views\CleanOrder\GetallFinishedforCleanEmp.cshtml" />
     <Content Include="Views\FixOrder\notfinishedOrderforCurentUser.cshtml" />
     <Content Include="Views\Shared\_Layout-account.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Views\Shared\_Layout-supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -7,11 +7,10 @@
     Layout = "~/Views/Shared/_Layout-hoster.cshtml";
 }
 
-<h2>Edit</h2>
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>إضافة غرفة
+            <i class="fa fa-gift"></i>تعديل غرفة
         </div>
     </div>
     <div class="portlet-body">
@@ -20,28 +19,27 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>RoomDto</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.RoomNum, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="col-md-2 control-label">رقم الغرفة</label>
+                    <div class="col-md-3">
                         @Html.EditorFor(model => model.RoomNum, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.RoomNum, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.RoomDirection, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="col-md-2 control-label">اتجاه الغرفة</label>
+                    <div class="col-md-3">
                         @Html.EditorFor(model => model.RoomDirection, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.RoomDirection, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group ">
-                    @Html.Label("الكتلة الفندقية ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">الكتلة الفندقية</label>
                     <div class="col-md-3">
                         <div class="input-group select2-bootstrap-prepend" style="width:auto">
                             <span class="input-group-btn">
@@ -67,7 +65,7 @@
                     </div>
                 </div>
                 <div class="form-group ">
-                    @Html.Label("Room Type ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">نوع الغرفة </label>
                     <div class="col-md-3">
                         <div class="input-group select2-bootstrap-prepend" style="width:auto">
                             <span class="input-group-btn">
@@ -95,7 +93,7 @@
             
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Isbusy, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">مشغولة؟ </label>
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.Isbusy)
@@ -105,7 +103,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.IsNeedfix, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">بحاجة صيانة</label>
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsNeedfix)
@@ -115,7 +113,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.isneedclean, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">بحاجة تنظيف</label>
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.isneedclean)
@@ -125,7 +123,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.IsInService, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <label class="col-md-2 control-label">في الخدمة؟</label>
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.IsInService)
@@ -136,14 +134,14 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="submit" value="حفظ" class="btn btn-default" />
                     </div>
                 </div>
             </div>
         }
 
         <div>
-            @Html.ActionLink("Back to List", "getAllRoom")
+            @Html.ActionLink("العودة لعرض الغرف", "getAllRoom")
         </div>
 
 

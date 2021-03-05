@@ -23,9 +23,9 @@
                     المشرف
                 </th>
                 <th>
-                    النظافة
+                    الصيانة
                 </th>
-
+                <th>
                 تاربخ الأنشاء
                 </th>
 
@@ -33,7 +33,9 @@
                     الغرفة
                 </th>
 
-                <th></th>
+                <th>
+                    الوصف
+                </th>
             </tr>
 
             @foreach (var item in Model)
@@ -51,27 +53,15 @@
                         @Html.DisplayFor(modelItem => item.empName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Creation_Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Creation_Time)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Creation_At)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Roomnu)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.startdate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.enddate)
-                    </td>
                     <td>
                         
                         @Html.ActionLink("أستلام المهمة ", "takeCleanOrder", new { id = item.Id })|
