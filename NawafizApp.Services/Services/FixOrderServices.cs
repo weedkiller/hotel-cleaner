@@ -57,10 +57,11 @@ namespace NawafizApp.Services.Services
             var supervisorId = new Guid();
             foreach (var user in users)
             {
-                if (user.FromTime != null && user.ToTime != null && user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                if (user.FromTime != null && user.ToTime != null && ((user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                    || (user.FromTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                     || (user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay)))
                     supervisorId = user.UserId;
             }
-
             return supervisorId;
 
 
