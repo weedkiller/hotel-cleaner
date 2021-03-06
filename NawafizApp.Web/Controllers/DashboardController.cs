@@ -11,8 +11,10 @@ namespace NawafizApp.Web.Controllers
     {
         IFixOrderServices _fixOrderService;
         ICleanOrderService _orderService;
-        public DashboardController(IFixOrderServices fixOrderService, ICleanOrderService orderService)
+        IRoomService _roomService;
+        public DashboardController(IFixOrderServices fixOrderService, ICleanOrderService orderService,IRoomService roomService)
         {
+            _roomService = roomService;
             _fixOrderService = fixOrderService;
             _orderService = orderService;
         }
@@ -33,6 +35,20 @@ namespace NawafizApp.Web.Controllers
         {
             var allFixOrders = _fixOrderService.GetAll();
             var percentage = (allFixOrders.Where(x => x.isFinished).Count() * 100) / allFixOrders.Count();
+            return percentage;
+        }
+
+        public double GetCleaningRoomPercentage()
+        {
+            var allroom = _roomService.GetAll();
+            var percentage = (allroom.Where(x => x.isneedclean).Count() * 100) / allroom.Count();
+            return percentage;
+        }
+
+        public double GetFixRoomPercentage()
+        {
+            var allroom = _roomService.GetAll();
+            var percentage = (allroom.Where(x => x.IsNeedfix).Count() * 100) / allroom.Count();
             return percentage;
         }
     }

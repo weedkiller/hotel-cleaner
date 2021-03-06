@@ -61,7 +61,7 @@
 
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })
                     </td>
                 </tr>
@@ -80,7 +80,7 @@
         $('.linkDel').confirm({
             title: 'تأكيد الحذف !',
 
-            content: 'هل تريد بالتأكيد حذف هذا الحي  ؟',
+            content: 'هل تريد بالتأكيد حذف هذا التجيز  ؟',
 
 
             buttons: {

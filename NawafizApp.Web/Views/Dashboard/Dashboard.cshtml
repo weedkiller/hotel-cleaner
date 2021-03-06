@@ -1,17 +1,15 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout-supervices.cshtml";
-}
 <style>
     /*Circles Dashboard Zizo*/
-.doghnutChartGroup {
-    margin: 10px;
-    position:relative;
-}
-.circular-progress{
-border-radius: 50% !important;
-}
+    .doghnutChartGroup {
+        margin: 10px;
+        position: relative;
+    }
+
+    .circular-progress {
+        border-radius: 50% !important;
+    }
+
     .doghnutChartGroup .circular-progress {
         background: linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(126deg, #FF70A6 50%, #E0E0E0 50%, #E0E0E0);
         border-radius: 50%;
@@ -48,38 +46,40 @@ border-radius: 50% !important;
         }
 
     .doghnutChartGroup .circular-text {
-            position: absolute !important;
-         margin-top: 235px !important;
+        position: absolute !important;
+        margin-top: 235px !important;
         text-align: center;
         color: rgba(0, 0, 0, 0.6);
         font-size: 14px;
         font-weight: bold;
         letter-spacing: 1px;
     }
-    #circular-text-percentageOfFixer{
-        
-    margin-right: 231px !important;
 
-    }
-@@keyframes turning_cw {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+    #circular-text-percentageOfFixer {
+        margin-right: 231px !important;
     }
 
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
+    @@keyframes turning_cw {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
     }
-}
 </style>
 <div class="row doghnutChartGroup displayInlineBlock">
-    <div id="percentageOfCleaner" class="col-md-1 circular-progress" data-percent="0" data-text="0%"></div>
-    <div id="circular-text-percentageOfCleaner" class="circular-text">نسبة طلبات النظافة المنتهية </div>
-@*</div>
-<div class="doghnutChartGroup displayInlineBlock doghnutChartGroup-Fixer">*@
-    <div id="percentageOfFixer" class="col-md-1 circular-progress" data-percent="0" data-text="0%"></div>
-    <div id="circular-text-percentageOfFixer" class="circular-text">نسبة طلبات الصيانة المنتهية </div>
+    <div id="percentageOfCleaner" class="col-md-2 circular-progress" data-percent="0" data-text="0%"></div>
+    <div id="circular-text-percentageOfCleaner" class="circular-text">الغرف الجاهزة نظافة    </div>
+    @*</div>
+        <div class="doghnutChartGroup displayInlineBlock doghnutChartGroup-Fixer">*@
+    <div id="percentageOfFixer" style=" animation-direction: alternate;" class="col-md-2 circular-progress" data-percent="0" data-text="0%"></div>
+    <div id="circular-text-percentageOfFixer" class="circular-text">الغرف الجاهزه صيانة   </div>
+
+
 </div>
 <script src="~/Scripts/jquery-3.1.1.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -93,13 +93,13 @@ border-radius: 50% !important;
     var percentOfFixer = 0;
     $.ajax({
         type: "Get",
-        url: window.location.origin + "/Dashboard/GetNotFinishedPercentageForCleaner",
+        url: window.location.origin + "/Dashboard/GetCleaningRoomPercentage",
         success: function (data) {
             percentOfCleaner = Number(data);
             $("#percentageOfCleaner").attr("data-text", percentOfCleaner + "%");
             $("#percentageOfCleaner").attr("data-percent", percentOfCleaner);
             for (var h = 0; h < doghnutCharts.length; h++) {
-                
+
                 if (doghnutCharts[h].id == "percentageOfCleaner") {
                     var degree = 90 + ((360 / 100) * Number(percentOfCleaner));
                     console.log("precent");
@@ -125,7 +125,7 @@ border-radius: 50% !important;
     });
     $.ajax({
         type: "Get",
-        url: window.location.origin + "/Dashboard/GetNotFinishedPercentageForFixer",
+        url: window.location.origin + "/Dashboard/GetFixRoomPercentage",
         success: function (data) {
             debugger;
             percentOfCleaner = Number(data);
@@ -153,9 +153,10 @@ border-radius: 50% !important;
                     //doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
                     console.log(doghnutCharts[h].style.background);
                 }
-               
+
             }
         }
     });
-    
+
+
 </script>
