@@ -5727,7 +5727,7 @@
     <Content Include="Views\FixOrder\notfinishedOrderforCurentUser.cshtml" />
     <Content Include="Views\Shared\_Layout-account.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <None Include="Views\Shared\_Layout-supervices.cshtml" />
+    <Content Include="Views\Shared\_Layout-supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
