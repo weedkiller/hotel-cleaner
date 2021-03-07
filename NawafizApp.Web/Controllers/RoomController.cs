@@ -284,6 +284,11 @@ namespace NawafizApp.Web.Controllers
             }
             return View(roomDto);
         }
+        public ActionResult ShowRoomHistory()
+        {
+            var all = _RoomRecServices.getall().ToList();
+            return View(all);
+        }
     }
     public class RoomFilter
     {

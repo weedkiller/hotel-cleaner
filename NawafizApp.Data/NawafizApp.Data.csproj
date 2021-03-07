@@ -134,6 +134,10 @@
     <Compile Include="Migrations\202103022358447_add-shifts-to-users.Designer.cs">
       <DependentUpon>202103022358447_add-shifts-to-users.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103062343189_add-required-for-room-records.cs" />
+    <Compile Include="Migrations\202103062343189_add-required-for-room-records.Designer.cs">
+      <DependentUpon>202103062343189_add-required-for-room-records.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\ExternalLoginRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103022358447_add-shifts-to-users.resx">
       <DependentUpon>202103022358447_add-shifts-to-users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103062343189_add-required-for-room-records.resx">
+      <DependentUpon>202103062343189_add-required-for-room-records.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
