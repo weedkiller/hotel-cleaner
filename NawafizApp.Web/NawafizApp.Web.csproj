@@ -5553,6 +5553,7 @@
     <Content Include="assets\layouts\layout7\img\Thumbs.db" />
     <Content Include="assets\pages\media\blog\Thumbs.db" />
     <Content Include="assets\pages\media\pages\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Properties\PublishProfiles\localIIs.pubxml" />
     <None Include="Properties\PublishProfiles\NawafizApp_new.pubxml" />
     <None Include="Properties\PublishProfiles\Sales.ssg-sy.com - Web Deploy.pubxml" />
