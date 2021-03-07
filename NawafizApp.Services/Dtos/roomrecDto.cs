@@ -11,6 +11,7 @@ namespace NawafizApp.Services.Dtos
 
         public int Id { get; set; }
         public int Room_Id { get; set; }
+        public string Room_Number { get; set; }
 
         public string Recoed { get; set; }
         public string Datetime { get; set; }

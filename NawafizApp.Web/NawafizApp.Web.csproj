@@ -4307,6 +4307,7 @@
     <Content Include="assets\global\scripts\app.min.js" />
     <Content Include="assets\global\scripts\datatable.js" />
     <Content Include="assets\global\scripts\datatable.min.js" />
+    <Content Include="assets\hist.png" />
     <Content Include="assets\layouts\global\scripts\cookie-consent.js" />
     <Content Include="assets\layouts\global\scripts\cookie-consent.min.js" />
     <Content Include="assets\layouts\global\scripts\hor-timeline.js" />
@@ -5726,7 +5727,6 @@
     <Content Include="Views\FixOrder\notfinishedOrderforCurentUser.cshtml" />
     <Content Include="Views\Shared\_Layout-account.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <None Include="Views\Shared\_Layout-supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>

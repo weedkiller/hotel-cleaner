@@ -83,7 +83,7 @@ namespace NawafizApp.Data
           .WithOptional(e => e.Room).WillCascadeOnDelete(true);
             modelBuilder.Entity<Room>()
 .HasMany(e => e.RoomRec)
-.WithOptional(e => e.Room).WillCascadeOnDelete(true);
+.WithRequired(e => e.Room).WillCascadeOnDelete(true);
             modelBuilder.Entity<FixOrder>()
 .HasOptional(e => e.Room)
 .WithMany(e => e.FixOrder).WillCascadeOnDelete(true);
@@ -91,7 +91,7 @@ namespace NawafizApp.Data
 .HasOptional(e => e.Room)
 .WithMany(e => e.Orders).WillCascadeOnDelete(true);
             modelBuilder.Entity<RoomRec>()
-.HasOptional(e => e.Room)
+.HasRequired(e => e.Room)
 .WithMany(e=>e.RoomRec).WillCascadeOnDelete(true);
 
         }

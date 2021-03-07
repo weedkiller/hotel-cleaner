@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NawafizApp.Services.Dtos.roomrecDto>
+
+@{
+    ViewBag.Title = "GetRoomRecords";
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
+}
+<link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
+
+<div class="portlet box yellow">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>سجل عمليات الغرف
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table">
+            <tr>
+                <th>
+                    رقم الغرفة
+                </th>
+                <th>
+                    الوصف
+                </th>
+                <th>
+                    تاريخ ووقت العملية
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Recoed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datetime)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+
