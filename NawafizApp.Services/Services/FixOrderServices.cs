@@ -50,9 +50,20 @@ namespace NawafizApp.Services.Services
 
         public Guid getmoshbyroomId(int rid)
         {
-            var ie = _unitOfWork.OrderRepository.getManIdforRoom(rid);
-
-            return ie;
+            var room = _unitOfWork.RoomRepository.GetAll().FirstOrDefault(x => x.Id == rid);
+            var hotelBlock = _unitOfWork.HotelBlockRepository.GetAll().FirstOrDefault(x => x.Id == room.HotelBlock.Id);
+            var users = _unitOfWork.UserRepository.GetAll().Where(x =>x.HotelBlock != null && x.HotelBlock.Id == hotelBlock.Id && x.Roles.Any(y => y.Name == "BlockSupervisor")).ToList();
+            
+            var supervisorId = new Guid();
+            foreach (var user in users)
+            {
+                if (user.FromTime != null && user.ToTime != null
+                    && ((user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                    || (user.FromTime.Value.TimeOfDay >= user.ToTime.Value.TimeOfDay && user.FromTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay)
+                     || (user.FromTime.Value.TimeOfDay >= user.ToTime.Value.TimeOfDay && user.FromTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay && user.ToTime.Value.TimeOfDay <= DateTime.Now.TimeOfDay)))
+                    supervisorId = user.UserId;
+            }
+            return supervisorId;
 
 
         }
@@ -71,6 +82,7 @@ namespace NawafizApp.Services.Services
                 dto.startdate = item.startdate;
                 dto.enddate = item.enddate;
                 dto.maitremp = item.maitremp;
+                dto.Istaked = item.isTaked;
 
                 dto.isFinished = item.isFinished;
                 dto.Description = item.Description;
@@ -104,6 +116,7 @@ namespace NawafizApp.Services.Services
             dto.maitremp = item.maitremp;
             dto.Hoster = item.Hoster;
             dto.Room_ID = item.Room.Id;
+            dto.Istaked = item.isTaked;
             return dto;
         }
 

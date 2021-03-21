@@ -19,10 +19,10 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                   أسم
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Type)
+                    وصف
                 </th>
                 <th></th>
             </tr>
@@ -37,9 +37,9 @@
                         @Html.DisplayFor(modelItem => item.Type)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "room", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "linkDel" })
+                        @Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
+
+                        @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "linkDel" })
                     </td>
                 </tr>
             }

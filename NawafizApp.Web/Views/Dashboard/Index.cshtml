@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout-supervices.cshtml";
+}
+<style>
+    /*Circles Dashboard Zizo*/
+.doghnutChartGroup {
+    margin: 10px;
+    position:relative;
+}
+.circular-progress{
+border-radius: 50% !important;
+}
+    .doghnutChartGroup .circular-progress {
+        background: linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(126deg, #FF70A6 50%, #E0E0E0 50%, #E0E0E0);
+        border-radius: 50%;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        height: 200px;
+        margin: 2em auto;
+        position: relative;
+        min-width: 200px;
+        margin: 10px;
+        transition: background .5s 0.3s;
+    }
+
+        .doghnutChartGroup .circular-progress::before {
+            background-color: #FAFAFA;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            color: rgba(0, 0, 0, 0.54);
+            content: attr(data-text);
+            font-size: 72px;
+            font-weight: bold;
+            height: 100%;
+            left: 0;
+            line-height: 200px;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+            width: 100%;
+        }
+
+        .doghnutChartGroup .circular-progress:hover {
+            box-shadow: 0 0 100px 1px rgba(255, 214, 112, 0.35);
+        }
+
+    .doghnutChartGroup .circular-text {
+            position: absolute !important;
+         margin-top: 235px !important;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    #circular-text-percentageOfFixer{
+        
+    margin-right: 231px !important;
+
+    }
+@@keyframes turning_cw {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+</style>
+<div class="row doghnutChartGroup displayInlineBlock">
+    <div id="percentageOfCleaner" class="col-md-1 circular-progress" data-percent="0" data-text="0%"></div>
+    <div id="circular-text-percentageOfCleaner" class="circular-text">نسبة طلبات النظافة المنتهية </div>
+@*</div>
+<div class="doghnutChartGroup displayInlineBlock doghnutChartGroup-Fixer">*@
+    <div id="percentageOfFixer" class="col-md-1 circular-progress" data-percent="0" data-text="0%"></div>
+    <div id="circular-text-percentageOfFixer" class="circular-text">نسبة طلبات الصيانة المنتهية </div>
+</div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="~/Scripts/jquery-confirm.min.js"></script>
+<script>
+    // Draw Circle dashboard
+    var doghnutCharts = document.querySelectorAll('.doghnutChartGroup .circular-progress');
+    var percentOfCleaner = 0;
+    var percentOfFixer = 0;
+    $.ajax({
+        type: "Get",
+        url: window.location.origin + "/Dashboard/GetNotFinishedPercentageForCleaner",
+        success: function (data) {
+            percentOfCleaner = Number(data);
+            $("#percentageOfCleaner").attr("data-text", percentOfCleaner + "%");
+            $("#percentageOfCleaner").attr("data-percent", percentOfCleaner);
+            for (var h = 0; h < doghnutCharts.length; h++) {
+                
+                if (doghnutCharts[h].id == "percentageOfCleaner") {
+                    var degree = 90 + ((360 / 100) * Number(percentOfCleaner));
+                    console.log("precent");
+                    console.log(percentOfCleaner);
+
+                    if (percentOfCleaner > 0 && percentOfCleaner <= 25) {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 25 && percentOfCleaner <= 50) {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 50 && percentOfCleaner <= 75) {
+                        doghnutCharts[h].style.background = 'linear-gradient(-90deg, #FF70A6 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 75 && percentOfCleaner <= 100) {
+                        doghnutCharts[h].style.background = 'linear-gradient(-90deg, #FF70A6 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(90deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    }
+
+                    //doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    console.log(doghnutCharts[h].style.background);
+                }
+            }
+        }
+    });
+    $.ajax({
+        type: "Get",
+        url: window.location.origin + "/Dashboard/GetNotFinishedPercentageForFixer",
+        success: function (data) {
+            debugger;
+            percentOfCleaner = Number(data);
+            $("#percentageOfFixer").attr("data-text", percentOfCleaner + "%");
+            $("#percentageOfFixer").attr("data-percent", percentOfCleaner);
+            for (var h = 0; h < doghnutCharts.length; h++) {
+                debugger;
+                if (doghnutCharts[h].id == "percentageOfFixer") {
+                    var degree = 90 + ((360 / 100) * Number(percentOfCleaner));
+                    console.log("precent");
+                    console.log(percentOfCleaner);
+
+                    if (percentOfCleaner > 0 && percentOfCleaner <= 25) {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 25 && percentOfCleaner <= 50) {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 50 && percentOfCleaner <= 75) {
+                        doghnutCharts[h].style.background = 'linear-gradient(-90deg, #FF70A6 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else if (percentOfCleaner > 75 && percentOfCleaner <= 100) {
+                        doghnutCharts[h].style.background = 'linear-gradient(-90deg, #FF70A6 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    } else {
+                        doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(90deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    }
+
+                    //doghnutCharts[h].style.background = 'linear-gradient(90deg, #E0E0E0 50%, transparent 50%, transparent), linear-gradient(' + degree + 'deg , #FF70A6 50%, #E0E0E0 50%, #E0E0E0)';
+                    console.log(doghnutCharts[h].style.background);
+                }
+               
+            }
+        }
+    });
+    
+</script>

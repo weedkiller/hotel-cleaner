@@ -85,6 +85,7 @@ namespace NawafizApp.Web.Controllers
                     {
                         //add http cookie 
                         System.Web.HttpContext.Current.Session["userId"] = user.Id.ToString();
+                        System.Web.HttpContext.Current.Session["roomsStatusChangedCount"] = 0;
                         System.Web.HttpContext.Current.Session["userRoles"] = _UserService.Roles(user.Id);
                         HttpCookie usernameCookie = new HttpCookie("username", user.UserName);
                         HttpCookie userIdCookie = new HttpCookie("userId", user.Id.ToString());
@@ -130,6 +131,8 @@ namespace NawafizApp.Web.Controllers
             ViewBag.ErrorMessage = ErrorMessage;
             dto.fullname = model.FullName;
             dto.UserName = model.UserName;
+            dto.Phone = model.PhoneNumber;
+            dto.Email = model.Email;
 
             return View(dto);
         }

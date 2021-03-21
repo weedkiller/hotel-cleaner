@@ -139,6 +139,9 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -249,6 +252,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseAuthorizeController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FixOrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -264,6 +268,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\ImageActionLinkHelper.cs" />
+    <Compile Include="Helper\MysqlFetchingRoomData.cs" />
     <Compile Include="Helper\SelectLists.cs" />
     <Compile Include="Helper\SignalHelper.cs" />
     <Compile Include="hubs\NotificationHub.cs" />
@@ -273,9 +278,6 @@
     <Compile Include="Models\Validators\DependencyResolverModelValidatorFactory.cs" />
     <Compile Include="Models\Validators\IsEmailUniqueClientPropertyValidator.cs" />
     <Compile Include="Models\Validators\LanguageValidator\IsCodeUniqueAddClientPropertyValidator.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -4302,6 +4304,7 @@
     <Content Include="assets\global\scripts\app.min.js" />
     <Content Include="assets\global\scripts\datatable.js" />
     <Content Include="assets\global\scripts\datatable.min.js" />
+    <Content Include="assets\hist.png" />
     <Content Include="assets\layouts\global\scripts\cookie-consent.js" />
     <Content Include="assets\layouts\global\scripts\cookie-consent.min.js" />
     <Content Include="assets\layouts\global\scripts\hor-timeline.js" />
@@ -5548,6 +5551,7 @@
     <Content Include="assets\layouts\layout7\img\Thumbs.db" />
     <Content Include="assets\pages\media\blog\Thumbs.db" />
     <Content Include="assets\pages\media\pages\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Properties\PublishProfiles\localIIs.pubxml" />
     <None Include="Properties\PublishProfiles\NawafizApp_new.pubxml" />
     <None Include="Properties\PublishProfiles\Sales.ssg-sy.com - Web Deploy.pubxml" />
@@ -5719,7 +5723,8 @@
     <Content Include="Views\CleanOrder\GetallFinishedforCleanEmp.cshtml" />
     <Content Include="Views\FixOrder\notfinishedOrderforCurentUser.cshtml" />
     <Content Include="Views\Shared\_Layout-account.cshtml" />
-    <None Include="Views\Shared\_Layout_supervices.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout-supervices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

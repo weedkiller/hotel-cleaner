@@ -3,6 +3,7 @@ using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
 using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +70,7 @@ namespace NawafizApp.Web.Controllers
         {
             var x = _equipmentService.EquipmentRemove(id);
 
-            return RedirectToAction("RoomView", "Room");
+            return RedirectToAction("getAllRoom", "Room");
 
         }
 
@@ -91,7 +92,7 @@ namespace NawafizApp.Web.Controllers
             {
 
                 _equipmentService.Edit(eqDto);
-                return RedirectToAction("RoomView", "Room");
+                return RedirectToAction("getAllRoom", "Room");
 
             }
             return View(eqDto);
@@ -114,6 +115,8 @@ namespace NawafizApp.Web.Controllers
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid });
 
 
@@ -121,11 +124,12 @@ namespace NawafizApp.Web.Controllers
         }
 
         public ActionResult CheckedToggleFix(int id, int Rid)
-        {
-            _equipmentService.checkedToggleFix(id);
+        {_equipmentService.checkedToggleFix(id);
             var room = _roomService.GetById(Rid);
             room.IsNeedfix = !room.IsNeedfix;
             _roomService.Edit(room);
+
+            MysqlFetchingRoomData.SetFixStatus(room.RoomNum, room.IsNeedfix);
             return RedirectToAction("getAllEquipmentsForcleaningEmp", new { Rid = Rid }); 
 
 

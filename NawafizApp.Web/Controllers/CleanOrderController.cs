@@ -4,6 +4,7 @@ using NawafizApp.Services.Dtos;
 using NawafizApp.Services.Identity;
 using NawafizApp.Services.Interfaces;
 using NawafizApp.Services.Services;
+using NawafizApp.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,15 @@ namespace NawafizApp.Web.Controllers
         IRoomService _RoomService;
         IUserService _userService;
         IRoomRecServices _roomrec;
-        public CleanOrderController(IRoomRecServices roomrec, ApplicationUserManager userManager, ApplicationSignInManager aps, IRoomService RoomService, IUserService userService, INotifictationService notifictationService, ICleanOrderService orderService)
+        IFixOrderServices _fixOrderServices;
+        public CleanOrderController(IRoomRecServices roomrec, ApplicationUserManager userManager, ApplicationSignInManager aps, IRoomService RoomService, IUserService userService, IFixOrderServices fixOrderServices, INotifictationService notifictationService, ICleanOrderService orderService)
             : base(userManager, aps)
         {
             _userService=userService;
             this._orderService = orderService;
             this._RoomService = RoomService;
             this._notifictationService = notifictationService;
+            _fixOrderServices = fixOrderServices;
             _roomrec = roomrec;
 
         }
@@ -45,7 +48,7 @@ namespace NawafizApp.Web.Controllers
             dto.Creation_Time = DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             dto.Creation_At = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY)+" " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             dto.Room_ID = rid;
-            dto.moshId = _orderService.getmoshbyroomId(rid);
+            dto.moshId = _fixOrderServices.getmoshbyroomId((int)rid);
             int i = _orderService.addOrder(dto);
             var room = _RoomService.GetById(rid);
             room.Isrequisted = true;
@@ -70,7 +73,7 @@ namespace NawafizApp.Web.Controllers
             //dto1.NotDateTime = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY);
             //dto1.Room_ID = dto.Room_ID;
             //_notifictationService.Add(dto1);
-            return RedirectToAction("RoomView","Room");
+            return RedirectToAction("getAllRoom", "Room");
         }
         [Authorize(Roles = "HouseKeep,Reception,Admin,Hoster,service,MaintenanceEmp,BlockSupervisor,Cleaner")]
 
@@ -79,6 +82,8 @@ namespace NawafizApp.Web.Controllers
         {
             List<CleanOrderDto> list1 = new List<CleanOrderDto>();
             List<CleanOrderDto> list = _orderService.GetAll().OrderByDescending(x => x.Id).ToList();
+            var finishedCount = 0;
+            var allCount = 0;
             foreach (var item in list)
             {
 
@@ -107,13 +112,16 @@ namespace NawafizApp.Web.Controllers
                 { 
                     item.empName = _userService.GetById((Guid)item.cleaningEmp).FullName.ToString();
                 }
-                
+                if (item.isFinished)
+                    finishedCount++;
                 item.Roomnu = _RoomService.GetById((int)item.Room_ID).RoomNum.ToString();
                 list1.Add(item);
+                allCount++;
             }
 
 
-                return View(list1);
+            ViewBag.CleanFinishedCount = ((finishedCount * 100) / allCount) + " %";
+            return View(list1);
 
            
 
@@ -349,7 +357,6 @@ namespace NawafizApp.Web.Controllers
        
         public ActionResult takeCleanOrder(CleanOrderDto ordd)
         {
-
             var dto= _orderService.GetById(ordd.Id);
             dto.startdate = DateTimeHelper.ConvertDateToString(Utils.ServerNow.Date, DateFormats.DD_MM_YYYY) + " " + DateTimeHelper.ConvertTimeToString(Utils.ServerNow.TimeOfDay, TimeFormats.HH_MM_AM);
             var id = User.Identity.GetUserId();
@@ -361,6 +368,9 @@ namespace NawafizApp.Web.Controllers
             _userService.Edit(userdto, guid);
             _orderService.edit(dto);
             TempData["ord"] = dto.Id;
+            var rom = _RoomService.GetById(Convert.ToInt32(dto.Room_ID));
+
+            MysqlFetchingRoomData.setincleaning(rom.RoomNum.ToString(), false);
 
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = Convert.ToInt32(_orderService.GetById(dto.Id).Room_ID);
@@ -401,7 +411,7 @@ namespace NawafizApp.Web.Controllers
             rom.isneedclean = false;
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
-
+            MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
 
             roomrecDto roomrecDto = new roomrecDto();
             roomrecDto.Room_Id = (int) cleanOrderDto.Room_ID;
@@ -461,6 +471,7 @@ namespace NawafizApp.Web.Controllers
             rom.isneedclean = false;
             rom.Isrequisted = false;
             _RoomService.Edit(rom);
+            MysqlFetchingRoomData.SetCleanStatus(rom.RoomNum, rom.isneedclean);
             return RedirectToAction("Check", "Equipment", rom.Id);
 
         }

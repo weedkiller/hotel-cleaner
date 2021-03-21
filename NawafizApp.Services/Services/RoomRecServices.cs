@@ -23,7 +23,7 @@ namespace NawafizApp.Services.Services
             RoomRec roomRec = new RoomRec();
             roomRec.Room = _unitOfWork.RoomRepository.FindById(roomrecDto.Room_Id);
             roomRec.Recoed = roomrecDto.Recoed;
-            roomRec.Datetime = DateTime.Now.TimeOfDay.ToString();
+            roomRec.Datetime = DateTime.Now.ToString("G");
             _unitOfWork.roomrecRepository.Add(roomRec);
             _unitOfWork.SaveChanges();
             return roomRec.Id;
@@ -33,9 +33,16 @@ namespace NawafizApp.Services.Services
         public List<roomrecDto> getall()
         {
             var dto = _unitOfWork.roomrecRepository.GetAll();
-
-
-            return Mapper.Map<List<RoomRec>, List<roomrecDto>>(dto);
+            var roomRecords = _unitOfWork.RoomRepository.GetAll().SelectMany(x => x.RoomRec).ToList();
+            var res = roomRecords.Select(x => new roomrecDto()
+            {
+                Id = x.Id,
+                Room_Id = x.Room.Id,
+                Room_Number = x.Room.RoomNum,
+                Recoed = x.Recoed,
+                Datetime = x.Datetime
+            }).ToList();
+            return res;
 
         }
 

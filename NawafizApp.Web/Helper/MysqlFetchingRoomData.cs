@@ -13,7 +13,7 @@ namespace NawafizApp.Web.Helper
         public static List<MySQlRoom> getDataFromMySql()
         {
             List<MySQlRoom> mySQlRooms = new List<MySQlRoom>();
-            string connStr = "server=localhost;database=account_1;port=3306;SslMode=none;";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 List<DataRow> list = new List<DataRow>();
@@ -50,6 +50,128 @@ namespace NawafizApp.Web.Helper
 
             }
             return mySQlRooms;
+
+
+        }
+
+        public static void SetFixStatus(string code, bool isMaintaince)
+        {
+            var status = isMaintaince ?"M" : "R";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string sql = "UPDATE Hot_Room SET room_MenStatus=@status where room_code=@code;";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@code", code);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    return;
+
+                }
+
+            }
+         }
+        public static void SetCleanStatus(string code, bool isDirty)
+        {
+            var status = isDirty ?"D": "R";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string sql = "UPDATE Hot_Room SET room_ClnStatus=@status where room_code =@code";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@code", code);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    return;
+
+                }
+
+            }
+
+
+        }
+
+        public static void setincleaning(string code, bool isDirty)
+        {
+            var status = isDirty ? "D" : "C";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string sql = "UPDATE Hot_Room SET room_ClnStatus=@status where room_code =@code";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@code", code);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    return;
+
+                }
+
+            }
+
+
+        }
+
+
+        public static void setEndFix(string code, bool isDirty)
+        {
+            var status = isDirty ? "M" : "R";
+            string connStr = "server=192.168.1.10;database=account_1;port=3306;SslMode=none;";
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string sql = "UPDATE Hot_Room SET room_MenStatus=@status where room_code =@code";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.Parameters.AddWithValue("@code", code);
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    return;
+
+                }
+
+            }
 
 
         }

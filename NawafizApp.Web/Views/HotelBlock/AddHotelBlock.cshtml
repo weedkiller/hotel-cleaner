@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     @Html.Label("وصف الكتلة الفندقية", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         @Html.TextAreaFor(model => model.BlockDescription, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BlockDescription, "", new { @class = "text-danger" })
                     </div>
@@ -65,26 +65,43 @@
                         @Html.ValidationMessageFor(model => model.NmberOfTheRoomsIntheBlock, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group col-md-6">
-                    @Html.Label("المشرف", htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        <div class="input-group select2-bootstrap-prepend" style="width:100%">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" data-select2-open="single-prepend-text">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                            <select id="single-prepend-text" name="mgId" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-                                <option></option>
+                @*@section scripts{
+                    <script type="text/javascript">
+                        $(function () {
+                            $.get('/GetSupervisors/').done(function (items) {
+                                $.each(items, function (i, item) {
+                                    debugger;
+                                    $allSupervisors.push({ Value: item.Value, Id: item.Id });
+                                });
+                            });
+                        });
+                    </script>
+                }*@
+                <div class="col-md-7" style="margin-right: 45px; margin-bottom:25px;">
+                    <h4 id="error-msg" class="text-danger"></h4>
+                    <div class="form-group col-md-4" style="margin: 20px 5px;">
+                        <label for="fromTime1">المشرف 1</label>
+                            <select id="multi-moshref-select-1" name="mgId" class="form-control" tabindex="-1" aria-hidden="true">
+                                <option value="0">اختيار</option>
                                 @foreach (var item in Selects.ManagerEmpUsers(null))
                                 {
                                     <option value="@item.Value">@item.Text</option>
                                 }
                             </select>
-                        </div>
+                    </div>
+                    <div class="form-group col-md-3" style="margin: 20px 5px;">
+                        <label for="fromTime1">من وقت </label>
+                        <input type="time" id="fromTime1" name="fromTime" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3" style="margin: 20px 5px;">
+                        <label for="toTime1">الى وقت </label>
+                        <input type="time" id="toTime1" name="toTime" class="form-control">
                     </div>
                 </div>
-                <div class="form-group col-md-6">
+                <div id="add-super" style="margin: 45px -100px;" class="col-md-2">
+                    <button id="add-new-super" class="btn btn-primary">اضافة مشرف اخر</button>
+                </div>
+                <div id="section-clean" class="form-group col-md-6">
                     @Html.Label("عمال النظافة", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         <div class="input-group select2-bootstrap-prepend" style="width:100%">
@@ -172,3 +189,118 @@
 </div>
 <script src="~/Scripts/jquery-3.1.1.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $allSupervisors = [];
+        var fromToTimes = [];
+        var fromTimes = [];
+        var toTimes = [];
+
+        $.get(window.location.origin + "/HotelBlock/GetSupervisors", function (items) {
+            //$.each(items, function (i, item) {
+            //    debugger;
+            //    $allSupervisors.push({ Value: item.Value, Id: item.Id });
+            //});
+            for (var item in items) {
+                $allSupervisors.push({ value: items[item].Value, text: items[item].Text });
+            }
+        });
+        var $count = 1;
+        $('#fromTime1').change(function (e) {
+            debugger;
+            var toTime =null;
+            if (fromToTimes.length > 0 && fromToTimes.findIndex(x=> x.index === 0) != -1) {
+                toTime = fromToTimes[fromToTimes.findIndex(x=> x.index === 0)].toTime;
+                fromToTimes.splice(fromToTimes.findIndex(x=> x.index === 0), 1);
+            }
+            fromToTimes.push({ fromTime : new Date(2000, 01, 01, e.target.value.split(':')[0], e.target.value.split(':')[1], 0), toTime : toTime, index : 0});
+            if (fromToTimes.length > 1) {
+                var obj = fromToTimes[fromToTimes.findIndex(x=> x.index === 0)];
+                for (var i = 0; i < fromToTimes.length; i++) {
+                    if (fromToTimes[i].fromTime != null && fromToTimes[i].toTime != null && (obj.index != fromToTimes[i].index && obj.fromTime > fromToTimes[i].fromTime && obj.fromTime < fromToTimes[i].toTime)
+                        || (obj.index != fromToTimes[i].index && obj.toTime > fromToTimes[i].fromTime && obj.toTime < fromToTimes[i].toTime)
+                        (obj.index != fromToTimes[i].index && obj.fromTime < fromToTimes[i].fromTime && obj.fromTime > fromToTimes[i].toTime)
+                        || (obj.index != fromToTimes[i].index && obj.toTime < fromToTimes[i].fromTime && obj.toTime > fromToTimes[i].toTime)) {
+                        $("#error-msg").html("يجب ان يكون وقت من ووقت الى غير متداخلة مع بعضها");
+                    }
+                }
+            }
+        });
+        $('#toTime1').change(function (e) {
+            debugger;
+            var fromTime =null;
+            if (fromToTimes.length > 0 && fromToTimes.findIndex(x=> x.index === 0) != -1) {
+                fromTime = fromToTimes[fromToTimes.findIndex(x=> x.index === 0)].toTime;
+                fromToTimes.splice(fromToTimes.findIndex(x=> x.index === 0), 1);
+            }
+            fromToTimes.push({ fromTime : fromTime, toTime :  new Date(2000, 01, 01, e.target.value.split(':')[0], e.target.value.split(':')[1], 0), index : 0});
+            if (fromToTimes.length > 1) {
+                var obj = fromToTimes[fromToTimes.findIndex(x=> x.index === 0)];
+                for (var i = 0; i < fromToTimes.length; i++) {
+                    if (fromToTimes[i].fromTime != null && fromToTimes[i].toTime != null && (obj.index != fromToTimes[i].index && obj.fromTime > fromToTimes[i].fromTime && obj.fromTime < fromToTimes[i].toTime)
+                        || (obj.index != fromToTimes[i].index && obj.toTime > fromToTimes[i].fromTime && obj.toTime < fromToTimes[i].toTime)
+                        (obj.index != fromToTimes[i].index && obj.fromTime < fromToTimes[i].fromTime && obj.fromTime > fromToTimes[i].toTime)
+                        || (obj.index != fromToTimes[i].index && obj.toTime < fromToTimes[i].fromTime && obj.toTime > fromToTimes[i].toTime)) {
+                        $("#error-msg").html("يجب ان يكون وقت من ووقت الى غير متداخلة مع بعضها");
+                    }
+                }
+            }
+        });
+        $('#add-new-super').click(function (e) {
+            var $btnDiv = $('#section-clean');
+            $count++;
+            e.preventDefault();
+            $($btnDiv).before('<div class="col-md-7" style="margin-right: 45px;">'
+            + '<div class="form-group col-md-4" style="margin: 15px 5px;"><label> المشرف' + $count + '</label><select id="multi-moshref-select' + $count + '" name="mgId" class="form-control"><option value="0">اختيار</option></select></div>'
+            + '<div class="form-group col-md-3" style="margin: 15px 5px;"> <label for="fromTime' + $count + '">من وقت </label><input type="time" id="fromTime' + $count + '" name="fromTime" class="form-control"> </div>'
+            + '<div class="form-group col-md-3" style="margin: 15px 5px;"><label for="toTime' + $count + '">الى وقت </label><input type="time" id="toTime' + $count + '" name="toTime" class="form-control"></div></div>');
+            for (var item in $allSupervisors) {
+                $('#multi-moshref-select' + $count).append(`<option value="${$allSupervisors[item].value}"> ${$allSupervisors[item].text}</option>`);
+            }
+            $('#fromTime'+$count).change(function (e) {
+                var toTime = null;
+                debugger;
+                var isExist = fromToTimes.findIndex(x=> x.index === $count);
+                if (fromToTimes.length > 0 && isExist != -1) {
+                    toTime = fromToTimes[fromToTimes.findIndex(x=> x.index === $count)].toTime;
+                    fromToTimes.splice(fromToTimes.findIndex(x=> x.index === $count), 1);
+                }
+                fromToTimes.push({ fromTime: new Date(2000, 01, 01, e.target.value.split(':')[0], e.target.value.split(':')[1], 0), toTime: toTime, index: $count });
+                if (fromToTimes.length > 1) {
+                    var obj = fromToTimes[fromToTimes.findIndex(x=> x.index === $count)];
+                    for (var i = 0; i < fromToTimes.length; i++) {
+                        if (fromToTimes[i].fromTime != null && fromToTimes[i].toTime != null && (obj.index != fromToTimes[i].index && obj.fromTime > fromToTimes[i].fromTime && obj.fromTime < fromToTimes[i].toTime)
+                            || (obj.index != fromToTimes[i].index && obj.toTime > fromToTimes[i].fromTime && obj.toTime < fromToTimes[i].toTime)
+                            (obj.index != fromToTimes[i].index && obj.fromTime < fromToTimes[i].fromTime && obj.fromTime > fromToTimes[i].toTime) 
+                            || (obj.index != fromToTimes[i].index && obj.toTime < fromToTimes[i].fromTime && obj.toTime > fromToTimes[i].toTime))
+                        {
+                            $("#error-msg").html("يجب ان يكون وقت من ووقت الى غير متداخلة مع بعضها");
+                        }
+                    }
+                }
+            });
+            $('#toTime' + $count).change(function (e) {
+                var fromTime = null;
+                if (fromToTimes.length > 0 && fromToTimes.findIndex(x=> x.index === $count) != -1) {
+                    fromTime = fromToTimes[fromToTimes.findIndex(x=> x.index === $count)].toTime;
+                    fromToTimes.splice(fromToTimes.findIndex(x=> x.index === $count), 1);
+                }
+                fromToTimes.push({ fromTime: fromTime, toTime: new Date(2000, 01, 01, e.target.value.split(':')[0], e.target.value.split(':')[1], 0), index: $count });
+                if (fromToTimes.length > 1) {
+                    var obj = fromToTimes[fromToTimes.findIndex(x=> x.index === $count)];
+                    for (var i = 0; i < fromToTimes.length; i++) {
+                        if (fromToTimes[i].fromTime != null && fromToTimes[i].toTime != null && (obj.index != fromToTimes[i].index && obj.fromTime > fromToTimes[i].fromTime && obj.fromTime < fromToTimes[i].toTime)
+                            || (obj.index != fromToTimes[i].index && obj.toTime > fromToTimes[i].fromTime && obj.toTime < fromToTimes[i].toTime)
+                            (obj.index != fromToTimes[i].index && obj.fromTime < fromToTimes[i].fromTime && obj.fromTime > fromToTimes[i].toTime)
+                            || (obj.index != fromToTimes[i].index && obj.toTime < fromToTimes[i].fromTime && obj.toTime > fromToTimes[i].toTime)) {
+                            $("#error-msg").html("يجب ان يكون وقت من ووقت الى غير متداخلة مع بعضها");
+                        }
+                    }
+                }
+            });
+        });
+    });
+
+    //
+                //
+</script>

@@ -1,4 +1,5 @@
 ﻿@model NawafizApp.Services.Dtos.RoomDto
+
 @using NawafizApp.Web.Helper
 
 @{
@@ -9,7 +10,7 @@
 <div class="portlet box yellow">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>إضافة غرفة    
+            <i class="fa fa-gift"></i>إضافة غرفة
         </div>
     </div>
     <div class="portlet-body">
@@ -18,7 +19,6 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-               
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -27,6 +27,7 @@
                         @Html.EditorFor(model => model.RoomNum, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.RoomNum, "", new { @class = "text-danger" })
                     </div>
+                    <p id="text-number" class="text-danger"></p>
                 </div>
 
                 <div class="form-group">
@@ -85,7 +86,7 @@
                                     <span class="glyphicon glyphicon-search"></span>
                                 </button>
                             </span>
-                            <select id="single-prepend-text" name="hid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <select id="select-blocks" name="hid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
                                 <option></option>
                                 @foreach (var item in SelectLists.getAllblock(null))
                                 {
@@ -94,6 +95,8 @@
                             </select>
                         </div>
                     </div>
+                    <p id="text-select-blocks" class="text-danger"></p>
+                    <p class="text-danger">@ViewBag.blockMsg</p>
                 </div>
                 <div>
                     <div class="form-group ">
@@ -105,7 +108,7 @@
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
-                                <select id="single-prepend-text" name="tid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                <select id="select-types" name="tid" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
                                     <option></option>
                                     @foreach (var item in SelectLists.getromeType(null))
                                     {
@@ -113,21 +116,92 @@
                                     }
                                 </select>
                             </div>
-                            </div>
                         </div>
+                        <p id="text-select-types" class="text-danger"></p>
+                        <p class="text-danger">@ViewBag.typeMsg</p>
                     </div>
+                </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    @if (!string.IsNullOrEmpty(ViewBag.typeMsg) || !string.IsNullOrEmpty(ViewBag.blockMsg))
+                    {
+                        <input id="submit-form-add" type="submit" value="Create" disabled class="btn btn-default" />
+                    }
+                    else
+                    {
+                        <input id="submit-form-add" type="submit" value="Create" class="btn btn-default" />
+                    }
                 </div>
             </div>
             <div>
-                @Html.ActionLink("الرجوع الى قائمة الغرف", "RoomView")
+                @Html.ActionLink("الرجوع الى قائمة الغرف", "getAllRoom")
             </div>
 
         }
 
     </div>
 </div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="~/Scripts/jquery-confirm.min.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger;
+    $("#submit-form-add").prop('disabled', true);
+    $validforBlocks = false;
+    $validforTypes = false;
+    $validforNumber = false;
+    $("#text-select-blocks").html("اجباري");
+    $("#text-select-types").html("اجباري");
+    
+    $("#RoomNum").on('change', function () {
+        var val = this.value;
+        if (this.value != null) {
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + "/Room/CheckIfRoomNumberValid",
+                data: { num: val },
+                success: function (data) {
+                    debugger;
+                    console.log(data);
+                    if (data == "False") {
+                        $("#text-number").html("");
+                        $validforNumber = true;
+                        if ($validforBlocks && $validforTypes) {
+                            $("#submit-form-add").prop('disabled', false);
+                        }
+                    }
+                    else {
+                        $validforNumber = false;
+                        $("#submit-form-add").prop('disabled', true);
+                        $("#text-number").html("الرقم موجود مسبقا");
+                        
+}
+                }
+            });
+        }
+    });
+    $("#select-blocks").on('change', function () {
+        if (this.value > 0) {
+            $("#text-select-blocks").html("");
+            $validforBlocks = true;
+            if ($validforNumber && $validforTypes) {
+                $("#submit-form-add").prop('disabled', false);
+            }
+        }
+    });
+    $("#select-types").on('change', function () {
+        if (this.value > 0) {
+            $("#text-select-types").html("");
+            $validforTypes = true;
+            if ($validforBlocks && $validforNumber) {
+                $("#submit-form-add").prop('disabled', false);
+            }
+        }
+    });
+    });
+</script>

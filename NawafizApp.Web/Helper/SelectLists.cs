@@ -45,16 +45,7 @@ namespace NawafizApp.Web.Helper
         {
             var service = DependencyResolver.Current.GetService<Services.Interfaces.IHotelBlockService>();
 
-            var list = new List<SelectListItem>
-                           {
-                               new SelectListItem
-                                   {
-                                   
-                                       Selected = !selected.HasValue,
-                                       Text = String.Empty,
-                                       Value=""
-                                   }
-                           };
+            var list = new List<SelectListItem>();
 
             list.AddRange(service.GetAll().ToList()
 
@@ -102,16 +93,7 @@ namespace NawafizApp.Web.Helper
         {
             var service = DependencyResolver.Current.GetService<Services.Interfaces.IRoomTypeService>();
 
-            var list = new List<SelectListItem>
-                           {
-                               new SelectListItem
-                                   {
-
-                                       Selected = !selected.HasValue,
-                                       Text = String.Empty,
-                                       Value=""
-                                   }
-                           };
+            var list = new List<SelectListItem>();
 
             list.AddRange(service.GetRoomTypes().ToList()
 

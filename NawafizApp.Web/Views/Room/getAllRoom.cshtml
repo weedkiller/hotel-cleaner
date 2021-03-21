@@ -1,11 +1,10 @@
-﻿@model IEnumerable<NawafizApp.Services.Dtos.RoomDto>
-
+﻿@model NawafizApp.Web.Controllers.RoomFilter
 
 @{
-
-    Layout=null;
+    Layout = "~/Views/Shared/_Layout-hoster.cshtml";
 }
 <link href="~/Content/jquery-confirm.min.css" rel="stylesheet" />
+
 
 <div class="portlet box yellow">
     <div class="portlet-title">
@@ -14,251 +13,304 @@
         </div>
     </div>
     <div class="portlet-body">
+
+
+        <div class="row" style="margin:50px 400px">
+            @Html.Partial("~/Views/Dashboard/Dashboard.cshtml")
+
+        </div>
+
         <p>
             @Html.ActionLink("إنشاء غرفة جديدة ", "AddRoom")
         </p>
+        @using (Html.BeginForm("getAllRoom", "Room", FormMethod.Get))
+        {
+
+            <div class="row" style="margin:25px 10px">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> الكتلة الفندقية</label>
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DropDownListFor(f => f.SelectedBlock, Model.HotelBlocks, "اختيار")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> نوع الغرفة</label>
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DropDownListFor(f => f.SelectedType, Model.Types, "اختيار")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="control-label"> رقم الغرفة</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input class="form-control col-md-5" type="text" name="selectedRoomNum" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="btn btn-primary" value="بحث" />
+                    <a href="getAllRoom" class="btn btn-warning">مسح التصفية</a>
+                </div>
+            </div>
+        }
         <table class="table" id="tableroom">
 
             <tr>
                 <th>
-                    رقم الغرفة
+                    @Html.ActionLink("رقم الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomNumberSortParm })
                 </th>
                 <th>
-                    أتجاه الغرفة
+                    @Html.ActionLink("أتجاه الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomDirSortParm })
                 </th>
                 <th>
-                    الكتلة الفندقية
+                    @Html.ActionLink("الكتلة الفندقية", "getAllRoom", new { sortOrder = ViewBag.RoomBlockSortParm })
+
                 </th>
                 <th>
-                    نمط الغرفة
+                    @Html.ActionLink(" نمط الغرفة", "getAllRoom", new { sortOrder = ViewBag.RoomTypeSortParm })
+
                 </th>
                 <th>
-                    مشغولة
+                    @Html.ActionLink("مشغولة", "getAllRoom", new { sortOrder = ViewBag.RoomIsBusySortParm })
                 </th>
                 <th>
-                    بحاجة صيانة
+                    @Html.ActionLink(" بحاجة صيانة", "getAllRoom", new { sortOrder = ViewBag.RoomIsNeedFixSortParm })
                 </th>
                 <th>
-                    بحاجة تنظيف
+                    @Html.ActionLink(" بحاجة تنظيف", "getAllRoom", new { sortOrder = ViewBag.RoomIsNeedCleanSortParm })
+
                 </th>
                 <th>
-                    في الخدمة ؟
+                    @Html.ActionLink(" في الخدمة ؟", "getAllRoom", new { sortOrder = ViewBag.RoomIsInServiceSortParm })
+
                 </th>
                 <th></th>
             </tr>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Data)
             {
                 if (item.isneedclean == true || item.IsNeedfix == true)
                 {
-                <tr id="item.RoomNum" style="background-color:lightsalmon">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomNum)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomDirection)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.blockName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TypeName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Isbusy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsNeedfix)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.isneedclean)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsInService)
-                    </td>
-                    <td>
-                        <span>
-                            @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
-                        </span>
-                        <span>
-                            @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
-                        
-
-                        @if (item.IsInService == true)
-                        {
-                            if (item.Isrequisted == false)
-                            {
+                    <tr id="item.RoomNum" style="background-color:lightsalmon">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomNum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomDirection)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.blockName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Isbusy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsNeedfix)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isneedclean)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsInService)
+                        </td>
+                        <td>
+                            <span>
+                                @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
+                            </span>
+                            <span>
+                                @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
 
 
-                                if (item.isneedclean == true)
+                                @if (item.IsInService == true)
                                 {
-                                    <span>
-                                        @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
-                                    </span>
+                                    if (item.Isrequisted == false)
+                                    {
 
 
+                                        if (item.isneedclean == true)
+                                        {
+                                            <span>
+                                                @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                            </span>
+
+
+                                        }
+                                    }
+
+                                    if (item.Isrequistedfix == false)
+                                    {
+                                        if (item.IsNeedfix)
+                                        {
+                                            <span>
+                                                @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                            </span>
+
+
+                                        }
+                                    }
                                 }
-                            }
-
-                            if (item.Isrequistedfix == false)
-                            {
-                                if (item.IsNeedfix)
-                                {
-                                    <span>
-                                        @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
-                                    </span>
-
-
-                                }
-                            }
-                        }
-                        <span>
-                            @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
-                        </span>
-                    </td>
-                </tr>
+                                <span>
+                                    @Html.ActionLink("تجهيزات الغرفة", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                                </span>
+                        </td>
+                    </tr>
                 }
                 if (item.isneedclean == false && item.IsNeedfix == false)
                 {
-                <tr id="item.RoomNum">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomNum)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomDirection)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.blockName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TypeName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Isbusy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsNeedfix)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.isneedclean)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsInService)
-                    </td>
-                    <td>
-                        <span>
-                            @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
-                        </span>
-                        <span>
-                            @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
-
-
-                            @if (item.IsInService == true)
-                            {
-                                if (item.Isrequisted == false)
-                                {
-
-
-                                    if (item.isneedclean == true)
-                                    {
-                                        <span>
-                                            @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
-                                        </span>
-
-
-                                    }
-                                }
-
-                                if (item.Isrequistedfix == false)
-                                {
-                                    if (item.IsNeedfix)
-                                    {
-                                        <span>
-                                            @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
-                                        </span>
-
-
-                                    }
-                                }
-                            }
+                    <tr id="item.RoomNum">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomNum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomDirection)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.blockName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TypeName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Isbusy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsNeedfix)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isneedclean)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsInService)
+                        </td>
+                        <td>
                             <span>
-                                @Html.ActionLink("equpmint", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                                @Html.ActionLink("حذف", "Delete", new { id = item.Id, rid = item.Id }, new { @class = "linkDel" })|
                             </span>
-                    </td>
-                </tr>
+                            <span>
+                                @Html.ActionLink("تعديل", "Edit", new { id = item.Id, rid = item.Id })|
+
+
+                                @if (item.IsInService == true)
+                                {
+                                    if (item.Isrequisted == false)
+                                    {
+
+
+                                        if (item.isneedclean == true)
+                                        {
+                                            <span>
+                                                @Html.ActionLink("  إضافة طلب تنظيف", "AddOrder", "CleanOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                            </span>
+
+
+                                        }
+                                    }
+
+                                    if (item.Isrequistedfix == false)
+                                    {
+                                        if (item.IsNeedfix)
+                                        {
+                                            <span>
+                                                @Html.ActionLink("  إضافة طلب صيانة ", "AddFixOrder", "FixOrder", new { id = item.Id, rid = item.Id }, new { @class = "linkOrd" })|
+                                            </span>
+
+
+                                        }
+                                    }
+                                }
+                                <span>
+                                    @Html.ActionLink("تجهيزات الغرفة", "getAllEquipments", "Equipment", new { rid = item.Id }, null)
+                                </span>
+                        </td>
+                    </tr>
                 }
             }
 
         </table>
 
 
-        </div>
+    </div>
 
 
 
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
+    <script src="~/Scripts/jquery-confirm.min.js"></script>
+    <script>
+        $("select").addClass("form-control");
+        $('.linkDel').confirm({
+            title: 'تأكيد الحذف !',
 
-        <script src="~/Scripts/jquery-confirm.min.js"></script>
-        <script>
-            $('.linkDel').confirm({
-                title: 'تأكيد الحذف !',
-
-                content: 'هل تريد بالتأكيد حذف هذا الحي  ؟',
-
-
-                buttons: {
-                    نعم: function () {
-                        location.href = this.$target.attr('href');
-                    },
-                    إلغاء: function () {
-
-                    }
+            content: 'هل تريد بالتأكيد حذف هذا الحي  ؟',
 
 
-                }
-            });
-            $('a.twitter').confirm({
-                content: "...",
-            });
-            $('a.twitter').confirm({
-                buttons: {
-                    نعم: function () {
-                        location.href = this.$target.attr('href');
-                    }
-                }
-            });
-            $(".jconfirm-content-pane").removeClass("no-scroll");
-        </script>
-
-        <script>
-            $('.linkOrd').confirm({
-                title: ' confirm',
-
-                content: 'Are you sure that you want to add new requist',
-
-
-                buttons: {
-                    نعم: function () {
-                        location.href = this.$target.attr('href');
-                    },
-                    إلغاء: function () {
-
-                    }
-
+            buttons: {
+                نعم: function () {
+                    location.href = this.$target.attr('href');
+                },
+                إلغاء: function () {
 
                 }
-            });
-            $('a.twitter').confirm({
-                content: "...",
-            });
-            $('a.twitter').confirm({
-                buttons: {
-                    نعم: function () {
-                        location.href = this.$target.attr('href');
-                    }
+
+
+            }
+        });
+        $('a.twitter').confirm({
+            content: "...",
+        });
+        $('a.twitter').confirm({
+            buttons: {
+                نعم: function () {
+                    location.href = this.$target.attr('href');
                 }
-            });
-            $(".jconfirm-content-pane").removeClass("no-scroll");
-        </script>
+            }
+        });
+        $(".jconfirm-content-pane").removeClass("no-scroll");
+    </script>
+
+    <script>
+        $('.linkOrd').confirm({
+            title: ' confirm',
+
+            content: 'Are you sure that you want to add new requist',
+
+
+            buttons: {
+                نعم: function () {
+                    location.href = this.$target.attr('href');
+                },
+                إلغاء: function () {
+
+                }
+
+
+            }
+        });
+        $('a.twitter').confirm({
+            content: "...",
+        });
+        $('a.twitter').confirm({
+            buttons: {
+                نعم: function () {
+                    location.href = this.$target.attr('href');
+                }
+            }
+        });
+        $(".jconfirm-content-pane").removeClass("no-scroll");
+    </script>
 

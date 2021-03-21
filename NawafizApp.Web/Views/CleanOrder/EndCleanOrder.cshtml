@@ -13,7 +13,6 @@
         </div>
     </div>
     <div class="portlet-body">
-
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -28,7 +27,7 @@
 
             <div class="form-group">
 
-                <label class="col-md-3 control-label">أسم  </label>
+                <label class="col-md-3 control-label">الاسم  </label>
                 <div class="col-md-4">
                     @Html.EditorFor(model => model.empName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.empName, "", new { @class = "text-danger" })
@@ -73,15 +72,15 @@
 
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="أنهاء الطلب" class="default" />
+                    <div class="col-md-offset-2 col-md-2">
+                        <input type="submit" value="أنهاء الطلب" class="btn btn-block" />
                     </div>
                 </div>
             </div>
         }
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("العودة الى الطلبات", "GetallforCleanEmp")
         </div>
         </div>
 </div>

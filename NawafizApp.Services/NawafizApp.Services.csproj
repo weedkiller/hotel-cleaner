@@ -142,6 +142,7 @@
     <Compile Include="Dtos\PercentDto.cs" />
     <Compile Include="Dtos\RegisterUserDto.cs" />
     <Compile Include="Dtos\RoomDto.cs" />
+    <Compile Include="Dtos\RoomFilter.cs" />
     <Compile Include="Dtos\roomrecDto.cs" />
     <Compile Include="Dtos\RoomStatusDto.cs" />
     <Compile Include="Dtos\RoomTypeDto.cs" />

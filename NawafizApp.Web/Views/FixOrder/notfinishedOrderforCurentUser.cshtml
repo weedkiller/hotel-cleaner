@@ -29,10 +29,8 @@
                 <th>
                     الغرفة
                 </th>
-
-
                 <th>
-                    وقت البدء
+                   وقت الاستلام
                 </th>
 
                 <th></th>
@@ -53,13 +51,11 @@
                         @Html.DisplayFor(modelItem => item.Roomnu)
                     </td>
                     <td>
-
-                    <td>
                         @Html.DisplayFor(modelItem => item.startdate)
                     </td>
 
                     <td>
-                        @Html.ActionLink("إكمال المهمة  ", "EndCleanOrder", new { Oid = item.Id }) |
+                        @Html.ActionLink("إكمال المهمة  ", "EndCleanOrder", new {Rid = item.Room_ID, Oid= item.Id, Msg = "" }) |
 
                     </td>
                 </tr>
